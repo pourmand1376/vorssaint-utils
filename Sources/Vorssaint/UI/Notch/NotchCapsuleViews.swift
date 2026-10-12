@@ -172,10 +172,10 @@ private struct NotchCapsuleTrackArtwork: View {
 struct NotchCapsuleRestingView: View {
     @ObservedObject var service: NotchService
     @ObservedObject private var music = NotchMusicService.shared
-    @AppStorage(DefaultsKey.notchLowBatteryTint, store: SettingsUserDefaults.standard) private var lowBatteryTint = false
-    @AppStorage(DefaultsKey.notchLowBatteryThreshold, store: SettingsUserDefaults.standard) private var lowBatteryThreshold = NotchSupport.defaultLowBatteryThreshold
-    @AppStorage(DefaultsKey.notchLowBatteryEarly, store: SettingsUserDefaults.standard) private var earlyBatteryWarning = false
-    @AppStorage(DefaultsKey.notchLowBatteryEarlyThreshold, store: SettingsUserDefaults.standard) private var earlyBatteryThreshold = NotchSupport.defaultEarlyBatteryThreshold
+    @AppStorage(DefaultsKey.notchLowBatteryTint) private var lowBatteryTint = false
+    @AppStorage(DefaultsKey.notchLowBatteryThreshold) private var lowBatteryThreshold = NotchSupport.defaultLowBatteryThreshold
+    @AppStorage(DefaultsKey.notchLowBatteryEarly) private var earlyBatteryWarning = false
+    @AppStorage(DefaultsKey.notchLowBatteryEarlyThreshold) private var earlyBatteryThreshold = NotchSupport.defaultEarlyBatteryThreshold
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let size: CGSize
     /// Another display's capsule, when the island shows on every display.
@@ -442,9 +442,9 @@ struct NotchCapsuleAgentStrip: View {
     var displayGeometry: NotchGeometry? = nil
     @ObservedObject private var usage = AgentUsageService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchAgentsReadout, store: SettingsUserDefaults.standard) private var readout = NotchAgentReadout.elapsed.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitDisplay, store: SettingsUserDefaults.standard) private var display = NotchAgentLimitDisplay.remaining.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitFocus, store: SettingsUserDefaults.standard) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsReadout) private var readout = NotchAgentReadout.elapsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitDisplay) private var display = NotchAgentLimitDisplay.remaining.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitFocus) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
 
     private func working(_ live: [AgentLiveSession]) -> [AgentProvider] {
         AgentProvider.allCases.filter { provider in live.contains { $0.provider == provider } }

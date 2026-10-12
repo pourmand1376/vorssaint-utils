@@ -130,7 +130,7 @@ final class ScreenshotQuickPreviewController {
             finishShowing()
             return
         }
-        let host = NSHostingController(rootView: content)
+        let host = NSHostingController(rootView: content.defaultAppStorage(SettingsUserDefaults.standard))
         let size = Self.size(showingLink: model.sharedRecord != nil)
         let panel = ScreenshotQuickPreviewPanel(
             contentRect: CGRect(origin: .zero, size: size),
@@ -529,7 +529,7 @@ private struct ScreenshotQuickPreviewView: View {
         view.actionsOnly = true
         return view
     }
-    @AppStorage(DefaultsKey.screenshotSharingEnabled, store: SettingsUserDefaults.standard) private var sharingEnabled = true
+    @AppStorage(DefaultsKey.screenshotSharingEnabled) private var sharingEnabled = true
 
     var body: some View {
         if actionsOnly { actionBar }

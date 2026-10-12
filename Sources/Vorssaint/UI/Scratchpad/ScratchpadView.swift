@@ -9,8 +9,8 @@ import SwiftUI
 struct ScratchpadView: View {
     @ObservedObject private var service = ScratchpadService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.scratchpadBackgroundOpacity, store: SettingsUserDefaults.standard) private var backgroundOpacity = 0.0
-    @AppStorage(DefaultsKey.scratchpadTextSize, store: SettingsUserDefaults.standard) private var storedTextSize = ScratchpadSupport.defaultTextSize
+    @AppStorage(DefaultsKey.scratchpadBackgroundOpacity) private var backgroundOpacity = 0.0
+    @AppStorage(DefaultsKey.scratchpadTextSize) private var storedTextSize = ScratchpadSupport.defaultTextSize
     @State private var copied = false
     @State private var dialog: ScratchpadDialog?
     @State private var renameDraft = ""

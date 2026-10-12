@@ -6,10 +6,10 @@ import SwiftUI
 struct KeepAwakeAutomationEditor: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var awake = KeepAwakeManager.shared
-    @AppStorage(DefaultsKey.keepAwakeExternalDisplay, store: SettingsUserDefaults.standard) private var externalDisplay = false
-    @AppStorage(DefaultsKey.keepAwakeConnectedToPower, store: SettingsUserDefaults.standard) private var connectedToPower = false
-    @AppStorage(DefaultsKey.keepAwakeRunningApps, store: SettingsUserDefaults.standard) private var runningApps = false
-    @AppStorage(DefaultsKey.keepAwakeAutomationRequireAll, store: SettingsUserDefaults.standard) private var requireAll = false
+    @AppStorage(DefaultsKey.keepAwakeExternalDisplay) private var externalDisplay = false
+    @AppStorage(DefaultsKey.keepAwakeConnectedToPower) private var connectedToPower = false
+    @AppStorage(DefaultsKey.keepAwakeRunningApps) private var runningApps = false
+    @AppStorage(DefaultsKey.keepAwakeAutomationRequireAll) private var requireAll = false
 
     var compact = false
 

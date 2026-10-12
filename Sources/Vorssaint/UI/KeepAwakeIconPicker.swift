@@ -5,7 +5,7 @@ import SwiftUI
 
 struct KeepAwakeIconPicker: View {
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.menuBarIconSymbol, store: SettingsUserDefaults.standard) private var menuBarSymbol = ""
+    @AppStorage(DefaultsKey.menuBarIconSymbol) private var menuBarSymbol = ""
     @Binding var iconValue: String
     @Binding var tintValue: String
     var compact = false

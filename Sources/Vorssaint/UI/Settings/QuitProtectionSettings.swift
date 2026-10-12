@@ -8,21 +8,21 @@ struct QuitProtectionSettings: View {
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var service = QuitProtectionService.shared
 
-    @AppStorage(DefaultsKey.quitProtectionQuitEnabled, store: SettingsUserDefaults.standard) private var quitEnabled = false
-    @AppStorage(DefaultsKey.quitProtectionQuitMode, store: SettingsUserDefaults.standard) private var quitMode = QuitProtectionMode.hold.rawValue
-    @AppStorage(DefaultsKey.quitProtectionQuitHoldDurationMs, store: SettingsUserDefaults.standard) private var quitHoldDuration = QuitProtectionSupport.defaultHoldDurationMilliseconds
-    @AppStorage(DefaultsKey.quitProtectionQuitDoubleIntervalMs, store: SettingsUserDefaults.standard) private var quitDoubleInterval = QuitProtectionSupport.defaultDoublePressIntervalMilliseconds
-    @AppStorage(DefaultsKey.quitProtectionQuitExtraModifier, store: SettingsUserDefaults.standard) private var quitExtraModifier = QuitProtectionExtraModifier.shift.rawValue
-    @AppStorage(DefaultsKey.quitProtectionQuitScope, store: SettingsUserDefaults.standard) private var quitScope = QuitProtectionScope.all.rawValue
-    @AppStorage(DefaultsKey.quitProtectionQuitShowFeedback, store: SettingsUserDefaults.standard) private var quitShowFeedback = true
+    @AppStorage(DefaultsKey.quitProtectionQuitEnabled) private var quitEnabled = false
+    @AppStorage(DefaultsKey.quitProtectionQuitMode) private var quitMode = QuitProtectionMode.hold.rawValue
+    @AppStorage(DefaultsKey.quitProtectionQuitHoldDurationMs) private var quitHoldDuration = QuitProtectionSupport.defaultHoldDurationMilliseconds
+    @AppStorage(DefaultsKey.quitProtectionQuitDoubleIntervalMs) private var quitDoubleInterval = QuitProtectionSupport.defaultDoublePressIntervalMilliseconds
+    @AppStorage(DefaultsKey.quitProtectionQuitExtraModifier) private var quitExtraModifier = QuitProtectionExtraModifier.shift.rawValue
+    @AppStorage(DefaultsKey.quitProtectionQuitScope) private var quitScope = QuitProtectionScope.all.rawValue
+    @AppStorage(DefaultsKey.quitProtectionQuitShowFeedback) private var quitShowFeedback = true
 
-    @AppStorage(DefaultsKey.quitProtectionCloseEnabled, store: SettingsUserDefaults.standard) private var closeEnabled = false
-    @AppStorage(DefaultsKey.quitProtectionCloseMode, store: SettingsUserDefaults.standard) private var closeMode = QuitProtectionMode.hold.rawValue
-    @AppStorage(DefaultsKey.quitProtectionCloseHoldDurationMs, store: SettingsUserDefaults.standard) private var closeHoldDuration = QuitProtectionSupport.defaultHoldDurationMilliseconds
-    @AppStorage(DefaultsKey.quitProtectionCloseDoubleIntervalMs, store: SettingsUserDefaults.standard) private var closeDoubleInterval = QuitProtectionSupport.defaultDoublePressIntervalMilliseconds
-    @AppStorage(DefaultsKey.quitProtectionCloseExtraModifier, store: SettingsUserDefaults.standard) private var closeExtraModifier = QuitProtectionExtraModifier.shift.rawValue
-    @AppStorage(DefaultsKey.quitProtectionCloseScope, store: SettingsUserDefaults.standard) private var closeScope = QuitProtectionScope.all.rawValue
-    @AppStorage(DefaultsKey.quitProtectionCloseShowFeedback, store: SettingsUserDefaults.standard) private var closeShowFeedback = true
+    @AppStorage(DefaultsKey.quitProtectionCloseEnabled) private var closeEnabled = false
+    @AppStorage(DefaultsKey.quitProtectionCloseMode) private var closeMode = QuitProtectionMode.hold.rawValue
+    @AppStorage(DefaultsKey.quitProtectionCloseHoldDurationMs) private var closeHoldDuration = QuitProtectionSupport.defaultHoldDurationMilliseconds
+    @AppStorage(DefaultsKey.quitProtectionCloseDoubleIntervalMs) private var closeDoubleInterval = QuitProtectionSupport.defaultDoublePressIntervalMilliseconds
+    @AppStorage(DefaultsKey.quitProtectionCloseExtraModifier) private var closeExtraModifier = QuitProtectionExtraModifier.shift.rawValue
+    @AppStorage(DefaultsKey.quitProtectionCloseScope) private var closeScope = QuitProtectionScope.all.rawValue
+    @AppStorage(DefaultsKey.quitProtectionCloseShowFeedback) private var closeShowFeedback = true
 
     @State private var pickerShortcut: QuitProtectionShortcut?
 

@@ -14,7 +14,7 @@ struct NotchCalendarMonthView: View {
     let today: () -> Void
     let open: () -> Void
     @Environment(\.locale) private var locale
-    @AppStorage(DefaultsKey.notchCalendarWeekNumbers, store: SettingsUserDefaults.standard) private var weekNumbers = false
+    @AppStorage(DefaultsKey.notchCalendarWeekNumbers) private var weekNumbers = false
     private let accent = Color(red: 1, green: 0.36, blue: 0.39)
     private var columns: [GridItem] { NotchCalendarWeekNumber.columns(numbered: weekNumbers) }
 
@@ -217,7 +217,7 @@ struct NotchCalendarMonthGrid: View {
     let open: () -> Void
     let week: () -> Void
     @Environment(\.locale) private var locale
-    @AppStorage(DefaultsKey.notchCalendarWeekNumbers, store: SettingsUserDefaults.standard) private var weekNumbers = false
+    @AppStorage(DefaultsKey.notchCalendarWeekNumbers) private var weekNumbers = false
     private let accent = Color(red: 1, green: 0.36, blue: 0.39)
     private var columns: [GridItem] { NotchCalendarWeekNumber.columns(numbered: weekNumbers) }
 

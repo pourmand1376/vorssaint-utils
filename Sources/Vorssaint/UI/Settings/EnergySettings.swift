@@ -15,27 +15,27 @@ struct EnergySettings: View {
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var extraBrightness = ExtraBrightnessService.shared
     @ObservedObject private var brightness = BrightnessService.shared
-    @AppStorage(DefaultsKey.brightnessControlEnabled, store: SettingsUserDefaults.standard) private var brightnessEnabled = false
-    @AppStorage(DefaultsKey.brightnessKeysEnabled, store: SettingsUserDefaults.standard) private var brightnessKeysEnabled = false
-    @AppStorage(DefaultsKey.brightnessOSDEnabled, store: SettingsUserDefaults.standard) private var brightnessOSDEnabled = false
-    @AppStorage(DefaultsKey.brightnessKeyStep, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.brightnessControlEnabled) private var brightnessEnabled = false
+    @AppStorage(DefaultsKey.brightnessKeysEnabled) private var brightnessKeysEnabled = false
+    @AppStorage(DefaultsKey.brightnessOSDEnabled) private var brightnessOSDEnabled = false
+    @AppStorage(DefaultsKey.brightnessKeyStep)
     private var brightnessKeyStep = BrightnessSupport.KeyStep.standard.rawValue
-    @AppStorage(DefaultsKey.extraBrightnessEnabled, store: SettingsUserDefaults.standard) private var extraBrightnessEnabled = false
-    @AppStorage(DefaultsKey.extraBrightnessLevel, store: SettingsUserDefaults.standard) private var extraBrightnessLevel = 100
-    @AppStorage(DefaultsKey.bluetoothSleepEnabled, store: SettingsUserDefaults.standard) private var bluetoothSleepEnabled = false
-    @AppStorage(DefaultsKey.bluetoothSleepRestoreOnWake, store: SettingsUserDefaults.standard) private var bluetoothSleepRestoreOnWake = true
-    @AppStorage(DefaultsKey.defaultDuration, store: SettingsUserDefaults.standard) private var defaultDuration = 0
-    @AppStorage(DefaultsKey.batteryLimit, store: SettingsUserDefaults.standard) private var batteryLimit = 10
-    @AppStorage(DefaultsKey.keepAwakeAutoStart, store: SettingsUserDefaults.standard) private var keepAwakeAutoStart = false
-    @AppStorage(DefaultsKey.keepAwakeRightClickToggle, store: SettingsUserDefaults.standard) private var keepAwakeRightClickToggle = false
-    @AppStorage(DefaultsKey.keepAwakeAllowDisplaySleep, store: SettingsUserDefaults.standard) private var keepAwakeAllowDisplaySleep = false
-    @AppStorage(DefaultsKey.keepAwakePauseWhenLocked, store: SettingsUserDefaults.standard) private var keepAwakePauseWhenLocked = false
-    @AppStorage(DefaultsKey.keepAwakeAutomationRequireAll, store: SettingsUserDefaults.standard) private var keepAwakeAutomationRequireAll = false
-    @AppStorage(DefaultsKey.showCountdown, store: SettingsUserDefaults.standard) private var showCountdown = false
-    @AppStorage(DefaultsKey.keepAwakeIconTint, store: SettingsUserDefaults.standard) private var keepAwakeIconTint = KeepAwakeIconTint.orange.rawValue
-    @AppStorage(DefaultsKey.keepAwakeActiveIcon, store: SettingsUserDefaults.standard) private var keepAwakeActiveIcon = KeepAwakeActiveIcon.vorssaint.rawValue
-    @AppStorage(DefaultsKey.keepAwakeMouseJiggleEnabled, store: SettingsUserDefaults.standard) private var keepAwakeMouseJiggle = false
-    @AppStorage(DefaultsKey.keepAwakeMouseJiggleInterval, store: SettingsUserDefaults.standard) private var keepAwakeMouseJiggleInterval = 5
+    @AppStorage(DefaultsKey.extraBrightnessEnabled) private var extraBrightnessEnabled = false
+    @AppStorage(DefaultsKey.extraBrightnessLevel) private var extraBrightnessLevel = 100
+    @AppStorage(DefaultsKey.bluetoothSleepEnabled) private var bluetoothSleepEnabled = false
+    @AppStorage(DefaultsKey.bluetoothSleepRestoreOnWake) private var bluetoothSleepRestoreOnWake = true
+    @AppStorage(DefaultsKey.defaultDuration) private var defaultDuration = 0
+    @AppStorage(DefaultsKey.batteryLimit) private var batteryLimit = 10
+    @AppStorage(DefaultsKey.keepAwakeAutoStart) private var keepAwakeAutoStart = false
+    @AppStorage(DefaultsKey.keepAwakeRightClickToggle) private var keepAwakeRightClickToggle = false
+    @AppStorage(DefaultsKey.keepAwakeAllowDisplaySleep) private var keepAwakeAllowDisplaySleep = false
+    @AppStorage(DefaultsKey.keepAwakePauseWhenLocked) private var keepAwakePauseWhenLocked = false
+    @AppStorage(DefaultsKey.keepAwakeAutomationRequireAll) private var keepAwakeAutomationRequireAll = false
+    @AppStorage(DefaultsKey.showCountdown) private var showCountdown = false
+    @AppStorage(DefaultsKey.keepAwakeIconTint) private var keepAwakeIconTint = KeepAwakeIconTint.orange.rawValue
+    @AppStorage(DefaultsKey.keepAwakeActiveIcon) private var keepAwakeActiveIcon = KeepAwakeActiveIcon.vorssaint.rawValue
+    @AppStorage(DefaultsKey.keepAwakeMouseJiggleEnabled) private var keepAwakeMouseJiggle = false
+    @AppStorage(DefaultsKey.keepAwakeMouseJiggleInterval) private var keepAwakeMouseJiggleInterval = 5
     @State private var brightnessOptionsExpanded = false
 
     var body: some View {

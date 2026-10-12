@@ -11,12 +11,12 @@ struct RadialMenuSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var service = RadialMenuService.shared
-    @AppStorage(DefaultsKey.radialMenuEnabled, store: SettingsUserDefaults.standard) private var enabled = false
-    @AppStorage(DefaultsKey.radialMenuAtPointer, store: SettingsUserDefaults.standard) private var atPointer = true
-    @AppStorage(DefaultsKey.radialMenuActivationMode, store: SettingsUserDefaults.standard) private var activationModeRaw =
+    @AppStorage(DefaultsKey.radialMenuEnabled) private var enabled = false
+    @AppStorage(DefaultsKey.radialMenuAtPointer) private var atPointer = true
+    @AppStorage(DefaultsKey.radialMenuActivationMode) private var activationModeRaw =
         RadialMenuActivationMode.pressOrHold.rawValue
-    @AppStorage(DefaultsKey.middleClickEnabled, store: SettingsUserDefaults.standard) private var middleClickEnabled = false
-    @AppStorage(DefaultsKey.middleClickTapFingers, store: SettingsUserDefaults.standard) private var middleClickTapFingers = 0
+    @AppStorage(DefaultsKey.middleClickEnabled) private var middleClickEnabled = false
+    @AppStorage(DefaultsKey.middleClickTapFingers) private var middleClickTapFingers = 0
 
     @State private var profiles: [RadialMenuProfile] = RadialMenuSupport.decodeProfiles(
         SettingsUserDefaults.standard.data(forKey: DefaultsKey.radialMenuProfiles))

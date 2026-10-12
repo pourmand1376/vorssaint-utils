@@ -14,7 +14,7 @@ struct NotchLayoutEditor: View {
     /// Redraws when a feature behind a button is installed or removed, which
     /// dims the button or brings it back.
     @ObservedObject private var features = FeatureRuntime.shared
-    @AppStorage(DefaultsKey.notchOutlineEnabled, store: SettingsUserDefaults.standard) private var outlineEnabled = false
+    @AppStorage(DefaultsKey.notchOutlineEnabled) private var outlineEnabled = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var addingSide: NotchQuickAccessSide?
     @State private var editingID: UUID?

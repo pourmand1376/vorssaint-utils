@@ -235,7 +235,7 @@ final class SnippetLibraryService: ObservableObject {
         panel.backgroundColor = .clear
         panel.isOpaque = false
         panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .ignoresCycle]
-        let host = NSHostingController(rootView: SnippetLibraryView())
+        let host = NSHostingController(rootView: SnippetLibraryView().defaultAppStorage(SettingsUserDefaults.standard))
         host.sizingOptions = .preferredContentSize
         panel.contentViewController = host
         self.panel = panel

@@ -8,7 +8,7 @@ struct NotchSystemView: View {
     let select: (MetricDetailKind) -> Void
     @ObservedObject private var monitor = SystemMonitor.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.networkSpeedUnit, store: SettingsUserDefaults.standard) private var networkSpeedUnit = NetworkSpeedUnit.bytes
+    @AppStorage(DefaultsKey.networkSpeedUnit) private var networkSpeedUnit = NetworkSpeedUnit.bytes
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private struct Card: Identifiable {

@@ -34,20 +34,20 @@ struct SystemSection: View {
     @State private var breakdownIsLoading = false
     @State private var lastBreakdownRefresh = Date.distantPast
     private let breakdownLimit = 15
-    @AppStorage(DefaultsKey.monitorInterval, store: SettingsUserDefaults.standard) private var monitorInterval = 2
-    @AppStorage(DefaultsKey.monitorGraphCPU, store: SettingsUserDefaults.standard) private var graphCPU = true
-    @AppStorage(DefaultsKey.monitorGraphGPU, store: SettingsUserDefaults.standard) private var graphGPU = true
-    @AppStorage(DefaultsKey.monitorGraphMemory, store: SettingsUserDefaults.standard) private var graphMemory = true
-    @AppStorage(DefaultsKey.temperatureUnit, store: SettingsUserDefaults.standard) private var temperatureUnit = TemperatureUnit.celsius.rawValue
-    @AppStorage(DefaultsKey.monitorSysTemps, store: SettingsUserDefaults.standard) private var sysTemps = true
-    @AppStorage(DefaultsKey.monitorSysCPU, store: SettingsUserDefaults.standard) private var sysCPU = true
-    @AppStorage(DefaultsKey.monitorSysCPUCores, store: SettingsUserDefaults.standard) private var sysCPUCores = true
-    @AppStorage(DefaultsKey.monitorSysGPU, store: SettingsUserDefaults.standard) private var sysGPU = true
-    @AppStorage(DefaultsKey.monitorSysMemory, store: SettingsUserDefaults.standard) private var sysMemory = true
-    @AppStorage(DefaultsKey.monitorSysAlerts, store: SettingsUserDefaults.standard) private var sysAlerts = true
-    @AppStorage(DefaultsKey.monitorSysUptime, store: SettingsUserDefaults.standard) private var sysUptime = true
-    @AppStorage(DefaultsKey.monitorSysConnectedDevices, store: SettingsUserDefaults.standard) private var sysConnectedDevices = true
-    @AppStorage(DefaultsKey.panelSystemOrder, store: SettingsUserDefaults.standard) private var systemOrderRaw = ""
+    @AppStorage(DefaultsKey.monitorInterval) private var monitorInterval = 2
+    @AppStorage(DefaultsKey.monitorGraphCPU) private var graphCPU = true
+    @AppStorage(DefaultsKey.monitorGraphGPU) private var graphGPU = true
+    @AppStorage(DefaultsKey.monitorGraphMemory) private var graphMemory = true
+    @AppStorage(DefaultsKey.temperatureUnit) private var temperatureUnit = TemperatureUnit.celsius.rawValue
+    @AppStorage(DefaultsKey.monitorSysTemps) private var sysTemps = true
+    @AppStorage(DefaultsKey.monitorSysCPU) private var sysCPU = true
+    @AppStorage(DefaultsKey.monitorSysCPUCores) private var sysCPUCores = true
+    @AppStorage(DefaultsKey.monitorSysGPU) private var sysGPU = true
+    @AppStorage(DefaultsKey.monitorSysMemory) private var sysMemory = true
+    @AppStorage(DefaultsKey.monitorSysAlerts) private var sysAlerts = true
+    @AppStorage(DefaultsKey.monitorSysUptime) private var sysUptime = true
+    @AppStorage(DefaultsKey.monitorSysConnectedDevices) private var sysConnectedDevices = true
+    @AppStorage(DefaultsKey.panelSystemOrder) private var systemOrderRaw = ""
     @State private var draggingBlock: Block?
 
     var body: some View {

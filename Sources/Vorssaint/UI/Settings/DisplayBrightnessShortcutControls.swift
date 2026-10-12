@@ -6,7 +6,7 @@ import SwiftUI
 struct DisplayBrightnessShortcutControls: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var brightness = BrightnessService.shared
-    @AppStorage(DefaultsKey.displayBrightnessShortcutsEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.displayBrightnessShortcutsEnabled) private var enabled = false
     var showsShortcutRows = true
     var showsSettingsRow = false
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct KillProcessView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var service = KillProcessService.shared
-    @AppStorage(DefaultsKey.killProcessCommandBarEnabled, store: SettingsUserDefaults.standard) private var commandBarEnabled = true
+    @AppStorage(DefaultsKey.killProcessCommandBarEnabled) private var commandBarEnabled = true
     @Environment(\.controlActiveState) private var controlActiveState
     @State private var refreshTimer: Timer?
     @State private var pendingAction: PendingAction?

@@ -106,7 +106,7 @@ struct ScreenCaptureSettings: View {
 private struct RecentCapturesShortcutRows: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var service = RecentCaptureService.shared
-    @AppStorage(DefaultsKey.recentCapturesShortcutEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.recentCapturesShortcutEnabled) private var enabled = false
 
     var body: some View {
         let role = GlobalShortcutRole.recentCaptures
@@ -152,7 +152,7 @@ private struct ToolShortcutRows: View {
         self.tool = tool
         self.keys = keys
         _enabled = AppStorage(
-            wrappedValue: false, keys.enabledKey, store: SettingsUserDefaults.standard)
+            wrappedValue: false, keys.enabledKey)
         _showsCaptureMenu = AppStorage(
             wrappedValue: true, tool.showCaptureMenuOnShortcutKey,
             store: SettingsUserDefaults.standard)
@@ -180,8 +180,8 @@ private struct ToolShortcutRows: View {
 private struct ScreenTextCaptureSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var permissions = Permissions.shared
-    @AppStorage(DefaultsKey.screenOCRRemoveLineBreaks, store: SettingsUserDefaults.standard) private var removesLineBreaks = false
-    @AppStorage(DefaultsKey.screenOCRDetectQRCodes, store: SettingsUserDefaults.standard) private var detectsQRCodes = true
+    @AppStorage(DefaultsKey.screenOCRRemoveLineBreaks) private var removesLineBreaks = false
+    @AppStorage(DefaultsKey.screenOCRDetectQRCodes) private var detectsQRCodes = true
 
     var body: some View {
         Section {
@@ -213,8 +213,8 @@ private struct ScreenTextCaptureSettings: View {
 
 private struct ColorCaptureSettings: View {
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.colorPickerFormat, store: SettingsUserDefaults.standard) private var format = "hex"
-    @AppStorage(DefaultsKey.colorPickerBareHex, store: SettingsUserDefaults.standard) private var usesBareHex = false
+    @AppStorage(DefaultsKey.colorPickerFormat) private var format = "hex"
+    @AppStorage(DefaultsKey.colorPickerBareHex) private var usesBareHex = false
 
     var body: some View {
         Section {

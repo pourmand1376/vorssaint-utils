@@ -149,9 +149,9 @@ struct MetricDetailView: View {
     @ObservedObject private var monitor = SystemMonitor.shared
     @ObservedObject private var speed = SpeedTest.shared
     @Environment(\.colorScheme) private var colorScheme
-    @AppStorage(DefaultsKey.temperatureUnit, store: SettingsUserDefaults.standard) private var temperatureUnit = TemperatureUnit.celsius.rawValue
-    @AppStorage(DefaultsKey.monitorInterval, store: SettingsUserDefaults.standard) private var monitorInterval = 2
-    @AppStorage(DefaultsKey.networkSpeedUnit, store: SettingsUserDefaults.standard) private var speedUnit = NetworkSpeedUnit.bytes
+    @AppStorage(DefaultsKey.temperatureUnit) private var temperatureUnit = TemperatureUnit.celsius.rawValue
+    @AppStorage(DefaultsKey.monitorInterval) private var monitorInterval = 2
+    @AppStorage(DefaultsKey.networkSpeedUnit) private var speedUnit = NetworkSpeedUnit.bytes
     let kind: MetricDetailKind
     @State private var processRows: [ProcessUsage] = []
     @State private var processRowsLoading = false

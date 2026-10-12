@@ -2109,8 +2109,7 @@ enum PointerInputFeatureTests {
 
         func appStorageProperty(_ key: String, in lines: [String]) -> String? {
             guard let line = lines.first(where: {
-                isCodeLine($0) && $0.contains(
-                    "@AppStorage(\(key), store: SettingsUserDefaults.standard)")
+                isCodeLine($0) && $0.contains("@AppStorage(\(key))")
             }), let declaration = line.range(of: "private var ") else { return nil }
             return line[declaration.upperBound...].split(whereSeparator: { $0.isWhitespace || $0 == "=" }).first
                 .map(String.init)
@@ -2181,7 +2180,7 @@ enum PointerInputFeatureTests {
             let window = spacesServiceLines[index...].prefix(7)
             let readsSwitch = window.contains {
                 isCodeLine($0) && $0.contains(
-                    "isEnabled: SettingsUserDefaults.standard.bool(forKey: DefaultsKey.mouseButtonShortcutsEnabled)")
+                    "isEnabled: UserDefaults.standard.bool(forKey: DefaultsKey.mouseButtonShortcutsEnabled)")
             }
             let passesPressOn = window.contains {
                 isCodeLine($0) && $0.contains("else { return Unmanaged.passUnretained(event) }")

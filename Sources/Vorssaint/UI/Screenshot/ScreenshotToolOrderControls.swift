@@ -10,7 +10,7 @@ struct ScreenshotToolOrderControls: View {
     @Binding var orderRaw: String
     @Binding var shortcutsEnabled: Bool
     var showsTitle = true
-    @AppStorage(DefaultsKey.screenshotToolShortcuts, store: SettingsUserDefaults.standard) private var bindingsRaw = ""
+    @AppStorage(DefaultsKey.screenshotToolShortcuts) private var bindingsRaw = ""
     @State private var recordingTool: ScreenshotSupport.Tool?
     @State private var errorText: String?
     @StateObject private var keyboard = ScreenshotShortcutContext()

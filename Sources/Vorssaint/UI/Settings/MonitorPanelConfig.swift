@@ -15,47 +15,47 @@ struct MonitorPanelConfig: View {
     @State private var expandedBlocks = Set<PanelConfigBlock>()
     @State private var selectedBlock: PanelConfigBlock?
 
-    @AppStorage(DefaultsKey.monitorShowSystem, store: SettingsUserDefaults.standard) private var showSystem = true
-    @AppStorage(DefaultsKey.monitorSysTemps, store: SettingsUserDefaults.standard) private var sysTemps = true
-    @AppStorage(DefaultsKey.monitorSysCPU, store: SettingsUserDefaults.standard) private var sysCPU = true
-    @AppStorage(DefaultsKey.monitorSysCPUCores, store: SettingsUserDefaults.standard) private var sysCPUCores = true
-    @AppStorage(DefaultsKey.monitorSysGPU, store: SettingsUserDefaults.standard) private var sysGPU = true
-    @AppStorage(DefaultsKey.monitorPwrTemperature, store: SettingsUserDefaults.standard) private var pwrTemperature = true
-    @AppStorage(DefaultsKey.monitorSysBattery, store: SettingsUserDefaults.standard) private var sysBattery = true
-    @AppStorage(DefaultsKey.monitorSysMemory, store: SettingsUserDefaults.standard) private var sysMemory = true
-    @AppStorage(DefaultsKey.monitorSysUptime, store: SettingsUserDefaults.standard) private var sysUptime = true
-    @AppStorage(DefaultsKey.monitorSysConnectedDevices, store: SettingsUserDefaults.standard) private var sysConnectedDevices = true
+    @AppStorage(DefaultsKey.monitorShowSystem) private var showSystem = true
+    @AppStorage(DefaultsKey.monitorSysTemps) private var sysTemps = true
+    @AppStorage(DefaultsKey.monitorSysCPU) private var sysCPU = true
+    @AppStorage(DefaultsKey.monitorSysCPUCores) private var sysCPUCores = true
+    @AppStorage(DefaultsKey.monitorSysGPU) private var sysGPU = true
+    @AppStorage(DefaultsKey.monitorPwrTemperature) private var pwrTemperature = true
+    @AppStorage(DefaultsKey.monitorSysBattery) private var sysBattery = true
+    @AppStorage(DefaultsKey.monitorSysMemory) private var sysMemory = true
+    @AppStorage(DefaultsKey.monitorSysUptime) private var sysUptime = true
+    @AppStorage(DefaultsKey.monitorSysConnectedDevices) private var sysConnectedDevices = true
 
-    @AppStorage(DefaultsKey.monitorShowNetwork, store: SettingsUserDefaults.standard) private var showNetwork = true
-    @AppStorage(DefaultsKey.monitorNetSpeed, store: SettingsUserDefaults.standard) private var netSpeed = true
-    @AppStorage(DefaultsKey.monitorNetApps, store: SettingsUserDefaults.standard) private var netApps = true
-    @AppStorage(DefaultsKey.monitorNetTotals, store: SettingsUserDefaults.standard) private var netTotals = true
-    @AppStorage(DefaultsKey.monitorNetTest, store: SettingsUserDefaults.standard) private var netTest = true
-    @AppStorage(DefaultsKey.monitorNetAddresses, store: SettingsUserDefaults.standard) private var netAddresses = true
+    @AppStorage(DefaultsKey.monitorShowNetwork) private var showNetwork = true
+    @AppStorage(DefaultsKey.monitorNetSpeed) private var netSpeed = true
+    @AppStorage(DefaultsKey.monitorNetApps) private var netApps = true
+    @AppStorage(DefaultsKey.monitorNetTotals) private var netTotals = true
+    @AppStorage(DefaultsKey.monitorNetTest) private var netTest = true
+    @AppStorage(DefaultsKey.monitorNetAddresses) private var netAddresses = true
 
-    @AppStorage(DefaultsKey.monitorShowDisk, store: SettingsUserDefaults.standard) private var showDisk = true
-    @AppStorage(DefaultsKey.monitorDiskUsage, store: SettingsUserDefaults.standard) private var diskUsage = true
-    @AppStorage(DefaultsKey.monitorDiskActivity, store: SettingsUserDefaults.standard) private var diskActivity = true
-    @AppStorage(DefaultsKey.monitorDiskSMART, store: SettingsUserDefaults.standard) private var diskSMART = true
-    @AppStorage(DefaultsKey.monitorDiskProtection, store: SettingsUserDefaults.standard) private var diskProtection = true
-    @AppStorage(DefaultsKey.monitorDiskTools, store: SettingsUserDefaults.standard) private var diskTools = true
+    @AppStorage(DefaultsKey.monitorShowDisk) private var showDisk = true
+    @AppStorage(DefaultsKey.monitorDiskUsage) private var diskUsage = true
+    @AppStorage(DefaultsKey.monitorDiskActivity) private var diskActivity = true
+    @AppStorage(DefaultsKey.monitorDiskSMART) private var diskSMART = true
+    @AppStorage(DefaultsKey.monitorDiskProtection) private var diskProtection = true
+    @AppStorage(DefaultsKey.monitorDiskTools) private var diskTools = true
 
-    @AppStorage(DefaultsKey.monitorShowPower, store: SettingsUserDefaults.standard) private var showPower = true
-    @AppStorage(DefaultsKey.monitorPwrSystem, store: SettingsUserDefaults.standard) private var pwrSystem = true
-    @AppStorage(DefaultsKey.monitorPwrAdapter, store: SettingsUserDefaults.standard) private var pwrAdapter = true
-    @AppStorage(DefaultsKey.monitorPwrBattery, store: SettingsUserDefaults.standard) private var pwrBattery = true
-    @AppStorage(DefaultsKey.monitorPwrTimeRemaining, store: SettingsUserDefaults.standard) private var pwrTimeRemaining = true
-    @AppStorage(DefaultsKey.monitorPwrHealth, store: SettingsUserDefaults.standard) private var pwrHealth = true
+    @AppStorage(DefaultsKey.monitorShowPower) private var showPower = true
+    @AppStorage(DefaultsKey.monitorPwrSystem) private var pwrSystem = true
+    @AppStorage(DefaultsKey.monitorPwrAdapter) private var pwrAdapter = true
+    @AppStorage(DefaultsKey.monitorPwrBattery) private var pwrBattery = true
+    @AppStorage(DefaultsKey.monitorPwrTimeRemaining) private var pwrTimeRemaining = true
+    @AppStorage(DefaultsKey.monitorPwrHealth) private var pwrHealth = true
 
-    @AppStorage(DefaultsKey.monitorShowMixer, store: SettingsUserDefaults.standard) private var showMixer = true
+    @AppStorage(DefaultsKey.monitorShowMixer) private var showMixer = true
 
-    @AppStorage(DefaultsKey.monitorGraphCPU, store: SettingsUserDefaults.standard) private var graphCPU = true
-    @AppStorage(DefaultsKey.monitorGraphGPU, store: SettingsUserDefaults.standard) private var graphGPU = true
-    @AppStorage(DefaultsKey.monitorGraphMemory, store: SettingsUserDefaults.standard) private var graphMemory = true
-    @AppStorage(DefaultsKey.monitorGraphNetwork, store: SettingsUserDefaults.standard) private var graphNetwork = true
-    @AppStorage(DefaultsKey.monitorGraphDisk, store: SettingsUserDefaults.standard) private var graphDisk = true
-    @AppStorage(DefaultsKey.monitorGraphPower, store: SettingsUserDefaults.standard) private var graphPower = true
-    @AppStorage(DefaultsKey.monitorGraphBattery, store: SettingsUserDefaults.standard) private var graphBattery = true
+    @AppStorage(DefaultsKey.monitorGraphCPU) private var graphCPU = true
+    @AppStorage(DefaultsKey.monitorGraphGPU) private var graphGPU = true
+    @AppStorage(DefaultsKey.monitorGraphMemory) private var graphMemory = true
+    @AppStorage(DefaultsKey.monitorGraphNetwork) private var graphNetwork = true
+    @AppStorage(DefaultsKey.monitorGraphDisk) private var graphDisk = true
+    @AppStorage(DefaultsKey.monitorGraphPower) private var graphPower = true
+    @AppStorage(DefaultsKey.monitorGraphBattery) private var graphBattery = true
 
     var body: some View {
         if tiles {

@@ -7,7 +7,7 @@ struct NotchLyricsView: View {
     let playback: NotchPlayback
     @ObservedObject private var service = NotchLyricsService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchLyricsOnline, store: SettingsUserDefaults.standard) private var online = false
+    @AppStorage(DefaultsKey.notchLyricsOnline) private var online = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private var text: NotchMusicExtrasStrings { FeatureStrings.notchMusicExtras(l10n.language) }
 

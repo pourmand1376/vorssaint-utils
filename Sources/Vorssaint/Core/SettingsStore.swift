@@ -4,24 +4,26 @@
 import Foundation
 
 final class SettingsUserDefaults: UserDefaults {
-    private static let sharedStore: SettingsUserDefaults = {
-        guard let container = PrivateFileStore.containerURL else {
-            fatalError("Settings storage requires an app bundle identifier")
-        }
+    private static let sharedStore: SettingsUserDefaults? = {
+        guard let container = PrivateFileStore.containerURL,
+              let bundleID = Bundle.main.bundleIdentifier else { return nil }
         let folder = container.appendingPathComponent("Settings", isDirectory: true)
         return SettingsUserDefaults(
             storageURL: folder.appendingPathComponent("Preferences.plist"),
-            domainName: Bundle.main.bundleIdentifier,
-            legacyDefaults: UserDefaults.standard,
+            domainName: bundleID,
+            legacyDefaults: Foundation.UserDefaults.standard,
             containerURL: container)
     }()
 
     override class var standard: UserDefaults {
-        sharedStore
+        sharedStore ?? Foundation.UserDefaults.standard
     }
 
     static var settings: SettingsUserDefaults {
-        sharedStore
+        guard let sharedStore else {
+            fatalError("Settings storage requires an app bundle identifier")
+        }
+        return sharedStore
     }
 
     private let storageURL: URL

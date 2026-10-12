@@ -10,7 +10,7 @@ import UserNotifications
 struct CleanerSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var router = SettingsRouter.shared
-    @AppStorage(DefaultsKey.whatsAppDownloadsEnabled, store: SettingsUserDefaults.standard) private var whatsAppEnabled = false
+    @AppStorage(DefaultsKey.whatsAppDownloadsEnabled) private var whatsAppEnabled = false
     @State private var tool = Tool.system
 
     private enum Tool: String {
@@ -78,24 +78,24 @@ struct CleanerView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var cleaner = JunkCleaner.shared
     @ObservedObject private var permissions = Permissions.shared
-    @AppStorage(DefaultsKey.cleanerScheduleFrequency, store: SettingsUserDefaults.standard) private var scheduleFrequencyRaw = "off"
-    @AppStorage(DefaultsKey.cleanerScheduleHour, store: SettingsUserDefaults.standard) private var scheduleHour = 9
-    @AppStorage(DefaultsKey.cleanerScheduleMinute, store: SettingsUserDefaults.standard) private var scheduleMinute = 0
-    @AppStorage(DefaultsKey.cleanerScheduleWeekday, store: SettingsUserDefaults.standard) private var scheduleWeekday = 2
-    @AppStorage(DefaultsKey.cleanerLastAutoRun, store: SettingsUserDefaults.standard) private var lastAutoRun = 0.0
-    @AppStorage(DefaultsKey.cleanerLastAutoFreed, store: SettingsUserDefaults.standard) private var lastAutoFreed = 0
-    @AppStorage(DefaultsKey.cleanerLastAutoFailed, store: SettingsUserDefaults.standard) private var lastAutoFailed = 0
-    @AppStorage(DefaultsKey.cleanerScheduleNotify, store: SettingsUserDefaults.standard) private var scheduleNotify = true
-    @AppStorage(DefaultsKey.cleanerScreenshotAgeDays, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.cleanerScheduleFrequency) private var scheduleFrequencyRaw = "off"
+    @AppStorage(DefaultsKey.cleanerScheduleHour) private var scheduleHour = 9
+    @AppStorage(DefaultsKey.cleanerScheduleMinute) private var scheduleMinute = 0
+    @AppStorage(DefaultsKey.cleanerScheduleWeekday) private var scheduleWeekday = 2
+    @AppStorage(DefaultsKey.cleanerLastAutoRun) private var lastAutoRun = 0.0
+    @AppStorage(DefaultsKey.cleanerLastAutoFreed) private var lastAutoFreed = 0
+    @AppStorage(DefaultsKey.cleanerLastAutoFailed) private var lastAutoFailed = 0
+    @AppStorage(DefaultsKey.cleanerScheduleNotify) private var scheduleNotify = true
+    @AppStorage(DefaultsKey.cleanerScreenshotAgeDays)
     private var screenshotAgeDays = CleanerPolicy.defaultScreenshotAgeDays
     @ObservedObject private var scheduler = CleanerScheduler.shared
     @ObservedObject private var whatsAppScheduler = WhatsAppDownloadScheduler.shared
-    @AppStorage(DefaultsKey.whatsAppDownloadsEnabled, store: SettingsUserDefaults.standard) private var whatsAppEnabled = false
-    @AppStorage(DefaultsKey.whatsAppDownloadsAutomaticEnabled, store: SettingsUserDefaults.standard) private var whatsAppAutomatic = false
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanup, store: SettingsUserDefaults.standard) private var whatsAppLastCleanup = 0.0
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupCount, store: SettingsUserDefaults.standard) private var whatsAppLastCount = 0
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupBytes, store: SettingsUserDefaults.standard) private var whatsAppLastBytes = 0
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupFailed, store: SettingsUserDefaults.standard) private var whatsAppLastFailed = 0
+    @AppStorage(DefaultsKey.whatsAppDownloadsEnabled) private var whatsAppEnabled = false
+    @AppStorage(DefaultsKey.whatsAppDownloadsAutomaticEnabled) private var whatsAppAutomatic = false
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanup) private var whatsAppLastCleanup = 0.0
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupCount) private var whatsAppLastCount = 0
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupBytes) private var whatsAppLastBytes = 0
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupFailed) private var whatsAppLastFailed = 0
     @State private var notificationsDenied = false
     /// The panel hosted card starts folded; the Settings page shows it open.
     @State private var scheduleExpanded = false

@@ -6,18 +6,18 @@ import SwiftUI
 struct ShelfSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var shelf = ShelfService.shared
-    @AppStorage(DefaultsKey.shelfEnabled, store: SettingsUserDefaults.standard) private var enabled = false
-    @AppStorage(DefaultsKey.shelfShortcutEnabled, store: SettingsUserDefaults.standard) private var shortcutEnabled = true
-    @AppStorage(DefaultsKey.shelfShortcutAddsFinderSelection, store: SettingsUserDefaults.standard) private var shortcutAddsFinderSelection = false
-    @AppStorage(DefaultsKey.shelfShakeToOpen, store: SettingsUserDefaults.standard) private var shake = true
-    @AppStorage(DefaultsKey.shelfDropZoneEnabled, store: SettingsUserDefaults.standard) private var dropZone = true
-    @AppStorage(DefaultsKey.shelfDockPlacement, store: SettingsUserDefaults.standard) private var dockPlacement = ShelfDockPlacement.menuBar.rawValue
-    @AppStorage(DefaultsKey.notchEnabled, store: SettingsUserDefaults.standard) private var islandEnabled = false
-    @AppStorage(DefaultsKey.shelfEdgeDragEnabled, store: SettingsUserDefaults.standard) private var edgeDrag = false
-    @AppStorage(DefaultsKey.shelfCloseAfterDrop, store: SettingsUserDefaults.standard) private var closeAfterDrop = false
-    @AppStorage(DefaultsKey.shelfRemoveAfterDrop, store: SettingsUserDefaults.standard) private var removeAfterDrop = true
-    @AppStorage(DefaultsKey.shelfClearOnClose, store: SettingsUserDefaults.standard) private var clearOnClose = false
-    @AppStorage(DefaultsKey.notchShelf, store: SettingsUserDefaults.standard) private var opensInIsland = true
+    @AppStorage(DefaultsKey.shelfEnabled) private var enabled = false
+    @AppStorage(DefaultsKey.shelfShortcutEnabled) private var shortcutEnabled = true
+    @AppStorage(DefaultsKey.shelfShortcutAddsFinderSelection) private var shortcutAddsFinderSelection = false
+    @AppStorage(DefaultsKey.shelfShakeToOpen) private var shake = true
+    @AppStorage(DefaultsKey.shelfDropZoneEnabled) private var dropZone = true
+    @AppStorage(DefaultsKey.shelfDockPlacement) private var dockPlacement = ShelfDockPlacement.menuBar.rawValue
+    @AppStorage(DefaultsKey.notchEnabled) private var islandEnabled = false
+    @AppStorage(DefaultsKey.shelfEdgeDragEnabled) private var edgeDrag = false
+    @AppStorage(DefaultsKey.shelfCloseAfterDrop) private var closeAfterDrop = false
+    @AppStorage(DefaultsKey.shelfRemoveAfterDrop) private var removeAfterDrop = true
+    @AppStorage(DefaultsKey.shelfClearOnClose) private var clearOnClose = false
+    @AppStorage(DefaultsKey.notchShelf) private var opensInIsland = true
     @State private var showingAppPicker = false
     @State private var islandShowsFiles = NotchSupport.showsFiles()
 

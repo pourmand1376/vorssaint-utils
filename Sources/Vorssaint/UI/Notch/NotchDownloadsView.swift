@@ -7,7 +7,7 @@ import SwiftUI
 struct NotchDownloadsSettingsControls: View {
     @ObservedObject private var downloads = NotchDownloadService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchDownloadsEnabled, store: SettingsUserDefaults.standard) private var enabled = true
+    @AppStorage(DefaultsKey.notchDownloadsEnabled) private var enabled = true
     private var text: NotchFilesStrings { FeatureStrings.notchFiles(l10n.language) }
 
     var body: some View {
@@ -36,7 +36,7 @@ struct NotchDownloadsSettingsControls: View {
 private struct NotchDownloadsSetupView: View {
     @ObservedObject private var downloads = NotchDownloadService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchDownloadsEnabled, store: SettingsUserDefaults.standard) private var enabled = true
+    @AppStorage(DefaultsKey.notchDownloadsEnabled) private var enabled = true
     private var text: NotchFilesStrings { FeatureStrings.notchFiles(l10n.language) }
 
     var body: some View {
@@ -124,7 +124,7 @@ struct NotchDownloadsView: View {
     let size: CGSize
     @ObservedObject private var downloads = NotchDownloadService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchDownloadsEnabled, store: SettingsUserDefaults.standard) private var enabled = true
+    @AppStorage(DefaultsKey.notchDownloadsEnabled) private var enabled = true
     @Environment(\.notchSettingsPreview) private var preview
     private var text: NotchFilesStrings { FeatureStrings.notchFiles(l10n.language) }
 

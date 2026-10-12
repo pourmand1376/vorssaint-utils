@@ -15,11 +15,11 @@ struct MixerSection: View {
     @ObservedObject private var inputManager = AudioInputDeviceManager.shared
     @ObservedObject private var audioPriority = AudioPriorityService.shared
     @ObservedObject private var micMute = MicMuteService.shared
-    @AppStorage(DefaultsKey.liquidGlassEnabled, store: SettingsUserDefaults.standard) private var windowsGlass = false
-    @AppStorage(DefaultsKey.notchLiquidGlassEnabled, store: SettingsUserDefaults.standard) private var islandGlass = false
-    @AppStorage(DefaultsKey.mixerAppArrangement, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.liquidGlassEnabled) private var windowsGlass = false
+    @AppStorage(DefaultsKey.notchLiquidGlassEnabled) private var islandGlass = false
+    @AppStorage(DefaultsKey.mixerAppArrangement)
     private var arrangementValue = ""
-    @AppStorage(DefaultsKey.mixerHideInactiveApps, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.mixerHideInactiveApps)
     private var hideInactiveApps = false
     @State private var optionsExpanded = false
     @State private var normalSliderTint = Color(nsColor: .controlAccentColor)
@@ -543,13 +543,13 @@ struct MixerOptionsControls: View {
     @ObservedObject private var mixer = AppVolumeMixer.shared
     @ObservedObject private var preciseVolumeRoller = PreciseVolumeRollerService.shared
     @ObservedObject private var permissions = Permissions.shared
-    @AppStorage(DefaultsKey.mixerHideInactiveApps, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.mixerHideInactiveApps)
     private var hideInactiveApps = false
-    @AppStorage(DefaultsKey.mixerLowerVolumeOnHeadphonesDisconnect, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.mixerLowerVolumeOnHeadphonesDisconnect)
     private var lowerOnHeadphonesDisconnect = false
-    @AppStorage(DefaultsKey.mixerHeadphonesDisconnectVolumePercent, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.mixerHeadphonesDisconnectVolumePercent)
     private var headphonesDisconnectVolumePercent = Defaults.defaultMixerHeadphonesDisconnectVolumePercent
-    @AppStorage(DefaultsKey.preciseVolumeRollerEnabled, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.preciseVolumeRollerEnabled)
     private var preciseVolumeRollerEnabled = false
     @State private var showListChooser = false
     var includeSharedAudioFeatures = true
@@ -771,7 +771,7 @@ struct SoundOutputSwitcherControls: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var mixer = AppVolumeMixer.shared
     @ObservedObject private var outputSwitcher = SoundOutputSwitcher.shared
-    @AppStorage(DefaultsKey.soundOutputSwitcherEnabled, store: SettingsUserDefaults.standard)
+    @AppStorage(DefaultsKey.soundOutputSwitcherEnabled)
     private var enabled = false
     @State private var selectedUIDs: [String] = []
 

@@ -16,7 +16,7 @@ struct GeneralSettings: View {
     @State private var loginError: String?
     @State private var loginPending = false
     @State private var loginRefreshID = UUID()
-    @AppStorage(DefaultsKey.hotkeyEnabled, store: SettingsUserDefaults.standard) private var hotkeyEnabled = true
+    @AppStorage(DefaultsKey.hotkeyEnabled) private var hotkeyEnabled = true
 
     private var text: GeneralSettingsStrings { FeatureStrings.generalSettings(l10n.language) }
     private var appearanceStrings: AppearanceStrings { FeatureStrings.appearance(l10n.language) }
@@ -310,7 +310,7 @@ private struct DiagonalHalf: Shape {
 /// The idle menu bar glyph, tinted white for dark surfaces.
 struct MenuBarGlyph: View {
     /// Observed so the previews follow a newly chosen symbol right away.
-    @AppStorage(DefaultsKey.menuBarIconSymbol, store: SettingsUserDefaults.standard) private var symbolName = ""
+    @AppStorage(DefaultsKey.menuBarIconSymbol) private var symbolName = ""
 
     var body: some View {
         Group {

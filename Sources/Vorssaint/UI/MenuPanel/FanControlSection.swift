@@ -6,13 +6,13 @@ import SwiftUI
 struct FanControlSection: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var service = FanControlService.shared
-    @AppStorage(DefaultsKey.fanControlMode, store: SettingsUserDefaults.standard) private var modeRaw = FanControlMode.system.rawValue
-    @AppStorage(DefaultsKey.fanControlCoolingLevel, store: SettingsUserDefaults.standard) private var coolingLevel =
+    @AppStorage(DefaultsKey.fanControlMode) private var modeRaw = FanControlMode.system.rawValue
+    @AppStorage(DefaultsKey.fanControlCoolingLevel) private var coolingLevel =
         FanControlPolicy.defaultCoolingLevel
-    @AppStorage(DefaultsKey.fanControlCurves, store: SettingsUserDefaults.standard) private var curvesStorage =
+    @AppStorage(DefaultsKey.fanControlCurves) private var curvesStorage =
         FanControlConfiguration.defaultCurvesStorage
-    @AppStorage(DefaultsKey.fanControlResume, store: SettingsUserDefaults.standard) private var resume = false
-    @AppStorage(DefaultsKey.temperatureUnit, store: SettingsUserDefaults.standard) private var temperatureUnit =
+    @AppStorage(DefaultsKey.fanControlResume) private var resume = false
+    @AppStorage(DefaultsKey.temperatureUnit) private var temperatureUnit =
         TemperatureUnit.celsius.rawValue
     var collapsible = true
     var fallbackFanSpeeds: [Double] = []

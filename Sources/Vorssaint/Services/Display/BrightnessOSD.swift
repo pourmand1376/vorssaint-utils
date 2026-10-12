@@ -36,7 +36,7 @@ enum BrightnessOSD {
             existing.rootView = BrightnessOSDView(brightness: brightness)
             host = existing
         } else {
-            host = NSHostingController(rootView: BrightnessOSDView(brightness: brightness))
+            host = NSHostingController(rootView: BrightnessOSDView(brightness: brightness).defaultAppStorage(SettingsUserDefaults.standard))
             Self.host = host
             panel.contentViewController = host
         }

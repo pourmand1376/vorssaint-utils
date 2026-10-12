@@ -25,7 +25,7 @@ struct OnboardingView: View {
     @ObservedObject private var l10n = L10n.shared
     /// Persisted so the flow resumes where it stopped — macOS relaunches the
     /// app when Screen Recording is granted mid-onboarding.
-    @AppStorage(DefaultsKey.onboardingStep, store: SettingsUserDefaults.standard) private var index = 0
+    @AppStorage(DefaultsKey.onboardingStep) private var index = 0
     @State private var selectedFeatures: Set<AppFeature>
     @State private var selectedPreset: FeaturePreset?
 

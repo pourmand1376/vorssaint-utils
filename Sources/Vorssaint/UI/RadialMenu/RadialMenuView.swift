@@ -12,7 +12,7 @@ struct RadialMenuView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @AppStorage(DefaultsKey.liquidGlassEnabled, store: SettingsUserDefaults.standard) private var liquidGlassEnabled = false
+    @AppStorage(DefaultsKey.liquidGlassEnabled) private var liquidGlassEnabled = false
 
     /// Where the highlight sits right now. Kept unwrapped past a full turn, so
     /// the step from the last slice to the first is one step onward and not a

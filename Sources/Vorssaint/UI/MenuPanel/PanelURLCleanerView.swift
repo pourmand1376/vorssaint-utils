@@ -7,12 +7,12 @@ import SwiftUI
 struct PanelURLCleanerView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var cleaner = URLCleanerService.shared
-    @AppStorage(DefaultsKey.urlCleanerEnabled, store: SettingsUserDefaults.standard) private var autoClean = false
+    @AppStorage(DefaultsKey.urlCleanerEnabled) private var autoClean = false
     // The service reads the rules itself. `result` reads them too, so a rule
     // changed in Settings while the panel sits beside it redraws the result.
-    @AppStorage(DefaultsKey.urlCleanerCustomParameters, store: SettingsUserDefaults.standard) private var globalNames = ""
-    @AppStorage(DefaultsKey.urlCleanerSiteParameters, store: SettingsUserDefaults.standard) private var siteNames = ""
-    @AppStorage(DefaultsKey.urlCleanerDisabledParameters, store: SettingsUserDefaults.standard) private var disabledNames = ""
+    @AppStorage(DefaultsKey.urlCleanerCustomParameters) private var globalNames = ""
+    @AppStorage(DefaultsKey.urlCleanerSiteParameters) private var siteNames = ""
+    @AppStorage(DefaultsKey.urlCleanerDisabledParameters) private var disabledNames = ""
     @State private var input = ""
     @State private var copied: String?
 

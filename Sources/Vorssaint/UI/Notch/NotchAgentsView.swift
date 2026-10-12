@@ -8,14 +8,14 @@ struct NotchAgentsView: View {
     let size: CGSize
     @ObservedObject private var usage = AgentUsageService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchAgentsPeriod, store: SettingsUserDefaults.standard) private var period = AgentPeriod.today.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitDisplay, store: SettingsUserDefaults.standard) private var display = NotchAgentLimitDisplay.remaining.rawValue
-    @AppStorage(DefaultsKey.notchAgentsCardOrder, store: SettingsUserDefaults.standard) private var cardOrder = ""
-    @AppStorage(DefaultsKey.notchAgentsHiddenCards, store: SettingsUserDefaults.standard) private var hiddenCards = ""
-    @AppStorage(DefaultsKey.notchAgentsClaude, store: SettingsUserDefaults.standard) private var claude = true
-    @AppStorage(DefaultsKey.notchAgentsCodex, store: SettingsUserDefaults.standard) private var codex = true
-    @AppStorage(DefaultsKey.notchAgentsOpenCode, store: SettingsUserDefaults.standard) private var opencode = true
-    @AppStorage(DefaultsKey.notchAgentsCopilot, store: SettingsUserDefaults.standard) private var copilot = true
+    @AppStorage(DefaultsKey.notchAgentsPeriod) private var period = AgentPeriod.today.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitDisplay) private var display = NotchAgentLimitDisplay.remaining.rawValue
+    @AppStorage(DefaultsKey.notchAgentsCardOrder) private var cardOrder = ""
+    @AppStorage(DefaultsKey.notchAgentsHiddenCards) private var hiddenCards = ""
+    @AppStorage(DefaultsKey.notchAgentsClaude) private var claude = true
+    @AppStorage(DefaultsKey.notchAgentsCodex) private var codex = true
+    @AppStorage(DefaultsKey.notchAgentsOpenCode) private var opencode = true
+    @AppStorage(DefaultsKey.notchAgentsCopilot) private var copilot = true
 
     private var text: NotchAgentStrings { FeatureStrings.notchAgents(l10n.language) }
     private var chosenPeriod: AgentPeriod { AgentPeriod(rawValue: period) ?? .today }

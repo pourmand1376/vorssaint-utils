@@ -10,7 +10,7 @@ import SwiftUI
 struct CleaningOverlayView: View {
     @ObservedObject private var manager = CleaningModeManager.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.cleaningModeKeepScreenVisible, store: SettingsUserDefaults.standard) private var keepScreenVisible = false
+    @AppStorage(DefaultsKey.cleaningModeKeepScreenVisible) private var keepScreenVisible = false
 
     var body: some View {
         ZStack {

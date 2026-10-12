@@ -14,33 +14,33 @@ struct MouseSettings: View {
     @ObservedObject private var mouseNavigation = MouseNavigationService.shared
     @ObservedObject private var middleClick = MiddleClickService.shared
     @Environment(\.colorScheme) private var colorScheme
-    @AppStorage(DefaultsKey.scrollInverterEnabled, store: SettingsUserDefaults.standard) private var invertVertical = false
-    @AppStorage(DefaultsKey.scrollInverterHorizontalEnabled, store: SettingsUserDefaults.standard) private var invertHorizontal = false
-    @AppStorage(DefaultsKey.scrollHorizontalEnabled, store: SettingsUserDefaults.standard) private var horizontalScrollEnabled = false
-    @AppStorage(DefaultsKey.scrollHorizontalModifier, store: SettingsUserDefaults.standard) private var horizontalScrollModifier =
+    @AppStorage(DefaultsKey.scrollInverterEnabled) private var invertVertical = false
+    @AppStorage(DefaultsKey.scrollInverterHorizontalEnabled) private var invertHorizontal = false
+    @AppStorage(DefaultsKey.scrollHorizontalEnabled) private var horizontalScrollEnabled = false
+    @AppStorage(DefaultsKey.scrollHorizontalModifier) private var horizontalScrollModifier =
         ScrollHorizontalModifier.shift
-    @AppStorage(DefaultsKey.focusFollowsMouseEnabled, store: SettingsUserDefaults.standard) private var focusFollowsMouseEnabled = false
-    @AppStorage(DefaultsKey.focusFollowsMouseRaise, store: SettingsUserDefaults.standard) private var focusFollowsMouseRaise = true
-    @AppStorage(DefaultsKey.focusFollowsMouseWaitForStop, store: SettingsUserDefaults.standard) private var focusFollowsMouseWaitForStop = true
-    @AppStorage(DefaultsKey.focusFollowsMouseDelay, store: SettingsUserDefaults.standard) private var focusFollowsMouseDelay =
+    @AppStorage(DefaultsKey.focusFollowsMouseEnabled) private var focusFollowsMouseEnabled = false
+    @AppStorage(DefaultsKey.focusFollowsMouseRaise) private var focusFollowsMouseRaise = true
+    @AppStorage(DefaultsKey.focusFollowsMouseWaitForStop) private var focusFollowsMouseWaitForStop = true
+    @AppStorage(DefaultsKey.focusFollowsMouseDelay) private var focusFollowsMouseDelay =
         FocusFollowsMouseSupport.defaultDelayMilliseconds
-    @AppStorage(DefaultsKey.smoothScrollEnabled, store: SettingsUserDefaults.standard) private var smoothScrollEnabled = false
-    @AppStorage(DefaultsKey.smoothScrollStep, store: SettingsUserDefaults.standard) private var smoothScrollStep = SmoothScrollSupport.defaultStep
-    @AppStorage(DefaultsKey.mouseAccelerationDisabled, store: SettingsUserDefaults.standard) private var mouseAccelerationDisabled = false
-    @AppStorage(DefaultsKey.linearScrollEnabled, store: SettingsUserDefaults.standard) private var linearScrollEnabled = false
-    @AppStorage(DefaultsKey.linearScrollLines, store: SettingsUserDefaults.standard) private var linearScrollLines =
+    @AppStorage(DefaultsKey.smoothScrollEnabled) private var smoothScrollEnabled = false
+    @AppStorage(DefaultsKey.smoothScrollStep) private var smoothScrollStep = SmoothScrollSupport.defaultStep
+    @AppStorage(DefaultsKey.mouseAccelerationDisabled) private var mouseAccelerationDisabled = false
+    @AppStorage(DefaultsKey.linearScrollEnabled) private var linearScrollEnabled = false
+    @AppStorage(DefaultsKey.linearScrollLines) private var linearScrollLines =
         ScrollWheelSupport.defaultLinesPerNotch
-    @AppStorage(DefaultsKey.smoothScrollResponse, store: SettingsUserDefaults.standard) private var smoothScrollResponse =
+    @AppStorage(DefaultsKey.smoothScrollResponse) private var smoothScrollResponse =
         SmoothScrollSupport.defaultResponse
-    @AppStorage(DefaultsKey.smoothScrollCoast, store: SettingsUserDefaults.standard) private var smoothScrollCoast =
+    @AppStorage(DefaultsKey.smoothScrollCoast) private var smoothScrollCoast =
         SmoothScrollSupport.defaultCoast
-    @AppStorage(DefaultsKey.mouseNavigationEnabled, store: SettingsUserDefaults.standard) private var mouseNavigationEnabled = false
-    @AppStorage(DefaultsKey.mouseButtonShortcutsEnabled, store: SettingsUserDefaults.standard) private var mouseButtonShortcutsEnabled = false
-    @AppStorage(DefaultsKey.mouseSpacesGestureEnabled, store: SettingsUserDefaults.standard) private var spacesEnabled = false
-    @AppStorage(DefaultsKey.middleClickEnabled, store: SettingsUserDefaults.standard) private var middleClickEnabled = false
-    @AppStorage(DefaultsKey.middleClickTapFingers, store: SettingsUserDefaults.standard) private var middleClickTapFingers = 0
-    @AppStorage(DefaultsKey.mouseClickDebounceEnabled, store: SettingsUserDefaults.standard) private var mouseClickDebounceEnabled = false
-    @AppStorage(DefaultsKey.mouseClickDebounceWindowMs, store: SettingsUserDefaults.standard) private var mouseClickDebounceWindow =
+    @AppStorage(DefaultsKey.mouseNavigationEnabled) private var mouseNavigationEnabled = false
+    @AppStorage(DefaultsKey.mouseButtonShortcutsEnabled) private var mouseButtonShortcutsEnabled = false
+    @AppStorage(DefaultsKey.mouseSpacesGestureEnabled) private var spacesEnabled = false
+    @AppStorage(DefaultsKey.middleClickEnabled) private var middleClickEnabled = false
+    @AppStorage(DefaultsKey.middleClickTapFingers) private var middleClickTapFingers = 0
+    @AppStorage(DefaultsKey.mouseClickDebounceEnabled) private var mouseClickDebounceEnabled = false
+    @AppStorage(DefaultsKey.mouseClickDebounceWindowMs) private var mouseClickDebounceWindow =
         Defaults.defaultMouseClickDebounceWindowMs
     @State private var smoothScrollMoreOptionsExpanded = false
 
