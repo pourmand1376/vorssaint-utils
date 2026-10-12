@@ -72,20 +72,20 @@ struct MenuPanelView: View {
     @ObservedObject private var panelFocus = MenuPanelFocus.shared
     @ObservedObject private var features = FeatureRuntime.shared
     @Environment(\.colorScheme) private var colorScheme
-    @AppStorage(DefaultsKey.monitorShowMixer) private var showMixer = true
-    @AppStorage(DefaultsKey.monitorShowSystem) private var showSystem = true
-    @AppStorage(DefaultsKey.monitorShowNetwork) private var showNetwork = true
-    @AppStorage(DefaultsKey.monitorShowDisk) private var showDisk = true
-    @AppStorage(DefaultsKey.monitorShowPower) private var showPower = true
-    @AppStorage(DefaultsKey.panelShowFanControl) private var showFanControl = true
-    @AppStorage(DefaultsKey.panelShowKeepAwake) private var showKeepAwake = true
-    @AppStorage(DefaultsKey.panelShowBrightness) private var showBrightness = true
-    @AppStorage(DefaultsKey.brightnessControlEnabled) private var brightnessEnabled = false
-    @AppStorage(DefaultsKey.panelShowUtilities) private var showUtilities = true
-    @AppStorage(DefaultsKey.panelShowControls) private var showControls = true
-    @AppStorage(DefaultsKey.panelShowToggles) private var showToggles = true
-    @AppStorage(DefaultsKey.panelShowWallpaper) private var showWallpaper = true
-    @AppStorage(DefaultsKey.panelSectionOrder) private var sectionOrderRaw = ""
+    @AppStorage(DefaultsKey.monitorShowMixer, store: SettingsUserDefaults.standard) private var showMixer = true
+    @AppStorage(DefaultsKey.monitorShowSystem, store: SettingsUserDefaults.standard) private var showSystem = true
+    @AppStorage(DefaultsKey.monitorShowNetwork, store: SettingsUserDefaults.standard) private var showNetwork = true
+    @AppStorage(DefaultsKey.monitorShowDisk, store: SettingsUserDefaults.standard) private var showDisk = true
+    @AppStorage(DefaultsKey.monitorShowPower, store: SettingsUserDefaults.standard) private var showPower = true
+    @AppStorage(DefaultsKey.panelShowFanControl, store: SettingsUserDefaults.standard) private var showFanControl = true
+    @AppStorage(DefaultsKey.panelShowKeepAwake, store: SettingsUserDefaults.standard) private var showKeepAwake = true
+    @AppStorage(DefaultsKey.panelShowBrightness, store: SettingsUserDefaults.standard) private var showBrightness = true
+    @AppStorage(DefaultsKey.brightnessControlEnabled, store: SettingsUserDefaults.standard) private var brightnessEnabled = false
+    @AppStorage(DefaultsKey.panelShowUtilities, store: SettingsUserDefaults.standard) private var showUtilities = true
+    @AppStorage(DefaultsKey.panelShowControls, store: SettingsUserDefaults.standard) private var showControls = true
+    @AppStorage(DefaultsKey.panelShowToggles, store: SettingsUserDefaults.standard) private var showToggles = true
+    @AppStorage(DefaultsKey.panelShowWallpaper, store: SettingsUserDefaults.standard) private var showWallpaper = true
+    @AppStorage(DefaultsKey.panelSectionOrder, store: SettingsUserDefaults.standard) private var sectionOrderRaw = ""
     @State private var navigableContentHeight: CGFloat = 0
     @State private var metricContentHeight: CGFloat = 0
     @State private var updateBannerHeight: CGFloat = 0
@@ -600,27 +600,27 @@ struct UtilitiesSection: View {
     @State private var showRecentCapturesPanel = false
     @State private var showWindowLayoutPanel = false
     @State private var showPortManagerPanel = false
-    @AppStorage(DefaultsKey.panelUtilityCleaning) private var showCleaning = true
-    @AppStorage(DefaultsKey.panelUtilityURLCleaner) private var showCleanURL = true
-    @AppStorage(DefaultsKey.panelUtilityUninstaller) private var showUninstallerAction = true
-    @AppStorage(DefaultsKey.panelUtilityCleaner) private var showCleanerAction = true
-    @AppStorage(DefaultsKey.panelUtilityHomebrew) private var showHomebrew = true
-    @AppStorage(DefaultsKey.panelUtilityAppUpdates) private var showAppUpdates = true
-    @AppStorage(DefaultsKey.panelUtilityMedia) private var showMedia = true
-    @AppStorage(DefaultsKey.panelUtilityClipboard) private var showClipboard = true
-    @AppStorage(DefaultsKey.panelUtilityWindowLayout) private var showWindowLayout = true
-    @AppStorage(DefaultsKey.panelUtilityScreenOCR) private var showScreenOCR = true
-    @AppStorage(DefaultsKey.panelUtilityScreenshot) private var showScreenshot = true
-    @AppStorage(DefaultsKey.panelUtilityQuickLauncher) private var showQuickLauncher = true
-    @AppStorage(DefaultsKey.panelUtilityColorPicker) private var showColorPicker = true
-    @AppStorage(DefaultsKey.panelUtilityCameraPreview) private var showCameraPreview = true
-    @AppStorage(DefaultsKey.panelUtilityScratchpad) private var showScratchpad = true
-    @AppStorage(DefaultsKey.panelUtilityCommandBar) private var showCommandBar = true
-    @AppStorage(DefaultsKey.panelUtilityScreenRecorder) private var showScreenRecorder = true
-    @AppStorage(DefaultsKey.panelUtilityPortManager) private var showPortManager = true
+    @AppStorage(DefaultsKey.panelUtilityCleaning, store: SettingsUserDefaults.standard) private var showCleaning = true
+    @AppStorage(DefaultsKey.panelUtilityURLCleaner, store: SettingsUserDefaults.standard) private var showCleanURL = true
+    @AppStorage(DefaultsKey.panelUtilityUninstaller, store: SettingsUserDefaults.standard) private var showUninstallerAction = true
+    @AppStorage(DefaultsKey.panelUtilityCleaner, store: SettingsUserDefaults.standard) private var showCleanerAction = true
+    @AppStorage(DefaultsKey.panelUtilityHomebrew, store: SettingsUserDefaults.standard) private var showHomebrew = true
+    @AppStorage(DefaultsKey.panelUtilityAppUpdates, store: SettingsUserDefaults.standard) private var showAppUpdates = true
+    @AppStorage(DefaultsKey.panelUtilityMedia, store: SettingsUserDefaults.standard) private var showMedia = true
+    @AppStorage(DefaultsKey.panelUtilityClipboard, store: SettingsUserDefaults.standard) private var showClipboard = true
+    @AppStorage(DefaultsKey.panelUtilityWindowLayout, store: SettingsUserDefaults.standard) private var showWindowLayout = true
+    @AppStorage(DefaultsKey.panelUtilityScreenOCR, store: SettingsUserDefaults.standard) private var showScreenOCR = true
+    @AppStorage(DefaultsKey.panelUtilityScreenshot, store: SettingsUserDefaults.standard) private var showScreenshot = true
+    @AppStorage(DefaultsKey.panelUtilityQuickLauncher, store: SettingsUserDefaults.standard) private var showQuickLauncher = true
+    @AppStorage(DefaultsKey.panelUtilityColorPicker, store: SettingsUserDefaults.standard) private var showColorPicker = true
+    @AppStorage(DefaultsKey.panelUtilityCameraPreview, store: SettingsUserDefaults.standard) private var showCameraPreview = true
+    @AppStorage(DefaultsKey.panelUtilityScratchpad, store: SettingsUserDefaults.standard) private var showScratchpad = true
+    @AppStorage(DefaultsKey.panelUtilityCommandBar, store: SettingsUserDefaults.standard) private var showCommandBar = true
+    @AppStorage(DefaultsKey.panelUtilityScreenRecorder, store: SettingsUserDefaults.standard) private var showScreenRecorder = true
+    @AppStorage(DefaultsKey.panelUtilityPortManager, store: SettingsUserDefaults.standard) private var showPortManager = true
     @ObservedObject private var recorder = ScreenRecorderService.shared
-    @AppStorage(DefaultsKey.clipboardHistoryEnabled) private var clipboardEnabled = false
-    @AppStorage(DefaultsKey.panelUtilityOrder) private var utilityOrderRaw = ""
+    @AppStorage(DefaultsKey.clipboardHistoryEnabled, store: SettingsUserDefaults.standard) private var clipboardEnabled = false
+    @AppStorage(DefaultsKey.panelUtilityOrder, store: SettingsUserDefaults.standard) private var utilityOrderRaw = ""
     @State private var draggingItem: UtilityPanelItem?
     var collapsible = true
     var startCleaning: () -> Void
@@ -1035,7 +1035,7 @@ struct UtilitiesSection: View {
     /// combo that does nothing.
     private func shortcutHint(_ role: GlobalShortcutRole) -> String? {
         guard role.isAvailable(using: { $0.isAvailable }),
-              role.requiredEnableKeys.allSatisfy({ UserDefaults.standard.bool(forKey: $0) })
+              role.requiredEnableKeys.allSatisfy({ SettingsUserDefaults.standard.bool(forKey: $0) })
         else { return nil }
         return role.savedShortcut.displayString
     }
@@ -1181,66 +1181,66 @@ struct QuickControlsSection: View {
     @ObservedObject private var keyDebounce = KeyboardDebounceService.shared
     @ObservedObject private var middleClick = MiddleClickService.shared
     @ObservedObject private var shelf = ShelfService.shared
-    @AppStorage(DefaultsKey.scrollInverterEnabled) private var invertVertical = false
-    @AppStorage(DefaultsKey.scrollInverterHorizontalEnabled) private var invertHorizontal = false
-    @AppStorage(DefaultsKey.focusFollowsMouseEnabled) private var focusFollowsMouseEnabled = false
-    @AppStorage(DefaultsKey.mouseNavigationEnabled) private var mouseNavigationEnabled = false
-    @AppStorage(DefaultsKey.switcherEnabled) private var switcherEnabled = true
-    @AppStorage(DefaultsKey.switcherShortcut) private var switcherShortcutStorage = GlobalShortcut.switcherDefault.storageValue
-    @AppStorage(DefaultsKey.switcherIconRowMode) private var switcherIconRowMode = false
-    @AppStorage(DefaultsKey.switcherSimpleMode) private var switcherSimpleMode = false
-    @AppStorage(DefaultsKey.dockPreviewEnabled) private var dockPreviewEnabled = false
-    @AppStorage(DefaultsKey.finderCutPasteEnabled) private var cutPasteEnabled = false
-    @AppStorage(DefaultsKey.autoQuitEnabled) private var autoQuitEnabled = false
-    @AppStorage(DefaultsKey.shelfEnabled) private var shelfEnabled = false
-    @AppStorage(DefaultsKey.windowMaximizeEnabled) private var windowMaximizeEnabled = false
-    @AppStorage(DefaultsKey.keyboardDebounceEnabled) private var keyDebounceEnabled = false
-    @AppStorage(DefaultsKey.keyboardDebounceWindowMs) private var keyDebounceWindow = Defaults.defaultKeyboardDebounceWindowMs
-    @AppStorage(DefaultsKey.dockClickMinimize) private var dockClickEnabled = false
-    @AppStorage(DefaultsKey.dockClickHide) private var dockClickHideEnabled = false
-    @AppStorage(DefaultsKey.dockClickCycleWindows) private var dockClickCycleEnabled = false
-    @AppStorage(DefaultsKey.spacesOrderEnabled) private var spacesOrderEnabled = false
-    @AppStorage(DefaultsKey.middleClickEnabled) private var middleClickEnabled = false
-    @AppStorage(DefaultsKey.textSnippetsEnabled) private var textSnippetsEnabled = false
-    @AppStorage(DefaultsKey.notchEnabled) private var notchEnabled = false
-    @AppStorage(DefaultsKey.panelControlNotch) private var showNotch = true
-    @AppStorage(DefaultsKey.radialMenuEnabled) private var radialMenuEnabled = false
-    @AppStorage(DefaultsKey.mouseButtonShortcutsEnabled) private var mouseButtonShortcutsEnabled = false
-    @AppStorage(DefaultsKey.mouseSpacesGestureEnabled) private var spacesEnabled = false
-    @AppStorage(DefaultsKey.superKeyEnabled) private var superKeyEnabled = false
-    @AppStorage(DefaultsKey.mouseAccelerationDisabled) private var mouseAccelerationDisabled = false
-    @AppStorage(DefaultsKey.linearScrollEnabled) private var linearScrollEnabled = false
-    @AppStorage(DefaultsKey.mouseClickDebounceEnabled) private var mouseClickDebounceEnabled = false
-    @AppStorage(DefaultsKey.superKeyModifiers) private var superKeyModifierStorage =
+    @AppStorage(DefaultsKey.scrollInverterEnabled, store: SettingsUserDefaults.standard) private var invertVertical = false
+    @AppStorage(DefaultsKey.scrollInverterHorizontalEnabled, store: SettingsUserDefaults.standard) private var invertHorizontal = false
+    @AppStorage(DefaultsKey.focusFollowsMouseEnabled, store: SettingsUserDefaults.standard) private var focusFollowsMouseEnabled = false
+    @AppStorage(DefaultsKey.mouseNavigationEnabled, store: SettingsUserDefaults.standard) private var mouseNavigationEnabled = false
+    @AppStorage(DefaultsKey.switcherEnabled, store: SettingsUserDefaults.standard) private var switcherEnabled = true
+    @AppStorage(DefaultsKey.switcherShortcut, store: SettingsUserDefaults.standard) private var switcherShortcutStorage = GlobalShortcut.switcherDefault.storageValue
+    @AppStorage(DefaultsKey.switcherIconRowMode, store: SettingsUserDefaults.standard) private var switcherIconRowMode = false
+    @AppStorage(DefaultsKey.switcherSimpleMode, store: SettingsUserDefaults.standard) private var switcherSimpleMode = false
+    @AppStorage(DefaultsKey.dockPreviewEnabled, store: SettingsUserDefaults.standard) private var dockPreviewEnabled = false
+    @AppStorage(DefaultsKey.finderCutPasteEnabled, store: SettingsUserDefaults.standard) private var cutPasteEnabled = false
+    @AppStorage(DefaultsKey.autoQuitEnabled, store: SettingsUserDefaults.standard) private var autoQuitEnabled = false
+    @AppStorage(DefaultsKey.shelfEnabled, store: SettingsUserDefaults.standard) private var shelfEnabled = false
+    @AppStorage(DefaultsKey.windowMaximizeEnabled, store: SettingsUserDefaults.standard) private var windowMaximizeEnabled = false
+    @AppStorage(DefaultsKey.keyboardDebounceEnabled, store: SettingsUserDefaults.standard) private var keyDebounceEnabled = false
+    @AppStorage(DefaultsKey.keyboardDebounceWindowMs, store: SettingsUserDefaults.standard) private var keyDebounceWindow = Defaults.defaultKeyboardDebounceWindowMs
+    @AppStorage(DefaultsKey.dockClickMinimize, store: SettingsUserDefaults.standard) private var dockClickEnabled = false
+    @AppStorage(DefaultsKey.dockClickHide, store: SettingsUserDefaults.standard) private var dockClickHideEnabled = false
+    @AppStorage(DefaultsKey.dockClickCycleWindows, store: SettingsUserDefaults.standard) private var dockClickCycleEnabled = false
+    @AppStorage(DefaultsKey.spacesOrderEnabled, store: SettingsUserDefaults.standard) private var spacesOrderEnabled = false
+    @AppStorage(DefaultsKey.middleClickEnabled, store: SettingsUserDefaults.standard) private var middleClickEnabled = false
+    @AppStorage(DefaultsKey.textSnippetsEnabled, store: SettingsUserDefaults.standard) private var textSnippetsEnabled = false
+    @AppStorage(DefaultsKey.notchEnabled, store: SettingsUserDefaults.standard) private var notchEnabled = false
+    @AppStorage(DefaultsKey.panelControlNotch, store: SettingsUserDefaults.standard) private var showNotch = true
+    @AppStorage(DefaultsKey.radialMenuEnabled, store: SettingsUserDefaults.standard) private var radialMenuEnabled = false
+    @AppStorage(DefaultsKey.mouseButtonShortcutsEnabled, store: SettingsUserDefaults.standard) private var mouseButtonShortcutsEnabled = false
+    @AppStorage(DefaultsKey.mouseSpacesGestureEnabled, store: SettingsUserDefaults.standard) private var spacesEnabled = false
+    @AppStorage(DefaultsKey.superKeyEnabled, store: SettingsUserDefaults.standard) private var superKeyEnabled = false
+    @AppStorage(DefaultsKey.mouseAccelerationDisabled, store: SettingsUserDefaults.standard) private var mouseAccelerationDisabled = false
+    @AppStorage(DefaultsKey.linearScrollEnabled, store: SettingsUserDefaults.standard) private var linearScrollEnabled = false
+    @AppStorage(DefaultsKey.mouseClickDebounceEnabled, store: SettingsUserDefaults.standard) private var mouseClickDebounceEnabled = false
+    @AppStorage(DefaultsKey.superKeyModifiers, store: SettingsUserDefaults.standard) private var superKeyModifierStorage =
         SuperKeySupport.defaultModifierStorageValue
-    @AppStorage(DefaultsKey.superKeySource) private var superKeySourceRaw =
+    @AppStorage(DefaultsKey.superKeySource, store: SettingsUserDefaults.standard) private var superKeySourceRaw =
         SuperKeySource.capsLock.rawValue
-    @AppStorage(DefaultsKey.panelControlMouseScroll) private var showScroll = true
-    @AppStorage(DefaultsKey.panelControlLinearScroll) private var showLinearScroll = true
-    @AppStorage(DefaultsKey.panelControlFocusFollowsMouse) private var showFocusFollowsMouse = true
-    @AppStorage(DefaultsKey.panelControlMouseNavigation) private var showMouseNavigation = true
-    @AppStorage(DefaultsKey.panelControlSwitcher) private var showSwitcher = true
-    @AppStorage(DefaultsKey.panelControlDockPreview) private var showDockPreview = true
-    @AppStorage(DefaultsKey.panelControlCutPaste) private var showCutPaste = true
-    @AppStorage(DefaultsKey.panelControlAutoQuit) private var showAutoQuit = true
-    @AppStorage(DefaultsKey.panelControlShelf) private var showShelf = true
-    @AppStorage(DefaultsKey.panelControlWindowMaximize) private var showWindowMaximize = true
-    @AppStorage(DefaultsKey.panelControlKeyDebounce) private var showKeyDebounce = true
-    @AppStorage(DefaultsKey.panelControlDockClick) private var showDockClick = true
-    @AppStorage(DefaultsKey.panelControlDockClickHide) private var showDockClickHide = true
-    @AppStorage(DefaultsKey.panelControlDockClickCycle) private var showDockClickCycle = true
-    @AppStorage(DefaultsKey.panelControlSpacesOrder) private var showSpacesOrder = true
-    @AppStorage(DefaultsKey.panelControlMiddleClick) private var showMiddleClick = true
-    @AppStorage(DefaultsKey.panelControlTextSnippets) private var showTextSnippets = true
-    @AppStorage(DefaultsKey.panelControlRadialMenu) private var showRadialMenu = true
-    @AppStorage(DefaultsKey.panelControlMouseButtonShortcuts) private var showMouseButtonShortcuts = true
-    @AppStorage(DefaultsKey.panelControlSuperKey) private var showSuperKey = true
-    @AppStorage(DefaultsKey.panelControlMouseAcceleration) private var showMouseAcceleration = true
-    @AppStorage(DefaultsKey.panelControlMouseClickDebounce) private var showMouseClickDebounce = true
-    @AppStorage(DefaultsKey.panelControlWindowsExpanded) private var windowsExpanded = false
-    @AppStorage(DefaultsKey.panelControlInputExpanded) private var inputExpanded = false
-    @AppStorage(DefaultsKey.panelControlFilesExpanded) private var filesExpanded = false
-    @AppStorage(DefaultsKey.panelControlOrder) private var controlOrderRaw = ""
+    @AppStorage(DefaultsKey.panelControlMouseScroll, store: SettingsUserDefaults.standard) private var showScroll = true
+    @AppStorage(DefaultsKey.panelControlLinearScroll, store: SettingsUserDefaults.standard) private var showLinearScroll = true
+    @AppStorage(DefaultsKey.panelControlFocusFollowsMouse, store: SettingsUserDefaults.standard) private var showFocusFollowsMouse = true
+    @AppStorage(DefaultsKey.panelControlMouseNavigation, store: SettingsUserDefaults.standard) private var showMouseNavigation = true
+    @AppStorage(DefaultsKey.panelControlSwitcher, store: SettingsUserDefaults.standard) private var showSwitcher = true
+    @AppStorage(DefaultsKey.panelControlDockPreview, store: SettingsUserDefaults.standard) private var showDockPreview = true
+    @AppStorage(DefaultsKey.panelControlCutPaste, store: SettingsUserDefaults.standard) private var showCutPaste = true
+    @AppStorage(DefaultsKey.panelControlAutoQuit, store: SettingsUserDefaults.standard) private var showAutoQuit = true
+    @AppStorage(DefaultsKey.panelControlShelf, store: SettingsUserDefaults.standard) private var showShelf = true
+    @AppStorage(DefaultsKey.panelControlWindowMaximize, store: SettingsUserDefaults.standard) private var showWindowMaximize = true
+    @AppStorage(DefaultsKey.panelControlKeyDebounce, store: SettingsUserDefaults.standard) private var showKeyDebounce = true
+    @AppStorage(DefaultsKey.panelControlDockClick, store: SettingsUserDefaults.standard) private var showDockClick = true
+    @AppStorage(DefaultsKey.panelControlDockClickHide, store: SettingsUserDefaults.standard) private var showDockClickHide = true
+    @AppStorage(DefaultsKey.panelControlDockClickCycle, store: SettingsUserDefaults.standard) private var showDockClickCycle = true
+    @AppStorage(DefaultsKey.panelControlSpacesOrder, store: SettingsUserDefaults.standard) private var showSpacesOrder = true
+    @AppStorage(DefaultsKey.panelControlMiddleClick, store: SettingsUserDefaults.standard) private var showMiddleClick = true
+    @AppStorage(DefaultsKey.panelControlTextSnippets, store: SettingsUserDefaults.standard) private var showTextSnippets = true
+    @AppStorage(DefaultsKey.panelControlRadialMenu, store: SettingsUserDefaults.standard) private var showRadialMenu = true
+    @AppStorage(DefaultsKey.panelControlMouseButtonShortcuts, store: SettingsUserDefaults.standard) private var showMouseButtonShortcuts = true
+    @AppStorage(DefaultsKey.panelControlSuperKey, store: SettingsUserDefaults.standard) private var showSuperKey = true
+    @AppStorage(DefaultsKey.panelControlMouseAcceleration, store: SettingsUserDefaults.standard) private var showMouseAcceleration = true
+    @AppStorage(DefaultsKey.panelControlMouseClickDebounce, store: SettingsUserDefaults.standard) private var showMouseClickDebounce = true
+    @AppStorage(DefaultsKey.panelControlWindowsExpanded, store: SettingsUserDefaults.standard) private var windowsExpanded = false
+    @AppStorage(DefaultsKey.panelControlInputExpanded, store: SettingsUserDefaults.standard) private var inputExpanded = false
+    @AppStorage(DefaultsKey.panelControlFilesExpanded, store: SettingsUserDefaults.standard) private var filesExpanded = false
+    @AppStorage(DefaultsKey.panelControlOrder, store: SettingsUserDefaults.standard) private var controlOrderRaw = ""
     @State private var draggingItem: ControlPanelItem?
     var collapsible = true
 
@@ -1744,7 +1744,7 @@ struct QuickControlsSection: View {
             // Only wheels that press keys for the user (shortcut or media
             // slices) or watch a side button involve Accessibility.
             let needsAccessibility = RadialMenuSupport.needsAccessibility(
-                RadialMenuSupport.decodeProfiles(UserDefaults.standard.data(forKey: DefaultsKey.radialMenuProfiles)))
+                RadialMenuSupport.decodeProfiles(SettingsUserDefaults.standard.data(forKey: DefaultsKey.radialMenuProfiles)))
             PanelToggleRow(title: radialStrings.pageTitle,
                            caption: radialMenuEnabled && needsAccessibility && !permissions.accessibility
                                ? missingPermission(l10n.s.permissionAccessibility)
@@ -2680,21 +2680,21 @@ struct KeepAwakeCard: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var awake = KeepAwakeManager.shared
     @ObservedObject private var permissions = Permissions.shared
-    @AppStorage(DefaultsKey.defaultDuration) private var defaultDuration: Int = 0
-    @AppStorage(DefaultsKey.keepAwakeAutoStart) private var keepAwakeAutoStart = false
-    @AppStorage(DefaultsKey.keepAwakeAllowDisplaySleep) private var keepAwakeAllowDisplaySleep = false
-    @AppStorage(DefaultsKey.keepAwakeExternalDisplay) private var keepAwakeExternalDisplay = false
-    @AppStorage(DefaultsKey.keepAwakeConnectedToPower) private var keepAwakeConnectedToPower = false
-    @AppStorage(DefaultsKey.keepAwakeRunningApps) private var keepAwakeRunningApps = false
-    @AppStorage(DefaultsKey.keepAwakePauseWhenLocked) private var keepAwakePauseWhenLocked = false
-    @AppStorage(DefaultsKey.keepAwakeIconTint) private var keepAwakeIconTint = KeepAwakeIconTint.orange.rawValue
-    @AppStorage(DefaultsKey.keepAwakeActiveIcon) private var keepAwakeActiveIcon = KeepAwakeActiveIcon.vorssaint.rawValue
-    @AppStorage(DefaultsKey.keepAwakeMouseJiggleEnabled) private var keepAwakeMouseJiggle = false
-    @AppStorage(DefaultsKey.keepAwakeMouseJiggleInterval) private var keepAwakeMouseJiggleInterval = 5
+    @AppStorage(DefaultsKey.defaultDuration, store: SettingsUserDefaults.standard) private var defaultDuration: Int = 0
+    @AppStorage(DefaultsKey.keepAwakeAutoStart, store: SettingsUserDefaults.standard) private var keepAwakeAutoStart = false
+    @AppStorage(DefaultsKey.keepAwakeAllowDisplaySleep, store: SettingsUserDefaults.standard) private var keepAwakeAllowDisplaySleep = false
+    @AppStorage(DefaultsKey.keepAwakeExternalDisplay, store: SettingsUserDefaults.standard) private var keepAwakeExternalDisplay = false
+    @AppStorage(DefaultsKey.keepAwakeConnectedToPower, store: SettingsUserDefaults.standard) private var keepAwakeConnectedToPower = false
+    @AppStorage(DefaultsKey.keepAwakeRunningApps, store: SettingsUserDefaults.standard) private var keepAwakeRunningApps = false
+    @AppStorage(DefaultsKey.keepAwakePauseWhenLocked, store: SettingsUserDefaults.standard) private var keepAwakePauseWhenLocked = false
+    @AppStorage(DefaultsKey.keepAwakeIconTint, store: SettingsUserDefaults.standard) private var keepAwakeIconTint = KeepAwakeIconTint.orange.rawValue
+    @AppStorage(DefaultsKey.keepAwakeActiveIcon, store: SettingsUserDefaults.standard) private var keepAwakeActiveIcon = KeepAwakeActiveIcon.vorssaint.rawValue
+    @AppStorage(DefaultsKey.keepAwakeMouseJiggleEnabled, store: SettingsUserDefaults.standard) private var keepAwakeMouseJiggle = false
+    @AppStorage(DefaultsKey.keepAwakeMouseJiggleInterval, store: SettingsUserDefaults.standard) private var keepAwakeMouseJiggleInterval = 5
     @State private var optionsExpanded = false
     @State private var automationExpanded = false
     /// The last started end time, which the popover opens on.
-    @AppStorage(DefaultsKey.keepAwakeUntilTime) private var savedUntilTime = 0.0
+    @AppStorage(DefaultsKey.keepAwakeUntilTime, store: SettingsUserDefaults.standard) private var savedUntilTime = 0.0
     /// An edit not started yet; only starting saves it, so the switch keeps
     /// restarting the session that actually ran.
     @State private var untilDraft: Date?

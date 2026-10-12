@@ -309,7 +309,9 @@ enum RepositoryFeatureTests {
             let lines = repository.lines(at: path)
             let reads = memberText(lines, "    private var result:") + "\n" + memberText(lines, "    private var rules:")
             let unobserved = ruleKeys.filter { key in
-                guard let declaration = lines.first(where: { $0.contains("@AppStorage(DefaultsKey.\(key)) private var ") }),
+                guard let declaration = lines.first(where: {
+                    $0.contains("@AppStorage(DefaultsKey.\(key), store: SettingsUserDefaults.standard) private var ")
+                }),
                       let name = declaration.components(separatedBy: "private var ").last?
                         .prefix(while: { $0.isLetter || $0.isNumber }),
                       !name.isEmpty else { return true }

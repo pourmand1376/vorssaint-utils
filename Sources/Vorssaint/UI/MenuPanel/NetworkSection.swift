@@ -12,14 +12,14 @@ struct NetworkSection: View {
     @StateObject private var addresses = NetworkAddressService()
     @Environment(\.colorScheme) private var colorScheme
     var collapsible = true
-    @AppStorage(DefaultsKey.monitorGraphNetwork) private var showGraph = true
-    @AppStorage(DefaultsKey.monitorNetSpeed) private var netSpeed = true
-    @AppStorage(DefaultsKey.monitorNetApps) private var netApps = true
-    @AppStorage(DefaultsKey.monitorNetTotals) private var netTotals = true
-    @AppStorage(DefaultsKey.monitorNetTest) private var netTest = true
-    @AppStorage(DefaultsKey.monitorNetAddresses) private var netAddresses = true
-    @AppStorage(DefaultsKey.panelNetworkOrder) private var networkOrderRaw = ""
-    @AppStorage(DefaultsKey.networkSpeedUnit) private var speedUnit = NetworkSpeedUnit.bytes
+    @AppStorage(DefaultsKey.monitorGraphNetwork, store: SettingsUserDefaults.standard) private var showGraph = true
+    @AppStorage(DefaultsKey.monitorNetSpeed, store: SettingsUserDefaults.standard) private var netSpeed = true
+    @AppStorage(DefaultsKey.monitorNetApps, store: SettingsUserDefaults.standard) private var netApps = true
+    @AppStorage(DefaultsKey.monitorNetTotals, store: SettingsUserDefaults.standard) private var netTotals = true
+    @AppStorage(DefaultsKey.monitorNetTest, store: SettingsUserDefaults.standard) private var netTest = true
+    @AppStorage(DefaultsKey.monitorNetAddresses, store: SettingsUserDefaults.standard) private var netAddresses = true
+    @AppStorage(DefaultsKey.panelNetworkOrder, store: SettingsUserDefaults.standard) private var networkOrderRaw = ""
+    @AppStorage(DefaultsKey.networkSpeedUnit, store: SettingsUserDefaults.standard) private var speedUnit = NetworkSpeedUnit.bytes
     @State private var draggingBlock: Block?
     @State private var appRows: [ProcessUsage] = []
     @State private var appRowsLoading = false

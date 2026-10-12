@@ -8,7 +8,7 @@ struct HomebrewSettings: View {
 
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var homebrew = HomebrewManager.shared
-    @AppStorage(DefaultsKey.homebrewGroupDependencies) private var homebrewGroupDependencies = true
+    @AppStorage(DefaultsKey.homebrewGroupDependencies, store: SettingsUserDefaults.standard) private var homebrewGroupDependencies = true
     @State private var query = ""
     @State private var searchKind: HomebrewPackageKind = .cask
     @State private var installedFilter = HomebrewInstalledFilter.all

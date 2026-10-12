@@ -9,23 +9,23 @@ struct SwitcherSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var features = FeatureRuntime.shared
     @ObservedObject private var permissions = Permissions.shared
-    @AppStorage(DefaultsKey.switcherEnabled) private var switcherEnabled = true
-    @AppStorage(DefaultsKey.switcherShortcut) private var switcherShortcutStorage = GlobalShortcut.switcherDefault.storageValue
-    @AppStorage(DefaultsKey.switcherTakeOverSystemShortcuts) private var switcherTakeOverSystemShortcuts = false
-    @AppStorage(DefaultsKey.switcherIconRowMode) private var switcherIconRowMode = false
-    @AppStorage(DefaultsKey.switcherSimpleMode) private var switcherSimpleMode = false
-    @AppStorage(DefaultsKey.switcherMergeTabs) private var switcherMergeTabs = false
-    @AppStorage(DefaultsKey.switcherWindowlessApps) private var switcherWindowlessApps = SwitcherWindowlessApps.fallback.rawValue
-    @AppStorage(DefaultsKey.switcherMinimizedPlacement) private var switcherMinimizedPlacement = WindowSwitchMinimizedPlacement.normal.rawValue
-    @AppStorage(DefaultsKey.switcherTreatHiddenAppsLikeMinimized) private var switcherTreatHiddenAppsLikeMinimized = true
-    @AppStorage(DefaultsKey.switcherShowFullscreenWindows) private var switcherShowFullscreenWindows = true
-    @AppStorage(DefaultsKey.switcherScreenPlacement) private var switcherScreenPlacement = SwitcherScreenPlacement.fallback.rawValue
-    @AppStorage(DefaultsKey.switcherCurrentDisplayOnly) private var switcherCurrentDisplayOnly = false
-    @AppStorage(DefaultsKey.switcherCurrentSpaceOnly) private var switcherCurrentSpaceOnly = false
-    @AppStorage(DefaultsKey.switcherSearchPinEnabled) private var switcherSearchPinEnabled = false
-    @AppStorage(DefaultsKey.switcherShowShortcutHints) private var switcherShowShortcutHints = true
-    @AppStorage(DefaultsKey.switcherAppearanceDelay) private var switcherAppearanceDelay = SwitcherSupport.defaultAppearanceDelayMilliseconds
-    @AppStorage(DefaultsKey.switcherInstantSelection) private var switcherInstantSelection = false
+    @AppStorage(DefaultsKey.switcherEnabled, store: SettingsUserDefaults.standard) private var switcherEnabled = true
+    @AppStorage(DefaultsKey.switcherShortcut, store: SettingsUserDefaults.standard) private var switcherShortcutStorage = GlobalShortcut.switcherDefault.storageValue
+    @AppStorage(DefaultsKey.switcherTakeOverSystemShortcuts, store: SettingsUserDefaults.standard) private var switcherTakeOverSystemShortcuts = false
+    @AppStorage(DefaultsKey.switcherIconRowMode, store: SettingsUserDefaults.standard) private var switcherIconRowMode = false
+    @AppStorage(DefaultsKey.switcherSimpleMode, store: SettingsUserDefaults.standard) private var switcherSimpleMode = false
+    @AppStorage(DefaultsKey.switcherMergeTabs, store: SettingsUserDefaults.standard) private var switcherMergeTabs = false
+    @AppStorage(DefaultsKey.switcherWindowlessApps, store: SettingsUserDefaults.standard) private var switcherWindowlessApps = SwitcherWindowlessApps.fallback.rawValue
+    @AppStorage(DefaultsKey.switcherMinimizedPlacement, store: SettingsUserDefaults.standard) private var switcherMinimizedPlacement = WindowSwitchMinimizedPlacement.normal.rawValue
+    @AppStorage(DefaultsKey.switcherTreatHiddenAppsLikeMinimized, store: SettingsUserDefaults.standard) private var switcherTreatHiddenAppsLikeMinimized = true
+    @AppStorage(DefaultsKey.switcherShowFullscreenWindows, store: SettingsUserDefaults.standard) private var switcherShowFullscreenWindows = true
+    @AppStorage(DefaultsKey.switcherScreenPlacement, store: SettingsUserDefaults.standard) private var switcherScreenPlacement = SwitcherScreenPlacement.fallback.rawValue
+    @AppStorage(DefaultsKey.switcherCurrentDisplayOnly, store: SettingsUserDefaults.standard) private var switcherCurrentDisplayOnly = false
+    @AppStorage(DefaultsKey.switcherCurrentSpaceOnly, store: SettingsUserDefaults.standard) private var switcherCurrentSpaceOnly = false
+    @AppStorage(DefaultsKey.switcherSearchPinEnabled, store: SettingsUserDefaults.standard) private var switcherSearchPinEnabled = false
+    @AppStorage(DefaultsKey.switcherShowShortcutHints, store: SettingsUserDefaults.standard) private var switcherShowShortcutHints = true
+    @AppStorage(DefaultsKey.switcherAppearanceDelay, store: SettingsUserDefaults.standard) private var switcherAppearanceDelay = SwitcherSupport.defaultAppearanceDelayMilliseconds
+    @AppStorage(DefaultsKey.switcherInstantSelection, store: SettingsUserDefaults.standard) private var switcherInstantSelection = false
     private var pages: SettingsPageStrings { FeatureStrings.settingsPages(l10n.language) }
     private var switcherEngaged: Bool { switcherEnabled && AppFeature.switcher.isAvailable }
     private var switcherWindowlessAppsSelection: Binding<String> {
@@ -313,12 +313,13 @@ struct SwitcherSettings: View {
 /// own preview size and paused apps, while the minimal look is shared.
 struct WindowPreviewsCard: View {
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.minimalWindowPreviews) private var minimalPreviews = false
+    @AppStorage(DefaultsKey.minimalWindowPreviews, store: SettingsUserDefaults.standard) private var minimalPreviews = false
     @AppStorage private var previewSize: String
     private let excludedAppsKey: String
 
     init(sizeKey: String, excludedAppsKey: String) {
-        _previewSize = AppStorage(wrappedValue: "normal", sizeKey)
+        _previewSize = AppStorage(
+            wrappedValue: "normal", sizeKey, store: SettingsUserDefaults.standard)
         self.excludedAppsKey = excludedAppsKey
     }
 

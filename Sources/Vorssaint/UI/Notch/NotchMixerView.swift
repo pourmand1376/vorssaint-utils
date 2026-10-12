@@ -15,8 +15,8 @@ struct NotchMixerView: View {
     @ObservedObject private var mixer = AppVolumeMixer.shared
     @ObservedObject private var input = AudioInputDeviceManager.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.mixerAppArrangement) private var arrangementValue = ""
-    @AppStorage(DefaultsKey.mixerHideInactiveApps) private var hideInactiveApps = false
+    @AppStorage(DefaultsKey.mixerAppArrangement, store: SettingsUserDefaults.standard) private var arrangementValue = ""
+    @AppStorage(DefaultsKey.mixerHideInactiveApps, store: SettingsUserDefaults.standard) private var hideInactiveApps = false
     @State private var showingOptions = false
     @State private var editingVolumeID: String?
     @State private var draggingAppID: String?

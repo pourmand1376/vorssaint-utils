@@ -13,9 +13,9 @@ struct NotchAgentStrip: View {
     var displayGeometry: NotchGeometry? = nil
     @ObservedObject private var usage = AgentUsageService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchAgentsReadout) private var readout = NotchAgentReadout.elapsed.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitDisplay) private var display = NotchAgentLimitDisplay.remaining.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitFocus) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsReadout, store: SettingsUserDefaults.standard) private var readout = NotchAgentReadout.elapsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitDisplay, store: SettingsUserDefaults.standard) private var display = NotchAgentLimitDisplay.remaining.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitFocus, store: SettingsUserDefaults.standard) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
 
     private func working(_ live: [AgentLiveSession]) -> [AgentProvider] {
         AgentProvider.allCases.filter { provider in live.contains { $0.provider == provider } }
@@ -123,8 +123,8 @@ struct NotchAgentReadoutTimeline<Content: View>: View {
 struct NotchAgentRestingWing: View {
     let leading: Bool
     @ObservedObject private var usage = AgentUsageService.shared
-    @AppStorage(DefaultsKey.notchAgentsLimitDisplay) private var display = NotchAgentLimitDisplay.remaining.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitFocus) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitDisplay, store: SettingsUserDefaults.standard) private var display = NotchAgentLimitDisplay.remaining.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitFocus, store: SettingsUserDefaults.standard) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 60)) { context in

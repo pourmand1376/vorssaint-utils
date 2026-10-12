@@ -613,5 +613,40 @@ enum SettingsFeatureTests {
         suite.expect(Defaults.registeredDefaults[DefaultsKey.preciseVolumeRollerEnabled] as? Bool == false,
                "precise volume roller is opt-in")
 
+        let storageRoot = FileManager.default.temporaryDirectory
+            .appendingPathComponent("vorssaint-settings-\(UUID().uuidString)", isDirectory: true)
+        let settingsFile = storageRoot.appendingPathComponent("Settings/Preferences.plist")
+        let legacyDomain = "com.vorssaint.tests.settings.\(UUID().uuidString)"
+        let legacyDefaults = UserDefaults(suiteName: legacyDomain)!
+        legacyDefaults.set(true, forKey: "migratedFlag")
+        legacyDefaults.set(["first", "second"], forKey: "migratedList")
+        let migratedDefaults = SettingsUserDefaults(
+            storageURL: settingsFile,
+            domainName: legacyDomain,
+            legacyDefaults: legacyDefaults,
+            containerURL: storageRoot)
+        suite.expect(migratedDefaults.bool(forKey: "migratedFlag")
+                && migratedDefaults.stringArray(forKey: "migratedList") == ["first", "second"]
+                && (legacyDefaults.persistentDomain(forName: legacyDomain) ?? [:]).isEmpty,
+               "legacy preferences migrate into the settings file and leave the old domain")
+        migratedDefaults.register(defaults: ["registeredFallback": true])
+        migratedDefaults.withBatchUpdates {
+            migratedDefaults.set("saved", forKey: "writtenValue")
+            migratedDefaults.removeObject(forKey: "migratedFlag")
+        }
+        let reopenedDefaults = SettingsUserDefaults(
+            storageURL: settingsFile,
+            domainName: legacyDomain,
+            legacyDefaults: legacyDefaults,
+            containerURL: storageRoot)
+        reopenedDefaults.register(defaults: ["registeredFallback": true])
+        suite.expect(reopenedDefaults.string(forKey: "writtenValue") == "saved"
+                && !reopenedDefaults.bool(forKey: "migratedFlag")
+                && reopenedDefaults.bool(forKey: "registeredFallback")
+                && reopenedDefaults.persistentDomain(forName: legacyDomain)?[
+                    "registeredFallback"] == nil,
+               "file-backed preferences persist changes while keeping registered defaults virtual")
+        try? FileManager.default.removeItem(at: storageRoot)
+
     }
 }

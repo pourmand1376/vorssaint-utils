@@ -7,10 +7,10 @@ import SwiftUI
 struct URLCleanerSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var cleaner = URLCleanerService.shared
-    @AppStorage(DefaultsKey.urlCleanerEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.urlCleanerCustomParameters) private var globalNames = ""
-    @AppStorage(DefaultsKey.urlCleanerSiteParameters) private var siteNames = ""
-    @AppStorage(DefaultsKey.urlCleanerDisabledParameters) private var disabledNames = ""
+    @AppStorage(DefaultsKey.urlCleanerEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.urlCleanerCustomParameters, store: SettingsUserDefaults.standard) private var globalNames = ""
+    @AppStorage(DefaultsKey.urlCleanerSiteParameters, store: SettingsUserDefaults.standard) private var siteNames = ""
+    @AppStorage(DefaultsKey.urlCleanerDisabledParameters, store: SettingsUserDefaults.standard) private var disabledNames = ""
     @State private var parameterDrafts: [String: String] = [:]
     @State private var siteDraft = ""
     @State private var siteParameterDraft = ""

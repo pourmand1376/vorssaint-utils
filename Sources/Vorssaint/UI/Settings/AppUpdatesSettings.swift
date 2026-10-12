@@ -6,14 +6,14 @@ import SwiftUI
 struct AppUpdatesSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var updates = AppUpdatesService.shared
-    @AppStorage(DefaultsKey.appUpdatesCheckFrequency)
+    @AppStorage(DefaultsKey.appUpdatesCheckFrequency, store: SettingsUserDefaults.standard)
     private var frequencyRaw = AppUpdatesSupport.CheckFrequency.off.rawValue
-    @AppStorage(DefaultsKey.appUpdatesNotify) private var notify = true
-    @AppStorage(DefaultsKey.appUpdatesIncludeHomebrewApps) private var includeHomebrewApps = true
-    @AppStorage(DefaultsKey.appUpdatesIncludeAppStore) private var includeAppStore = true
-    @AppStorage(DefaultsKey.appUpdatesIncludeOnlineCatalog)
+    @AppStorage(DefaultsKey.appUpdatesNotify, store: SettingsUserDefaults.standard) private var notify = true
+    @AppStorage(DefaultsKey.appUpdatesIncludeHomebrewApps, store: SettingsUserDefaults.standard) private var includeHomebrewApps = true
+    @AppStorage(DefaultsKey.appUpdatesIncludeAppStore, store: SettingsUserDefaults.standard) private var includeAppStore = true
+    @AppStorage(DefaultsKey.appUpdatesIncludeOnlineCatalog, store: SettingsUserDefaults.standard)
     private var includeOnlineCatalog = true
-    @AppStorage(DefaultsKey.panelUtilityAppUpdates) private var showInPanel = true
+    @AppStorage(DefaultsKey.panelUtilityAppUpdates, store: SettingsUserDefaults.standard) private var showInPanel = true
 
     private var text: AppUpdateStrings { FeatureStrings.appUpdates(l10n.language) }
 

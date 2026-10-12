@@ -14,7 +14,7 @@ struct NotchControlsView: View {
     @ObservedObject var service: NotchService
     let size: CGSize
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.brightnessControlEnabled) private var brightnessEnabled = false
+    @AppStorage(DefaultsKey.brightnessControlEnabled, store: SettingsUserDefaults.standard) private var brightnessEnabled = false
 
     var body: some View {
         let items = NotchSupport.controls()

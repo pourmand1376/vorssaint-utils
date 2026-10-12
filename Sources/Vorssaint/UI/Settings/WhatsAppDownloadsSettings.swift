@@ -11,25 +11,25 @@ struct WhatsAppDownloadsSettings: View {
     @ObservedObject private var organizer = WhatsAppDownloadOrganizer.shared
     @ObservedObject private var permissions = Permissions.shared
 
-    @AppStorage(DefaultsKey.whatsAppDownloadsEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.whatsAppDownloadsAutomaticEnabled) private var automatic = false
-    @AppStorage(DefaultsKey.whatsAppDownloadsCategories) private var categoriesRaw = "image,video,audio"
-    @AppStorage(DefaultsKey.whatsAppDownloadsRetentionDays) private var retentionDays = 7
-    @AppStorage(DefaultsKey.whatsAppDownloadsNotify) private var notify = true
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanup) private var lastCleanup = 0.0
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupCount) private var lastCount = 0
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupBytes) private var lastBytes = 0
-    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupFailed) private var lastFailed = 0
-    @AppStorage(DefaultsKey.whatsAppOrganizerEnabled) private var organizerEnabled = false
-    @AppStorage(DefaultsKey.whatsAppOrganizerDestinationPath) private var organizerDestination = ""
-    @AppStorage(DefaultsKey.whatsAppOrganizerDelayMinutes) private var organizerDelay = 5
-    @AppStorage(DefaultsKey.whatsAppOrganizerCategories) private var organizerCategoriesRaw = "image,video,audio,document,archive,other"
-    @AppStorage(DefaultsKey.whatsAppOrganizerLayout) private var organizerLayout = "flat"
-    @AppStorage(DefaultsKey.whatsAppOrganizerDuplicateAction) private var duplicateAction = "trashNew"
-    @AppStorage(DefaultsKey.whatsAppOrganizerLastRun) private var organizerLastRun = 0.0
-    @AppStorage(DefaultsKey.whatsAppOrganizerLastMoved) private var organizerLastMoved = 0
-    @AppStorage(DefaultsKey.whatsAppOrganizerLastDuplicates) private var organizerLastDuplicates = 0
-    @AppStorage(DefaultsKey.whatsAppOrganizerLastFailed) private var organizerLastFailed = 0
+    @AppStorage(DefaultsKey.whatsAppDownloadsEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.whatsAppDownloadsAutomaticEnabled, store: SettingsUserDefaults.standard) private var automatic = false
+    @AppStorage(DefaultsKey.whatsAppDownloadsCategories, store: SettingsUserDefaults.standard) private var categoriesRaw = "image,video,audio"
+    @AppStorage(DefaultsKey.whatsAppDownloadsRetentionDays, store: SettingsUserDefaults.standard) private var retentionDays = 7
+    @AppStorage(DefaultsKey.whatsAppDownloadsNotify, store: SettingsUserDefaults.standard) private var notify = true
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanup, store: SettingsUserDefaults.standard) private var lastCleanup = 0.0
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupCount, store: SettingsUserDefaults.standard) private var lastCount = 0
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupBytes, store: SettingsUserDefaults.standard) private var lastBytes = 0
+    @AppStorage(DefaultsKey.whatsAppDownloadsLastCleanupFailed, store: SettingsUserDefaults.standard) private var lastFailed = 0
+    @AppStorage(DefaultsKey.whatsAppOrganizerEnabled, store: SettingsUserDefaults.standard) private var organizerEnabled = false
+    @AppStorage(DefaultsKey.whatsAppOrganizerDestinationPath, store: SettingsUserDefaults.standard) private var organizerDestination = ""
+    @AppStorage(DefaultsKey.whatsAppOrganizerDelayMinutes, store: SettingsUserDefaults.standard) private var organizerDelay = 5
+    @AppStorage(DefaultsKey.whatsAppOrganizerCategories, store: SettingsUserDefaults.standard) private var organizerCategoriesRaw = "image,video,audio,document,archive,other"
+    @AppStorage(DefaultsKey.whatsAppOrganizerLayout, store: SettingsUserDefaults.standard) private var organizerLayout = "flat"
+    @AppStorage(DefaultsKey.whatsAppOrganizerDuplicateAction, store: SettingsUserDefaults.standard) private var duplicateAction = "trashNew"
+    @AppStorage(DefaultsKey.whatsAppOrganizerLastRun, store: SettingsUserDefaults.standard) private var organizerLastRun = 0.0
+    @AppStorage(DefaultsKey.whatsAppOrganizerLastMoved, store: SettingsUserDefaults.standard) private var organizerLastMoved = 0
+    @AppStorage(DefaultsKey.whatsAppOrganizerLastDuplicates, store: SettingsUserDefaults.standard) private var organizerLastDuplicates = 0
+    @AppStorage(DefaultsKey.whatsAppOrganizerLastFailed, store: SettingsUserDefaults.standard) private var organizerLastFailed = 0
 
     @State private var waitingToEnable = false
     @State private var showingExistingChoice = false
@@ -652,7 +652,7 @@ struct WhatsAppDownloadsSettings: View {
     }
 
     private func enableAutomation(includeExisting: Bool) {
-        let defaults = UserDefaults.standard
+        let defaults = SettingsUserDefaults.standard
         defaults.set(includeExisting, forKey: DefaultsKey.whatsAppDownloadsIncludeExisting)
         defaults.set(Date().timeIntervalSince1970,
                      forKey: DefaultsKey.whatsAppDownloadsAutomaticStartDate)

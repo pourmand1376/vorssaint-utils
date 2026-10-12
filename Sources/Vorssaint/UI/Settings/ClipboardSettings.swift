@@ -10,24 +10,24 @@ struct ClipboardSettings: View {
     @ObservedObject private var pastePlain = PastePlainService.shared
     @ObservedObject private var permissions = Permissions.shared
     @State private var clearingIDs: [UUID: Date]?
-    @AppStorage(DefaultsKey.pastePlainEnabled) private var pastePlainEnabled = false
-    @AppStorage(DefaultsKey.clipboardHistoryEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.clipboardHistoryLimit) private var limit = 50
-    @AppStorage(DefaultsKey.clipboardHistorySkipSensitive) private var skipSensitive = true
-    @AppStorage(DefaultsKey.clipboardHistoryIncludeImagesFiles) private var includeImagesFiles = true
-    @AppStorage(DefaultsKey.clipboardHistoryShortcutEnabled) private var shortcutEnabled = true
-    @AppStorage(DefaultsKey.clipboardHistoryLayout) private var historyLayout = ClipboardHistoryLayout.list
-    @AppStorage(DefaultsKey.clipboardHistoryMenuBarPreview) private var menuBarPreview = false
-    @AppStorage(DefaultsKey.clipboardHistoryMenuBarPreviewLength)
+    @AppStorage(DefaultsKey.pastePlainEnabled, store: SettingsUserDefaults.standard) private var pastePlainEnabled = false
+    @AppStorage(DefaultsKey.clipboardHistoryEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.clipboardHistoryLimit, store: SettingsUserDefaults.standard) private var limit = 50
+    @AppStorage(DefaultsKey.clipboardHistorySkipSensitive, store: SettingsUserDefaults.standard) private var skipSensitive = true
+    @AppStorage(DefaultsKey.clipboardHistoryIncludeImagesFiles, store: SettingsUserDefaults.standard) private var includeImagesFiles = true
+    @AppStorage(DefaultsKey.clipboardHistoryShortcutEnabled, store: SettingsUserDefaults.standard) private var shortcutEnabled = true
+    @AppStorage(DefaultsKey.clipboardHistoryLayout, store: SettingsUserDefaults.standard) private var historyLayout = ClipboardHistoryLayout.list
+    @AppStorage(DefaultsKey.clipboardHistoryMenuBarPreview, store: SettingsUserDefaults.standard) private var menuBarPreview = false
+    @AppStorage(DefaultsKey.clipboardHistoryMenuBarPreviewLength, store: SettingsUserDefaults.standard)
     private var menuBarPreviewLength = Defaults.defaultClipboardMenuBarPreviewLength
-    @AppStorage(DefaultsKey.panelUtilityClipboard) private var showInPanel = true
-    @AppStorage(DefaultsKey.finderPasteImageAsFile) private var pasteImageAsFile = false
-    @AppStorage(DefaultsKey.clipboardAutoClearOnDelay) private var autoClearOnDelay = false
-    @AppStorage(DefaultsKey.clipboardAutoClearDelay)
+    @AppStorage(DefaultsKey.panelUtilityClipboard, store: SettingsUserDefaults.standard) private var showInPanel = true
+    @AppStorage(DefaultsKey.finderPasteImageAsFile, store: SettingsUserDefaults.standard) private var pasteImageAsFile = false
+    @AppStorage(DefaultsKey.clipboardAutoClearOnDelay, store: SettingsUserDefaults.standard) private var autoClearOnDelay = false
+    @AppStorage(DefaultsKey.clipboardAutoClearDelay, store: SettingsUserDefaults.standard)
     private var autoClearDelay = Defaults.defaultClipboardAutoClearDelay
-    @AppStorage(DefaultsKey.clipboardAutoClearOnSleep) private var autoClearOnSleep = false
-    @AppStorage(DefaultsKey.clipboardAutoClearOnDisplaySleep) private var autoClearOnDisplaySleep = false
-    @AppStorage(DefaultsKey.clipboardAutoClearOnScreenLock) private var autoClearOnScreenLock = false
+    @AppStorage(DefaultsKey.clipboardAutoClearOnSleep, store: SettingsUserDefaults.standard) private var autoClearOnSleep = false
+    @AppStorage(DefaultsKey.clipboardAutoClearOnDisplaySleep, store: SettingsUserDefaults.standard) private var autoClearOnDisplaySleep = false
+    @AppStorage(DefaultsKey.clipboardAutoClearOnScreenLock, store: SettingsUserDefaults.standard) private var autoClearOnScreenLock = false
 
     private var text: ClipboardFeatureStrings {
         FeatureStrings.clipboard(l10n.language)

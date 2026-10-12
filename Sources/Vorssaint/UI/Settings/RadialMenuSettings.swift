@@ -11,15 +11,15 @@ struct RadialMenuSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var service = RadialMenuService.shared
-    @AppStorage(DefaultsKey.radialMenuEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.radialMenuAtPointer) private var atPointer = true
-    @AppStorage(DefaultsKey.radialMenuActivationMode) private var activationModeRaw =
+    @AppStorage(DefaultsKey.radialMenuEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.radialMenuAtPointer, store: SettingsUserDefaults.standard) private var atPointer = true
+    @AppStorage(DefaultsKey.radialMenuActivationMode, store: SettingsUserDefaults.standard) private var activationModeRaw =
         RadialMenuActivationMode.pressOrHold.rawValue
-    @AppStorage(DefaultsKey.middleClickEnabled) private var middleClickEnabled = false
-    @AppStorage(DefaultsKey.middleClickTapFingers) private var middleClickTapFingers = 0
+    @AppStorage(DefaultsKey.middleClickEnabled, store: SettingsUserDefaults.standard) private var middleClickEnabled = false
+    @AppStorage(DefaultsKey.middleClickTapFingers, store: SettingsUserDefaults.standard) private var middleClickTapFingers = 0
 
     @State private var profiles: [RadialMenuProfile] = RadialMenuSupport.decodeProfiles(
-        UserDefaults.standard.data(forKey: DefaultsKey.radialMenuProfiles))
+        SettingsUserDefaults.standard.data(forKey: DefaultsKey.radialMenuProfiles))
     @State private var selectedProfileID: UUID?
     /// The submenu being edited; empty means the root wheel.
     @State private var openSubmenuID: UUID?
@@ -496,7 +496,7 @@ struct RadialMenuSettings: View {
     }
 
     private func persist() {
-        UserDefaults.standard.set(RadialMenuSupport.encodeProfiles(profiles), forKey: DefaultsKey.radialMenuProfiles)
+        SettingsUserDefaults.standard.set(RadialMenuSupport.encodeProfiles(profiles), forKey: DefaultsKey.radialMenuProfiles)
         RadialMenuService.shared.syncWithPreferences()
     }
 

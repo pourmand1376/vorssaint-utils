@@ -8,19 +8,19 @@ struct MonitorAlertsControls: View {
     @ObservedObject private var l10n = L10n.shared
     let compact: Bool
     @State private var notificationsDenied = false
-    @AppStorage(DefaultsKey.monitorAlertCPU) private var alertCPU = false
-    @AppStorage(DefaultsKey.monitorAlertCPUTemperature) private var alertCPUTemperature = false
-    @AppStorage(DefaultsKey.monitorAlertBatteryTemperature) private var alertBatteryTemperature = false
-    @AppStorage(DefaultsKey.monitorAlertMemory) private var alertMemory = false
-    @AppStorage(DefaultsKey.monitorAlertDisk) private var alertDisk = false
-    @AppStorage(DefaultsKey.monitorAlertBattery) private var alertBattery = false
-    @AppStorage(DefaultsKey.monitorAlertCPUThreshold) private var alertCPUThreshold = 90
-    @AppStorage(DefaultsKey.monitorAlertCPUTemperatureThreshold) private var alertCPUTemperatureThreshold = 90
-    @AppStorage(DefaultsKey.monitorAlertBatteryTemperatureThreshold) private var alertBatteryTemperatureThreshold = 40
-    @AppStorage(DefaultsKey.monitorAlertDiskFreePercent) private var alertDiskFreePercent = 10
-    @AppStorage(DefaultsKey.monitorAlertBatteryPercent) private var alertBatteryPercent = 15
-    @AppStorage(DefaultsKey.monitorAlertCooldownMinutes) private var alertCooldown = 15
-    @AppStorage(DefaultsKey.temperatureUnit) private var temperatureUnit = TemperatureUnit.celsius.rawValue
+    @AppStorage(DefaultsKey.monitorAlertCPU, store: SettingsUserDefaults.standard) private var alertCPU = false
+    @AppStorage(DefaultsKey.monitorAlertCPUTemperature, store: SettingsUserDefaults.standard) private var alertCPUTemperature = false
+    @AppStorage(DefaultsKey.monitorAlertBatteryTemperature, store: SettingsUserDefaults.standard) private var alertBatteryTemperature = false
+    @AppStorage(DefaultsKey.monitorAlertMemory, store: SettingsUserDefaults.standard) private var alertMemory = false
+    @AppStorage(DefaultsKey.monitorAlertDisk, store: SettingsUserDefaults.standard) private var alertDisk = false
+    @AppStorage(DefaultsKey.monitorAlertBattery, store: SettingsUserDefaults.standard) private var alertBattery = false
+    @AppStorage(DefaultsKey.monitorAlertCPUThreshold, store: SettingsUserDefaults.standard) private var alertCPUThreshold = 90
+    @AppStorage(DefaultsKey.monitorAlertCPUTemperatureThreshold, store: SettingsUserDefaults.standard) private var alertCPUTemperatureThreshold = 90
+    @AppStorage(DefaultsKey.monitorAlertBatteryTemperatureThreshold, store: SettingsUserDefaults.standard) private var alertBatteryTemperatureThreshold = 40
+    @AppStorage(DefaultsKey.monitorAlertDiskFreePercent, store: SettingsUserDefaults.standard) private var alertDiskFreePercent = 10
+    @AppStorage(DefaultsKey.monitorAlertBatteryPercent, store: SettingsUserDefaults.standard) private var alertBatteryPercent = 15
+    @AppStorage(DefaultsKey.monitorAlertCooldownMinutes, store: SettingsUserDefaults.standard) private var alertCooldown = 15
+    @AppStorage(DefaultsKey.temperatureUnit, store: SettingsUserDefaults.standard) private var temperatureUnit = TemperatureUnit.celsius.rawValue
 
     private var text: MonitorAlertFeatureStrings {
         FeatureStrings.monitorAlerts(l10n.language)

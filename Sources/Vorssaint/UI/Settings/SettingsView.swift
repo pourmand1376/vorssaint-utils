@@ -53,7 +53,7 @@ struct SettingsView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var router = SettingsRouter.shared
     @ObservedObject private var features = FeatureRuntime.shared
-    @AppStorage(DefaultsKey.superKeySource) private var superKeySourceRaw =
+    @AppStorage(DefaultsKey.superKeySource, store: SettingsUserDefaults.standard) private var superKeySourceRaw =
         SuperKeySource.capsLock.rawValue
     @State private var searchQuery = ""
     @State private var activeSearchIndex: Int?
@@ -616,8 +616,8 @@ struct SettingsView: View {
 struct UpdatesView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var updates = UpdateService.shared
-    @AppStorage(DefaultsKey.autoCheckUpdates) private var autoCheck = true
-    @AppStorage(DefaultsKey.includeBetaUpdates) private var includeBetas = AppInfo.isBeta
+    @AppStorage(DefaultsKey.autoCheckUpdates, store: SettingsUserDefaults.standard) private var autoCheck = true
+    @AppStorage(DefaultsKey.includeBetaUpdates, store: SettingsUserDefaults.standard) private var includeBetas = AppInfo.isBeta
 
     var body: some View {
         Section(l10n.s.updatesSection) {

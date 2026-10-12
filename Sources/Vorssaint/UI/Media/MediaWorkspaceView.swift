@@ -56,45 +56,45 @@ struct MediaWorkspaceView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.notchPresentation) private var inNotch
 
-    @AppStorage(DefaultsKey.mediaLastTool) private var toolRaw = MediaTool.videoCompressor.rawValue
-    @AppStorage(DefaultsKey.mediaVideoStart) private var videoStart = 0.0
-    @AppStorage(DefaultsKey.mediaVideoEnd) private var videoEnd = 0.0
-    @AppStorage(DefaultsKey.mediaVideoQuality) private var videoQuality = 0.68
-    @AppStorage(DefaultsKey.mediaVideoMaxDimension) private var videoMaxDimension = 1280
-    @AppStorage(DefaultsKey.mediaVideoSizing) private var videoSizingRaw = MediaSizingMode.resolution.rawValue
-    @AppStorage(DefaultsKey.mediaVideoTargetMegabytes) private var videoTargetMegabytes = 20
+    @AppStorage(DefaultsKey.mediaLastTool, store: SettingsUserDefaults.standard) private var toolRaw = MediaTool.videoCompressor.rawValue
+    @AppStorage(DefaultsKey.mediaVideoStart, store: SettingsUserDefaults.standard) private var videoStart = 0.0
+    @AppStorage(DefaultsKey.mediaVideoEnd, store: SettingsUserDefaults.standard) private var videoEnd = 0.0
+    @AppStorage(DefaultsKey.mediaVideoQuality, store: SettingsUserDefaults.standard) private var videoQuality = 0.68
+    @AppStorage(DefaultsKey.mediaVideoMaxDimension, store: SettingsUserDefaults.standard) private var videoMaxDimension = 1280
+    @AppStorage(DefaultsKey.mediaVideoSizing, store: SettingsUserDefaults.standard) private var videoSizingRaw = MediaSizingMode.resolution.rawValue
+    @AppStorage(DefaultsKey.mediaVideoTargetMegabytes, store: SettingsUserDefaults.standard) private var videoTargetMegabytes = 20
 
-    @AppStorage(DefaultsKey.mediaGIFStart) private var gifStart = 0.0
-    @AppStorage(DefaultsKey.mediaGIFEnd) private var gifEnd = 0.0
-    @AppStorage(DefaultsKey.mediaGIFWidth) private var gifWidth = 720
-    @AppStorage(DefaultsKey.mediaGIFFPS) private var gifFPS = 12.0
-    @AppStorage(DefaultsKey.mediaGIFLoops) private var gifLoops = true
-    @AppStorage(DefaultsKey.mediaGIFSizing) private var gifSizingRaw = MediaSizingMode.resolution.rawValue
-    @AppStorage(DefaultsKey.mediaGIFTargetMegabytes) private var gifTargetMegabytes = 10
+    @AppStorage(DefaultsKey.mediaGIFStart, store: SettingsUserDefaults.standard) private var gifStart = 0.0
+    @AppStorage(DefaultsKey.mediaGIFEnd, store: SettingsUserDefaults.standard) private var gifEnd = 0.0
+    @AppStorage(DefaultsKey.mediaGIFWidth, store: SettingsUserDefaults.standard) private var gifWidth = 720
+    @AppStorage(DefaultsKey.mediaGIFFPS, store: SettingsUserDefaults.standard) private var gifFPS = 12.0
+    @AppStorage(DefaultsKey.mediaGIFLoops, store: SettingsUserDefaults.standard) private var gifLoops = true
+    @AppStorage(DefaultsKey.mediaGIFSizing, store: SettingsUserDefaults.standard) private var gifSizingRaw = MediaSizingMode.resolution.rawValue
+    @AppStorage(DefaultsKey.mediaGIFTargetMegabytes, store: SettingsUserDefaults.standard) private var gifTargetMegabytes = 10
 
-    @AppStorage(DefaultsKey.mediaImageQuality) private var imageQuality = 0.72
-    @AppStorage(DefaultsKey.mediaImageMaxDimension) private var imageMaxDimension = 1600
-    @AppStorage(DefaultsKey.mediaImageFormat) private var imageFormatRaw = MediaImageFormat.jpeg.rawValue
-    @AppStorage(DefaultsKey.mediaImageStripMetadata) private var imageStripMetadata = true
-    @AppStorage(DefaultsKey.mediaImageResizeKind) private var imageResizeKindRaw = MediaImageResizeKind.maxDimension.rawValue
-    @AppStorage(DefaultsKey.mediaImageResizeWidth) private var imageResizeWidth = 1600
-    @AppStorage(DefaultsKey.mediaImageResizeHeight) private var imageResizeHeight = 1200
-    @AppStorage(DefaultsKey.mediaImageExactResizeMode) private var imageExactResizeModeRaw = MediaImageExactResizeMode.stretch.rawValue
-    @AppStorage(DefaultsKey.mediaImageWatermarkKind) private var imageWatermarkKindRaw = MediaImageWatermarkKind.off.rawValue
-    @AppStorage(DefaultsKey.mediaImageWatermarkText) private var imageWatermarkText = ""
-    @AppStorage(DefaultsKey.mediaImageWatermarkLogoPath) private var imageWatermarkLogoPath = ""
-    @AppStorage(DefaultsKey.mediaImageWatermarkPosition) private var imageWatermarkPositionRaw = MediaImageWatermarkPosition.bottomRight.rawValue
-    @AppStorage(DefaultsKey.mediaImageWatermarkOpacity) private var imageWatermarkOpacity = 0.45
-    @AppStorage(DefaultsKey.mediaImageWatermarkMargin) private var imageWatermarkMargin = 32
-    @AppStorage(DefaultsKey.mediaImageWatermarkScale) private var imageWatermarkScale = 0.18
-    @AppStorage(DefaultsKey.mediaImageRenamePattern) private var imageRenamePattern = ""
-    @AppStorage(DefaultsKey.mediaImageBackground) private var imageBackgroundRaw = MediaImageBackground.transparent.rawValue
-    @AppStorage(DefaultsKey.mediaImagePreserveModificationDate) private var imagePreserveModificationDate = false
-    @AppStorage(DefaultsKey.mediaImageSaveInSubfolder) private var imageSaveInSubfolder = false
-    @AppStorage(DefaultsKey.mediaImageProfiles) private var imageProfilesRaw = "[]"
-    @AppStorage(DefaultsKey.mediaImageSelectedProfileID) private var imageSelectedProfileID = ""
+    @AppStorage(DefaultsKey.mediaImageQuality, store: SettingsUserDefaults.standard) private var imageQuality = 0.72
+    @AppStorage(DefaultsKey.mediaImageMaxDimension, store: SettingsUserDefaults.standard) private var imageMaxDimension = 1600
+    @AppStorage(DefaultsKey.mediaImageFormat, store: SettingsUserDefaults.standard) private var imageFormatRaw = MediaImageFormat.jpeg.rawValue
+    @AppStorage(DefaultsKey.mediaImageStripMetadata, store: SettingsUserDefaults.standard) private var imageStripMetadata = true
+    @AppStorage(DefaultsKey.mediaImageResizeKind, store: SettingsUserDefaults.standard) private var imageResizeKindRaw = MediaImageResizeKind.maxDimension.rawValue
+    @AppStorage(DefaultsKey.mediaImageResizeWidth, store: SettingsUserDefaults.standard) private var imageResizeWidth = 1600
+    @AppStorage(DefaultsKey.mediaImageResizeHeight, store: SettingsUserDefaults.standard) private var imageResizeHeight = 1200
+    @AppStorage(DefaultsKey.mediaImageExactResizeMode, store: SettingsUserDefaults.standard) private var imageExactResizeModeRaw = MediaImageExactResizeMode.stretch.rawValue
+    @AppStorage(DefaultsKey.mediaImageWatermarkKind, store: SettingsUserDefaults.standard) private var imageWatermarkKindRaw = MediaImageWatermarkKind.off.rawValue
+    @AppStorage(DefaultsKey.mediaImageWatermarkText, store: SettingsUserDefaults.standard) private var imageWatermarkText = ""
+    @AppStorage(DefaultsKey.mediaImageWatermarkLogoPath, store: SettingsUserDefaults.standard) private var imageWatermarkLogoPath = ""
+    @AppStorage(DefaultsKey.mediaImageWatermarkPosition, store: SettingsUserDefaults.standard) private var imageWatermarkPositionRaw = MediaImageWatermarkPosition.bottomRight.rawValue
+    @AppStorage(DefaultsKey.mediaImageWatermarkOpacity, store: SettingsUserDefaults.standard) private var imageWatermarkOpacity = 0.45
+    @AppStorage(DefaultsKey.mediaImageWatermarkMargin, store: SettingsUserDefaults.standard) private var imageWatermarkMargin = 32
+    @AppStorage(DefaultsKey.mediaImageWatermarkScale, store: SettingsUserDefaults.standard) private var imageWatermarkScale = 0.18
+    @AppStorage(DefaultsKey.mediaImageRenamePattern, store: SettingsUserDefaults.standard) private var imageRenamePattern = ""
+    @AppStorage(DefaultsKey.mediaImageBackground, store: SettingsUserDefaults.standard) private var imageBackgroundRaw = MediaImageBackground.transparent.rawValue
+    @AppStorage(DefaultsKey.mediaImagePreserveModificationDate, store: SettingsUserDefaults.standard) private var imagePreserveModificationDate = false
+    @AppStorage(DefaultsKey.mediaImageSaveInSubfolder, store: SettingsUserDefaults.standard) private var imageSaveInSubfolder = false
+    @AppStorage(DefaultsKey.mediaImageProfiles, store: SettingsUserDefaults.standard) private var imageProfilesRaw = "[]"
+    @AppStorage(DefaultsKey.mediaImageSelectedProfileID, store: SettingsUserDefaults.standard) private var imageSelectedProfileID = ""
 
-    @AppStorage(DefaultsKey.mediaTextAccurate) private var textAccurate = true
+    @AppStorage(DefaultsKey.mediaTextAccurate, store: SettingsUserDefaults.standard) private var textAccurate = true
 
     @StateObject private var workspace: MediaWorkspaceSelection
     private var inputURLs: [URL] {

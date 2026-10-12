@@ -11,8 +11,8 @@ struct NotchMusicView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var features = FeatureRuntime.shared
     @ObservedObject private var shuffle = NotchShuffleService.shared
-    @AppStorage(DefaultsKey.notchLyricsEnabled) private var lyricsEnabled = true
-    @AppStorage(DefaultsKey.notchQueueEnabled) private var queueEnabled = true
+    @AppStorage(DefaultsKey.notchLyricsEnabled, store: SettingsUserDefaults.standard) private var lyricsEnabled = true
+    @AppStorage(DefaultsKey.notchQueueEnabled, store: SettingsUserDefaults.standard) private var queueEnabled = true
     @State private var extra: MusicExtra?
     private enum MusicExtra { case lyrics, queue }
     @Environment(\.accessibilityReduceMotion) private var reduceMotion

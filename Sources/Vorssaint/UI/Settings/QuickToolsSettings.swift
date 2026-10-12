@@ -13,16 +13,16 @@ struct QuickToolsSettings: View {
     @ObservedObject private var cameraPreview = CameraPreviewService.shared
     @ObservedObject private var scratchpad = ScratchpadService.shared
     @ObservedObject private var brightness = BrightnessService.shared
-    @AppStorage(DefaultsKey.quickLauncherShortcutEnabled) private var launcherShortcutEnabled = true
-    @AppStorage(DefaultsKey.micMuteShortcutEnabled) private var micShortcutEnabled = false
-    @AppStorage(DefaultsKey.cameraPreviewShortcutEnabled) private var cameraShortcutEnabled = false
-    @AppStorage(DefaultsKey.scratchpadShortcutEnabled) private var scratchpadShortcutEnabled = false
-    @AppStorage(DefaultsKey.scratchpadRetention) private var scratchpadRetention = ScratchpadRetention.never.rawValue
-    @AppStorage(DefaultsKey.scratchpadCloseOnClickOutside) private var scratchpadCloseOnClickOutside = true
-    @AppStorage(DefaultsKey.scratchpadBackgroundOpacity) private var scratchpadBackgroundOpacity = 0.0
-    @AppStorage(DefaultsKey.scratchpadTextSize) private var scratchpadTextSize = ScratchpadSupport.defaultTextSize
-    @AppStorage(DefaultsKey.micMuteMenuBarIndicator) private var micMenuBarIndicator = false
-    @AppStorage(DefaultsKey.cleaningModeKeepScreenVisible) private var cleaningModeKeepScreenVisible = false
+    @AppStorage(DefaultsKey.quickLauncherShortcutEnabled, store: SettingsUserDefaults.standard) private var launcherShortcutEnabled = true
+    @AppStorage(DefaultsKey.micMuteShortcutEnabled, store: SettingsUserDefaults.standard) private var micShortcutEnabled = false
+    @AppStorage(DefaultsKey.cameraPreviewShortcutEnabled, store: SettingsUserDefaults.standard) private var cameraShortcutEnabled = false
+    @AppStorage(DefaultsKey.scratchpadShortcutEnabled, store: SettingsUserDefaults.standard) private var scratchpadShortcutEnabled = false
+    @AppStorage(DefaultsKey.scratchpadRetention, store: SettingsUserDefaults.standard) private var scratchpadRetention = ScratchpadRetention.never.rawValue
+    @AppStorage(DefaultsKey.scratchpadCloseOnClickOutside, store: SettingsUserDefaults.standard) private var scratchpadCloseOnClickOutside = true
+    @AppStorage(DefaultsKey.scratchpadBackgroundOpacity, store: SettingsUserDefaults.standard) private var scratchpadBackgroundOpacity = 0.0
+    @AppStorage(DefaultsKey.scratchpadTextSize, store: SettingsUserDefaults.standard) private var scratchpadTextSize = ScratchpadSupport.defaultTextSize
+    @AppStorage(DefaultsKey.micMuteMenuBarIndicator, store: SettingsUserDefaults.standard) private var micMenuBarIndicator = false
+    @AppStorage(DefaultsKey.cleaningModeKeepScreenVisible, store: SettingsUserDefaults.standard) private var cleaningModeKeepScreenVisible = false
 
     var body: some View {
         Form {

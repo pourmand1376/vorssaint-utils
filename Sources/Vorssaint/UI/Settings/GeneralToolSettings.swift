@@ -66,7 +66,7 @@ struct GeneralToolSettings: View {
 /// by name, and shows that symbol while it is the one in use.
 private struct MenuBarIconSymbolRow: View {
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.menuBarIconSymbol) private var savedName = ""
+    @AppStorage(DefaultsKey.menuBarIconSymbol, store: SettingsUserDefaults.standard) private var savedName = ""
     @State private var typingName = false
 
     /// Filtered like the radial menu's icons, so a name a future macOS
@@ -163,7 +163,7 @@ private struct MenuBarIconSymbolRow: View {
 private struct MenuBarIconNameField: View {
     @ObservedObject private var l10n = L10n.shared
     @Environment(\.dismiss) private var dismiss
-    @AppStorage(DefaultsKey.menuBarIconSymbol) private var savedName = ""
+    @AppStorage(DefaultsKey.menuBarIconSymbol, store: SettingsUserDefaults.standard) private var savedName = ""
     @State private var draft = ""
     @State private var openingName = ""
     @FocusState private var focused: Bool
@@ -230,9 +230,9 @@ private struct MusicBlockingSettings: View {
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var musicBlocker = MusicLaunchBlocker.shared
     @State private var replacementRejected = false
-    @AppStorage(DefaultsKey.musicBlockEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.musicBlockReplacementPath) private var replacementPath = ""
-    @AppStorage(DefaultsKey.musicBlockPlayReplacement) private var playReplacement = true
+    @AppStorage(DefaultsKey.musicBlockEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.musicBlockReplacementPath, store: SettingsUserDefaults.standard) private var replacementPath = ""
+    @AppStorage(DefaultsKey.musicBlockPlayReplacement, store: SettingsUserDefaults.standard) private var playReplacement = true
 
     var body: some View {
         SettingsCard(title: l10n.s.musicBlockSection) {

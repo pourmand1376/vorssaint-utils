@@ -8,22 +8,22 @@ import SwiftUI
 struct NotchAgentsSettingsControls: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var usage = AgentUsageService.shared
-    @AppStorage(DefaultsKey.notchAgentsClaude) private var claude = true
-    @AppStorage(DefaultsKey.notchAgentsCodex) private var codex = true
-    @AppStorage(DefaultsKey.notchAgentsOpenCode) private var opencode = true
-    @AppStorage(DefaultsKey.notchAgentsCopilot) private var copilot = true
-    @AppStorage(DefaultsKey.notchAgentsCardOrder) private var cardOrder = ""
-    @AppStorage(DefaultsKey.notchAgentsHiddenCards) private var hiddenCards = ""
-    @AppStorage(DefaultsKey.notchAgentsLimitDisplay) private var limitDisplay = NotchAgentLimitDisplay.remaining.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitFocus) private var limitFocus = NotchAgentLimitFocus.mostUsed.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLiveActivity) private var liveActivity = true
-    @AppStorage(DefaultsKey.notchAgentsReadout) private var readout = NotchAgentReadout.elapsed.rawValue
-    @AppStorage(DefaultsKey.notchAgentsFinishAlert) private var finishAlert = true
-    @AppStorage(DefaultsKey.notchAgentsFinishMinimum) private var finishMinimum = NotchAgentSupport.defaultFinishMinimum
-    @AppStorage(DefaultsKey.notchAgentsLimitAlert) private var limitAlert = true
-    @AppStorage(DefaultsKey.notchAgentsLimitThreshold) private var limitThreshold = NotchAgentSupport.defaultLimitThreshold
-    @AppStorage(DefaultsKey.notchAgentsDailyBudget) private var dailyBudget = 0.0
-    @AppStorage(DefaultsKey.notchAgentsPriceUpdates) private var priceUpdates = true
+    @AppStorage(DefaultsKey.notchAgentsClaude, store: SettingsUserDefaults.standard) private var claude = true
+    @AppStorage(DefaultsKey.notchAgentsCodex, store: SettingsUserDefaults.standard) private var codex = true
+    @AppStorage(DefaultsKey.notchAgentsOpenCode, store: SettingsUserDefaults.standard) private var opencode = true
+    @AppStorage(DefaultsKey.notchAgentsCopilot, store: SettingsUserDefaults.standard) private var copilot = true
+    @AppStorage(DefaultsKey.notchAgentsCardOrder, store: SettingsUserDefaults.standard) private var cardOrder = ""
+    @AppStorage(DefaultsKey.notchAgentsHiddenCards, store: SettingsUserDefaults.standard) private var hiddenCards = ""
+    @AppStorage(DefaultsKey.notchAgentsLimitDisplay, store: SettingsUserDefaults.standard) private var limitDisplay = NotchAgentLimitDisplay.remaining.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitFocus, store: SettingsUserDefaults.standard) private var limitFocus = NotchAgentLimitFocus.mostUsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLiveActivity, store: SettingsUserDefaults.standard) private var liveActivity = true
+    @AppStorage(DefaultsKey.notchAgentsReadout, store: SettingsUserDefaults.standard) private var readout = NotchAgentReadout.elapsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsFinishAlert, store: SettingsUserDefaults.standard) private var finishAlert = true
+    @AppStorage(DefaultsKey.notchAgentsFinishMinimum, store: SettingsUserDefaults.standard) private var finishMinimum = NotchAgentSupport.defaultFinishMinimum
+    @AppStorage(DefaultsKey.notchAgentsLimitAlert, store: SettingsUserDefaults.standard) private var limitAlert = true
+    @AppStorage(DefaultsKey.notchAgentsLimitThreshold, store: SettingsUserDefaults.standard) private var limitThreshold = NotchAgentSupport.defaultLimitThreshold
+    @AppStorage(DefaultsKey.notchAgentsDailyBudget, store: SettingsUserDefaults.standard) private var dailyBudget = 0.0
+    @AppStorage(DefaultsKey.notchAgentsPriceUpdates, store: SettingsUserDefaults.standard) private var priceUpdates = true
     @State private var dragging: NotchAgentCard?
     @State private var roots: [AgentProvider: Bool] = [:]
     @State private var claudeApp: URL?

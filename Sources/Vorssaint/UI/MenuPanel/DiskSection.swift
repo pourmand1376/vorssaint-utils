@@ -10,14 +10,14 @@ struct DiskSection: View {
     @ObservedObject private var protection = DiskProtectionService.shared
     @Environment(\.colorScheme) private var colorScheme
     var collapsible = true
-    @AppStorage(DefaultsKey.monitorGraphDisk) private var showGraph = true
-    @AppStorage(DefaultsKey.monitorDiskUsage) private var diskUsage = true
-    @AppStorage(DefaultsKey.monitorDiskActivity) private var diskActivity = true
-    @AppStorage(DefaultsKey.monitorDiskSMART) private var diskSMART = true
-    @AppStorage(DefaultsKey.monitorDiskProtection) private var diskProtection = true
-    @AppStorage(DefaultsKey.monitorDiskTools) private var diskTools = true
-    @AppStorage(DefaultsKey.panelDiskOrder) private var diskOrderRaw = ""
-    @AppStorage(DefaultsKey.temperatureUnit) private var temperatureUnit = TemperatureUnit.celsius.rawValue
+    @AppStorage(DefaultsKey.monitorGraphDisk, store: SettingsUserDefaults.standard) private var showGraph = true
+    @AppStorage(DefaultsKey.monitorDiskUsage, store: SettingsUserDefaults.standard) private var diskUsage = true
+    @AppStorage(DefaultsKey.monitorDiskActivity, store: SettingsUserDefaults.standard) private var diskActivity = true
+    @AppStorage(DefaultsKey.monitorDiskSMART, store: SettingsUserDefaults.standard) private var diskSMART = true
+    @AppStorage(DefaultsKey.monitorDiskProtection, store: SettingsUserDefaults.standard) private var diskProtection = true
+    @AppStorage(DefaultsKey.monitorDiskTools, store: SettingsUserDefaults.standard) private var diskTools = true
+    @AppStorage(DefaultsKey.panelDiskOrder, store: SettingsUserDefaults.standard) private var diskOrderRaw = ""
+    @AppStorage(DefaultsKey.temperatureUnit, store: SettingsUserDefaults.standard) private var temperatureUnit = TemperatureUnit.celsius.rawValue
     @State private var draggingBlock: Block?
     @State private var selectedDiskID: String?
 

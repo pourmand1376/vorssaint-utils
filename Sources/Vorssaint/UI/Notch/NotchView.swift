@@ -10,7 +10,7 @@ struct NotchView: View {
     @ObservedObject private var music = NotchMusicService.shared
     @ObservedObject private var launcher = QuickLauncherService.shared
     @ObservedObject private var updates = UpdateService.shared
-    @AppStorage(DefaultsKey.notchLiquidGlassEnabled) private var glass = false
+    @AppStorage(DefaultsKey.notchLiquidGlassEnabled, store: SettingsUserDefaults.standard) private var glass = false
     @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
@@ -787,10 +787,10 @@ struct NotchRestingStrip: View {
     /// Another display's strip, when the island shows on every display.
     var displayGeometry: NotchGeometry? = nil
     @ObservedObject private var music = NotchMusicService.shared
-    @AppStorage(DefaultsKey.notchLowBatteryTint) private var lowBatteryTint = false
-    @AppStorage(DefaultsKey.notchLowBatteryThreshold) private var lowBatteryThreshold = NotchSupport.defaultLowBatteryThreshold
-    @AppStorage(DefaultsKey.notchLowBatteryEarly) private var earlyBatteryWarning = false
-    @AppStorage(DefaultsKey.notchLowBatteryEarlyThreshold) private var earlyBatteryThreshold = NotchSupport.defaultEarlyBatteryThreshold
+    @AppStorage(DefaultsKey.notchLowBatteryTint, store: SettingsUserDefaults.standard) private var lowBatteryTint = false
+    @AppStorage(DefaultsKey.notchLowBatteryThreshold, store: SettingsUserDefaults.standard) private var lowBatteryThreshold = NotchSupport.defaultLowBatteryThreshold
+    @AppStorage(DefaultsKey.notchLowBatteryEarly, store: SettingsUserDefaults.standard) private var earlyBatteryWarning = false
+    @AppStorage(DefaultsKey.notchLowBatteryEarlyThreshold, store: SettingsUserDefaults.standard) private var earlyBatteryThreshold = NotchSupport.defaultEarlyBatteryThreshold
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var geometry: NotchGeometry { displayGeometry ?? service.geometry }

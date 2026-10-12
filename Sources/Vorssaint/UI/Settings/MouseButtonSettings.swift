@@ -12,13 +12,13 @@ struct MouseButtonShortcutsSection: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var service = MouseButtonShortcutService.shared
-    @AppStorage(DefaultsKey.mouseButtonShortcutsEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.mouseSpacesGestureEnabled) private var spacesEnabled = false
-    @AppStorage(DefaultsKey.mouseSpacesGestureButton) private var spacesButton = 0
-    @AppStorage(DefaultsKey.mouseSpacesGestureFollowsDrag) private var spacesFollowsDrag = false
+    @AppStorage(DefaultsKey.mouseButtonShortcutsEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.mouseSpacesGestureEnabled, store: SettingsUserDefaults.standard) private var spacesEnabled = false
+    @AppStorage(DefaultsKey.mouseSpacesGestureButton, store: SettingsUserDefaults.standard) private var spacesButton = 0
+    @AppStorage(DefaultsKey.mouseSpacesGestureFollowsDrag, store: SettingsUserDefaults.standard) private var spacesFollowsDrag = false
 
     @State private var mappings = MouseButtonShortcutSupport.decode(
-        UserDefaults.standard.dictionary(forKey: DefaultsKey.mouseButtonShortcuts) as? [String: String])
+        SettingsUserDefaults.standard.dictionary(forKey: DefaultsKey.mouseButtonShortcuts) as? [String: String])
     /// A button that was just captured and is waiting for its first key
     /// combination. Nothing persists until the combination lands, so backing
     /// out leaves no half-made row behind.
@@ -368,7 +368,7 @@ struct MouseButtonShortcutsSection: View {
     }
 
     private func persist() {
-        UserDefaults.standard.set(MouseButtonShortcutSupport.encode(mappings),
+        SettingsUserDefaults.standard.set(MouseButtonShortcutSupport.encode(mappings),
                                   forKey: DefaultsKey.mouseButtonShortcuts)
         MouseButtonShortcutService.shared.syncWithPreferences()
     }

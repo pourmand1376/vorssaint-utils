@@ -11,19 +11,19 @@ struct ScreenRecordingCaptureSettings: View {
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var service = ScreenRecorderService.shared
     @ObservedObject private var sharing = RecordingShareService.shared
-    @AppStorage(DefaultsKey.recorderCountdown) private var countdown = 3
-    @AppStorage(DefaultsKey.recorderQuality) private var qualityRaw =
+    @AppStorage(DefaultsKey.recorderCountdown, store: SettingsUserDefaults.standard) private var countdown = 3
+    @AppStorage(DefaultsKey.recorderQuality, store: SettingsUserDefaults.standard) private var qualityRaw =
         RecorderSupport.Quality.balanced.rawValue
-    @AppStorage(DefaultsKey.recorderFrameRate) private var frameRate = 60
-    @AppStorage(DefaultsKey.recorderSystemAudio) private var systemAudio = true
-    @AppStorage(DefaultsKey.recorderMicrophone) private var microphone = false
-    @AppStorage(DefaultsKey.recorderSaveFolder) private var saveFolder = ""
-    @AppStorage(DefaultsKey.recorderOpenEditor) private var opensEditor = true
-    @AppStorage(DefaultsKey.recorderAutomaticZoom) private var automaticZoom = true
-    @AppStorage(DefaultsKey.recorderGIFSize) private var gifSizeRaw =
+    @AppStorage(DefaultsKey.recorderFrameRate, store: SettingsUserDefaults.standard) private var frameRate = 60
+    @AppStorage(DefaultsKey.recorderSystemAudio, store: SettingsUserDefaults.standard) private var systemAudio = true
+    @AppStorage(DefaultsKey.recorderMicrophone, store: SettingsUserDefaults.standard) private var microphone = false
+    @AppStorage(DefaultsKey.recorderSaveFolder, store: SettingsUserDefaults.standard) private var saveFolder = ""
+    @AppStorage(DefaultsKey.recorderOpenEditor, store: SettingsUserDefaults.standard) private var opensEditor = true
+    @AppStorage(DefaultsKey.recorderAutomaticZoom, store: SettingsUserDefaults.standard) private var automaticZoom = true
+    @AppStorage(DefaultsKey.recorderGIFSize, store: SettingsUserDefaults.standard) private var gifSizeRaw =
         RecorderSupport.GIFSize.medium.rawValue
-    @AppStorage(DefaultsKey.recorderGIFFrameRate) private var gifFrameRate = 12
-    @AppStorage(DefaultsKey.recorderSharingEnabled) private var sharingEnabled = true
+    @AppStorage(DefaultsKey.recorderGIFFrameRate, store: SettingsUserDefaults.standard) private var gifFrameRate = 12
+    @AppStorage(DefaultsKey.recorderSharingEnabled, store: SettingsUserDefaults.standard) private var sharingEnabled = true
     @State private var showsMoreOptions = false
     @State private var showingSharedLinks = false
     @State private var showingSharePrivacy = false

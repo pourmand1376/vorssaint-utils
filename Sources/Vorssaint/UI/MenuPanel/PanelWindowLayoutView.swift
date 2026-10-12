@@ -7,13 +7,13 @@ struct PanelWindowLayoutView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var service = WindowLayoutService.shared
-    @AppStorage(DefaultsKey.windowLayoutShortcutsEnabled) private var shortcutsEnabled = true
-    @AppStorage(DefaultsKey.windowEdgeSnapEnabled) private var edgeSnapEnabled = false
-    @AppStorage(DefaultsKey.windowEdgeSnapDisabledZones) private var edgeSnapDisabledZones = ""
-    @AppStorage(DefaultsKey.windowEdgeSnapZoneActions) private var edgeSnapZoneActions = ""
-    @AppStorage(DefaultsKey.windowGestureEnabled) private var gestureEnabled = false
-    @AppStorage(DefaultsKey.windowGestureModifiers) private var gestureModifiers = WindowGestureSupport.defaultModifierStorageValue
-    @AppStorage(DefaultsKey.windowLayoutHiddenActions) private var hiddenActionsRaw = ""
+    @AppStorage(DefaultsKey.windowLayoutShortcutsEnabled, store: SettingsUserDefaults.standard) private var shortcutsEnabled = true
+    @AppStorage(DefaultsKey.windowEdgeSnapEnabled, store: SettingsUserDefaults.standard) private var edgeSnapEnabled = false
+    @AppStorage(DefaultsKey.windowEdgeSnapDisabledZones, store: SettingsUserDefaults.standard) private var edgeSnapDisabledZones = ""
+    @AppStorage(DefaultsKey.windowEdgeSnapZoneActions, store: SettingsUserDefaults.standard) private var edgeSnapZoneActions = ""
+    @AppStorage(DefaultsKey.windowGestureEnabled, store: SettingsUserDefaults.standard) private var gestureEnabled = false
+    @AppStorage(DefaultsKey.windowGestureModifiers, store: SettingsUserDefaults.standard) private var gestureModifiers = WindowGestureSupport.defaultModifierStorageValue
+    @AppStorage(DefaultsKey.windowLayoutHiddenActions, store: SettingsUserDefaults.standard) private var hiddenActionsRaw = ""
     @State private var editingActions = false
     @State private var systemTilingEnabled = WindowEdgeSnapSupport.isSystemTilingEnabled
 

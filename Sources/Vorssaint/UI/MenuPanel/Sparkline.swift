@@ -74,7 +74,7 @@ extension View {
 }
 
 private struct GraphCeilingLabel: ViewModifier {
-    @AppStorage(DefaultsKey.monitorGraphScale) private var visible = true
+    @AppStorage(DefaultsKey.monitorGraphScale, store: SettingsUserDefaults.standard) private var visible = true
     let text: String
 
     func body(content: Content) -> some View {

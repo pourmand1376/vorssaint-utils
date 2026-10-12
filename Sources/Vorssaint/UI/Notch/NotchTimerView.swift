@@ -7,13 +7,13 @@ struct NotchTimerView: View {
     let size: CGSize
     @ObservedObject private var service = NotchTimerService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchTimerMode) private var mode: NotchTimerMode = .timer
-    @AppStorage(DefaultsKey.notchPomodoroFocusMinutes) private var focusMinutes = 25
-    @AppStorage(DefaultsKey.notchPomodoroShortBreakMinutes) private var shortBreakMinutes = 5
-    @AppStorage(DefaultsKey.notchPomodoroLongBreakMinutes) private var longBreakMinutes = 15
-    @AppStorage(DefaultsKey.notchPomodoroLongBreakInterval) private var longBreakInterval = 4
-    @AppStorage(DefaultsKey.notchPomodoroTotalSessions) private var totalSessions = 4
-    @AppStorage(DefaultsKey.notchTimerMinutes) private var savedMinutes = 15
+    @AppStorage(DefaultsKey.notchTimerMode, store: SettingsUserDefaults.standard) private var mode: NotchTimerMode = .timer
+    @AppStorage(DefaultsKey.notchPomodoroFocusMinutes, store: SettingsUserDefaults.standard) private var focusMinutes = 25
+    @AppStorage(DefaultsKey.notchPomodoroShortBreakMinutes, store: SettingsUserDefaults.standard) private var shortBreakMinutes = 5
+    @AppStorage(DefaultsKey.notchPomodoroLongBreakMinutes, store: SettingsUserDefaults.standard) private var longBreakMinutes = 15
+    @AppStorage(DefaultsKey.notchPomodoroLongBreakInterval, store: SettingsUserDefaults.standard) private var longBreakInterval = 4
+    @AppStorage(DefaultsKey.notchPomodoroTotalSessions, store: SettingsUserDefaults.standard) private var totalSessions = 4
+    @AppStorage(DefaultsKey.notchTimerMinutes, store: SettingsUserDefaults.standard) private var savedMinutes = 15
     @Namespace private var modeSelection
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private var text: NotchActivityStrings { FeatureStrings.notchActivities(l10n.language) }

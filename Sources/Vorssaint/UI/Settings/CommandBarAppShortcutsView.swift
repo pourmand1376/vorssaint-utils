@@ -8,9 +8,9 @@ struct CommandBarAppShortcutsView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var service = CommandBarService.shared
     @ObservedObject private var features = FeatureRuntime.shared
-    @AppStorage(DefaultsKey.commandBarRowShortcuts) private var shortcutsRaw = ""
-    @AppStorage(DefaultsKey.commandBarAliases) private var aliasesRaw = ""
-    @AppStorage(DefaultsKey.commandBarPins) private var pinsRaw = ""
+    @AppStorage(DefaultsKey.commandBarRowShortcuts, store: SettingsUserDefaults.standard) private var shortcutsRaw = ""
+    @AppStorage(DefaultsKey.commandBarAliases, store: SettingsUserDefaults.standard) private var aliasesRaw = ""
+    @AppStorage(DefaultsKey.commandBarPins, store: SettingsUserDefaults.standard) private var pinsRaw = ""
     @State private var query = ""
     @State private var filter = AppFilter.all
     @State private var message: String?

@@ -6,8 +6,8 @@ import SwiftUI
 struct PanelClipboardView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var history = ClipboardHistoryService.shared
-    @AppStorage(DefaultsKey.clipboardHistoryEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.clipboardHistoryShortcutEnabled) private var shortcutEnabled = true
+    @AppStorage(DefaultsKey.clipboardHistoryEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.clipboardHistoryShortcutEnabled, store: SettingsUserDefaults.standard) private var shortcutEnabled = true
     @State private var query = ""
     @State private var copiedID: UUID?
     /// Counts copies, so the list also follows an entry copied again while

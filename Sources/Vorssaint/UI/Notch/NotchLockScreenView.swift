@@ -304,9 +304,9 @@ struct NotchLockScreenActivities: View {
     @ObservedObject private var downloads = NotchDownloadService.shared
     @ObservedObject private var calendar = NotchCalendarService.shared
     @ObservedObject private var l10n = L10n.shared
-    @AppStorage(DefaultsKey.notchAgentsReadout) private var readout = NotchAgentReadout.elapsed.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitDisplay) private var display = NotchAgentLimitDisplay.remaining.rawValue
-    @AppStorage(DefaultsKey.notchAgentsLimitFocus) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsReadout, store: SettingsUserDefaults.standard) private var readout = NotchAgentReadout.elapsed.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitDisplay, store: SettingsUserDefaults.standard) private var display = NotchAgentLimitDisplay.remaining.rawValue
+    @AppStorage(DefaultsKey.notchAgentsLimitFocus, store: SettingsUserDefaults.standard) private var focus = NotchAgentLimitFocus.mostUsed.rawValue
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {

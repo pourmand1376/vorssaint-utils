@@ -7,11 +7,11 @@ struct SuperKeySettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var superKey = SuperKeyService.shared
-    @AppStorage(DefaultsKey.superKeyEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.superKeySource) private var sourceRaw = SuperKeySource.capsLock.rawValue
-    @AppStorage(DefaultsKey.superKeyModifiers) private var modifierStorage =
+    @AppStorage(DefaultsKey.superKeyEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.superKeySource, store: SettingsUserDefaults.standard) private var sourceRaw = SuperKeySource.capsLock.rawValue
+    @AppStorage(DefaultsKey.superKeyModifiers, store: SettingsUserDefaults.standard) private var modifierStorage =
         SuperKeySupport.defaultModifierStorageValue
-    @AppStorage(DefaultsKey.superKeySoloAction) private var soloActionRaw = SuperKeySoloAction.none.rawValue
+    @AppStorage(DefaultsKey.superKeySoloAction, store: SettingsUserDefaults.standard) private var soloActionRaw = SuperKeySoloAction.none.rawValue
 
     private var text: SuperKeyStrings { FeatureStrings.superKey(l10n.language) }
 

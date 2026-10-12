@@ -13,17 +13,17 @@ struct MonitorSettings: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var features = FeatureRuntime.shared
 
-    @AppStorage(DefaultsKey.menuBarCombineTemperatures) private var combineTemperatures = true
-    @AppStorage(DefaultsKey.menuBarSeparateMetrics) private var separateMetrics = false
-    @AppStorage(DefaultsKey.menuBarMetricSpacing) private var metricSpacing = "standard"
-    @AppStorage(DefaultsKey.menuBarMetricAppearance) private var metricAppearance = "values"
-    @AppStorage(DefaultsKey.menuBarHideIconWithMetrics) private var hideIconWithMetrics = false
-    @AppStorage(DefaultsKey.monitorInterval) private var interval = 2
-    @AppStorage(DefaultsKey.monitorGraphScale) private var graphScale = true
-    @AppStorage(DefaultsKey.temperatureUnit) private var temperatureUnit = TemperatureUnit.celsius.rawValue
-    @AppStorage(DefaultsKey.networkSpeedUnit) private var networkSpeedUnit = NetworkSpeedUnit.bytes
-    @AppStorage(DefaultsKey.monitorMemoryMetric) private var memoryMetric = "used"
-    @AppStorage(DefaultsKey.panelShowFanControl) private var showFanControl = true
+    @AppStorage(DefaultsKey.menuBarCombineTemperatures, store: SettingsUserDefaults.standard) private var combineTemperatures = true
+    @AppStorage(DefaultsKey.menuBarSeparateMetrics, store: SettingsUserDefaults.standard) private var separateMetrics = false
+    @AppStorage(DefaultsKey.menuBarMetricSpacing, store: SettingsUserDefaults.standard) private var metricSpacing = "standard"
+    @AppStorage(DefaultsKey.menuBarMetricAppearance, store: SettingsUserDefaults.standard) private var metricAppearance = "values"
+    @AppStorage(DefaultsKey.menuBarHideIconWithMetrics, store: SettingsUserDefaults.standard) private var hideIconWithMetrics = false
+    @AppStorage(DefaultsKey.monitorInterval, store: SettingsUserDefaults.standard) private var interval = 2
+    @AppStorage(DefaultsKey.monitorGraphScale, store: SettingsUserDefaults.standard) private var graphScale = true
+    @AppStorage(DefaultsKey.temperatureUnit, store: SettingsUserDefaults.standard) private var temperatureUnit = TemperatureUnit.celsius.rawValue
+    @AppStorage(DefaultsKey.networkSpeedUnit, store: SettingsUserDefaults.standard) private var networkSpeedUnit = NetworkSpeedUnit.bytes
+    @AppStorage(DefaultsKey.monitorMemoryMetric, store: SettingsUserDefaults.standard) private var memoryMetric = "used"
+    @AppStorage(DefaultsKey.panelShowFanControl, store: SettingsUserDefaults.standard) private var showFanControl = true
 
     var body: some View {
         ScrollView {
@@ -339,7 +339,7 @@ private struct MenuBarStyleChoice: View {
 private struct MenuBarMetricTiles: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var features = FeatureRuntime.shared
-    @AppStorage(DefaultsKey.menuBarMetricOrder) private var metricOrder = ""
+    @AppStorage(DefaultsKey.menuBarMetricOrder, store: SettingsUserDefaults.standard) private var metricOrder = ""
     @State private var order: [MenuBarMetric] = MenuBarMetric.order(in: .standard)
     @State private var dragging: MenuBarMetric?
 
@@ -380,13 +380,14 @@ private struct MenuBarMetricTile: View {
     @Environment(\.colorScheme) private var colorScheme
     let metric: MenuBarMetric
     @AppStorage private var shown: Bool
-    @AppStorage(DefaultsKey.menuBarMemoryStyle) private var memoryStyle = "percent"
-    @AppStorage(DefaultsKey.menuBarNetworkUploadFirst) private var uploadFirst = false
-    @AppStorage(DiskMenuBarStyle.defaultsKey) private var diskStyle = DiskMenuBarStyle.percent
+    @AppStorage(DefaultsKey.menuBarMemoryStyle, store: SettingsUserDefaults.standard) private var memoryStyle = "percent"
+    @AppStorage(DefaultsKey.menuBarNetworkUploadFirst, store: SettingsUserDefaults.standard) private var uploadFirst = false
+    @AppStorage(DiskMenuBarStyle.defaultsKey, store: SettingsUserDefaults.standard) private var diskStyle = DiskMenuBarStyle.percent
 
     init(metric: MenuBarMetric) {
         self.metric = metric
-        _shown = AppStorage(wrappedValue: false, metric.defaultsKey)
+        _shown = AppStorage(
+            wrappedValue: false, metric.defaultsKey, store: SettingsUserDefaults.standard)
     }
 
     var body: some View {
@@ -440,11 +441,11 @@ private struct MenuBarMetricTile: View {
 private struct MenuBarUsageBarSettings: View {
     let strings: MenuBarAppearanceStrings
 
-    @AppStorage(DefaultsKey.menuBarUsageBarNormalColor) private var normalColor = MenuBarUsageBarSupport.defaultNormalColor
-    @AppStorage(DefaultsKey.menuBarUsageBarElevatedColor) private var elevatedColor = MenuBarUsageBarSupport.defaultElevatedColor
-    @AppStorage(DefaultsKey.menuBarUsageBarCriticalColor) private var criticalColor = MenuBarUsageBarSupport.defaultCriticalColor
-    @AppStorage(DefaultsKey.menuBarUsageBarMediumThreshold) private var mediumThreshold = MenuBarUsageBarSupport.defaultMediumThreshold
-    @AppStorage(DefaultsKey.menuBarUsageBarHighThreshold) private var highThreshold = MenuBarUsageBarSupport.defaultHighThreshold
+    @AppStorage(DefaultsKey.menuBarUsageBarNormalColor, store: SettingsUserDefaults.standard) private var normalColor = MenuBarUsageBarSupport.defaultNormalColor
+    @AppStorage(DefaultsKey.menuBarUsageBarElevatedColor, store: SettingsUserDefaults.standard) private var elevatedColor = MenuBarUsageBarSupport.defaultElevatedColor
+    @AppStorage(DefaultsKey.menuBarUsageBarCriticalColor, store: SettingsUserDefaults.standard) private var criticalColor = MenuBarUsageBarSupport.defaultCriticalColor
+    @AppStorage(DefaultsKey.menuBarUsageBarMediumThreshold, store: SettingsUserDefaults.standard) private var mediumThreshold = MenuBarUsageBarSupport.defaultMediumThreshold
+    @AppStorage(DefaultsKey.menuBarUsageBarHighThreshold, store: SettingsUserDefaults.standard) private var highThreshold = MenuBarUsageBarSupport.defaultHighThreshold
 
     var body: some View {
         VStack(alignment: .leading, spacing: 9) {

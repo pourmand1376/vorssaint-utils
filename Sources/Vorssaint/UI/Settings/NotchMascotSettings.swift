@@ -12,19 +12,19 @@ struct NotchMascotSettings: View {
     @ObservedObject private var l10n = L10n.shared
     /// Redraws when the island or the Command Bar is installed or removed.
     @ObservedObject private var features = FeatureRuntime.shared
-    @AppStorage(DefaultsKey.notchEnabled) private var islandEnabled = false
-    @AppStorage(DefaultsKey.notchSilhouette) private var silhouette = NotchSilhouette.capsule.rawValue
-    @AppStorage(DefaultsKey.notchMascotEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.notchMascotVisits) private var visits = true
-    @AppStorage(DefaultsKey.notchMascotReactions) private var reactions = true
-    @AppStorage(DefaultsKey.notchMascotHidesWhenIdle) private var hidesWhenIdle = true
-    @AppStorage(DefaultsKey.notchMascotStyle) private var style = NotchMascotStyle.minimal.rawValue
-    @AppStorage(DefaultsKey.notchMascotShape) private var shape = NotchMascotShape.ball.rawValue
-    @AppStorage(DefaultsKey.notchMascotPalette) private var palette = NotchMascotPalette.pearl.rawValue
-    @AppStorage(DefaultsKey.notchMascotSide) private var side = NotchMascotSide.left.rawValue
-    @AppStorage(DefaultsKey.notchMascotVisitFrequency) private var frequency = NotchMascotVisitFrequency.normal.rawValue
-    @AppStorage(DefaultsKey.notchCommandBar) private var commandBar = true
-    @AppStorage(DefaultsKey.notchCommandBarStyle) private var commandBarStyle = NotchCommandBarStyle.droplet.rawValue
+    @AppStorage(DefaultsKey.notchEnabled, store: SettingsUserDefaults.standard) private var islandEnabled = false
+    @AppStorage(DefaultsKey.notchSilhouette, store: SettingsUserDefaults.standard) private var silhouette = NotchSilhouette.capsule.rawValue
+    @AppStorage(DefaultsKey.notchMascotEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.notchMascotVisits, store: SettingsUserDefaults.standard) private var visits = true
+    @AppStorage(DefaultsKey.notchMascotReactions, store: SettingsUserDefaults.standard) private var reactions = true
+    @AppStorage(DefaultsKey.notchMascotHidesWhenIdle, store: SettingsUserDefaults.standard) private var hidesWhenIdle = true
+    @AppStorage(DefaultsKey.notchMascotStyle, store: SettingsUserDefaults.standard) private var style = NotchMascotStyle.minimal.rawValue
+    @AppStorage(DefaultsKey.notchMascotShape, store: SettingsUserDefaults.standard) private var shape = NotchMascotShape.ball.rawValue
+    @AppStorage(DefaultsKey.notchMascotPalette, store: SettingsUserDefaults.standard) private var palette = NotchMascotPalette.pearl.rawValue
+    @AppStorage(DefaultsKey.notchMascotSide, store: SettingsUserDefaults.standard) private var side = NotchMascotSide.left.rawValue
+    @AppStorage(DefaultsKey.notchMascotVisitFrequency, store: SettingsUserDefaults.standard) private var frequency = NotchMascotVisitFrequency.normal.rawValue
+    @AppStorage(DefaultsKey.notchCommandBar, store: SettingsUserDefaults.standard) private var commandBar = true
+    @AppStorage(DefaultsKey.notchCommandBarStyle, store: SettingsUserDefaults.standard) private var commandBarStyle = NotchCommandBarStyle.droplet.rawValue
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var text: NotchMascotStrings { FeatureStrings.notchMascot(l10n.language) }

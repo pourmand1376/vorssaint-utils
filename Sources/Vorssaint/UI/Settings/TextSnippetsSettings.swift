@@ -12,12 +12,12 @@ struct TextSnippetsSettings: View {
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var library = SnippetLibraryService.shared
     @ObservedObject private var secureInput = SecureInputMonitor.shared
-    @AppStorage(DefaultsKey.textSnippetsEnabled) private var enabled = false
-    @AppStorage(DefaultsKey.snippetLibraryEnabled) private var libraryEnabled = false
-    @AppStorage(DefaultsKey.snippetSoundEnabled) private var soundEnabled = false
-    @AppStorage(DefaultsKey.snippetSoundName) private var soundName = Defaults.defaultSnippetSoundName
+    @AppStorage(DefaultsKey.textSnippetsEnabled, store: SettingsUserDefaults.standard) private var enabled = false
+    @AppStorage(DefaultsKey.snippetLibraryEnabled, store: SettingsUserDefaults.standard) private var libraryEnabled = false
+    @AppStorage(DefaultsKey.snippetSoundEnabled, store: SettingsUserDefaults.standard) private var soundEnabled = false
+    @AppStorage(DefaultsKey.snippetSoundName, store: SettingsUserDefaults.standard) private var soundName = Defaults.defaultSnippetSoundName
     @State private var snippets: [TextSnippet] = TextSnippetSupport.decode(
-        UserDefaults.standard.data(forKey: DefaultsKey.textSnippets))
+        SettingsUserDefaults.standard.data(forKey: DefaultsKey.textSnippets))
     @State private var editing: TextSnippet?
     @State private var creating = false
 
@@ -171,7 +171,7 @@ struct TextSnippetsSettings: View {
     }
 
     private func persist() {
-        UserDefaults.standard.set(TextSnippetSupport.encode(snippets),
+        SettingsUserDefaults.standard.set(TextSnippetSupport.encode(snippets),
                                   forKey: DefaultsKey.textSnippets)
         TextSnippetService.shared.syncWithPreferences()
         SnippetLibraryService.shared.syncWithPreferences()

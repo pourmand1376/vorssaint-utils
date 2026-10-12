@@ -10,20 +10,20 @@ struct DockSettings: View {
     @ObservedObject private var features = FeatureRuntime.shared
     @ObservedObject private var permissions = Permissions.shared
     @ObservedObject private var dockPreview = DockPreviewService.shared
-    @AppStorage(DefaultsKey.dockPreviewEnabled) private var dockPreviewEnabled = false
-    @AppStorage(DefaultsKey.dockPreviewCurrentSpaceOnly) private var dockPreviewCurrentSpaceOnly = false
-    @AppStorage(DefaultsKey.dockPreviewBackgroundOpacity) private var dockPreviewBackgroundOpacity = 1.0
-    @AppStorage(DefaultsKey.liquidGlassEnabled) private var liquidGlassEnabled = false
+    @AppStorage(DefaultsKey.dockPreviewEnabled, store: SettingsUserDefaults.standard) private var dockPreviewEnabled = false
+    @AppStorage(DefaultsKey.dockPreviewCurrentSpaceOnly, store: SettingsUserDefaults.standard) private var dockPreviewCurrentSpaceOnly = false
+    @AppStorage(DefaultsKey.dockPreviewBackgroundOpacity, store: SettingsUserDefaults.standard) private var dockPreviewBackgroundOpacity = 1.0
+    @AppStorage(DefaultsKey.liquidGlassEnabled, store: SettingsUserDefaults.standard) private var liquidGlassEnabled = false
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @AppStorage(DefaultsKey.dockPreviewOpenDelay) private var dockPreviewOpenDelay = DockPreviewSupport.defaultOpenDelayMilliseconds
-    @AppStorage(DefaultsKey.dockPreviewQuitAppOnClose) private var dockPreviewQuitAppOnClose = false
-    @AppStorage(DefaultsKey.dockPreviewOrderByCreation) private var dockPreviewOrderByCreation = false
-    @AppStorage(DefaultsKey.dockPreviewKeepDockVisible) private var dockPreviewKeepDockVisible = false
+    @AppStorage(DefaultsKey.dockPreviewOpenDelay, store: SettingsUserDefaults.standard) private var dockPreviewOpenDelay = DockPreviewSupport.defaultOpenDelayMilliseconds
+    @AppStorage(DefaultsKey.dockPreviewQuitAppOnClose, store: SettingsUserDefaults.standard) private var dockPreviewQuitAppOnClose = false
+    @AppStorage(DefaultsKey.dockPreviewOrderByCreation, store: SettingsUserDefaults.standard) private var dockPreviewOrderByCreation = false
+    @AppStorage(DefaultsKey.dockPreviewKeepDockVisible, store: SettingsUserDefaults.standard) private var dockPreviewKeepDockVisible = false
     @State private var dockPreviewMoreOptionsExpanded = false
-    @AppStorage(DefaultsKey.dockClickMinimize) private var dockClickMinimize = false
-    @AppStorage(DefaultsKey.dockClickHide) private var dockClickHide = false
-    @AppStorage(DefaultsKey.dockClickCycleWindows) private var dockClickCycleWindows = false
-    @AppStorage(DefaultsKey.spacesOrderEnabled) private var spacesOrderEnabled = false
+    @AppStorage(DefaultsKey.dockClickMinimize, store: SettingsUserDefaults.standard) private var dockClickMinimize = false
+    @AppStorage(DefaultsKey.dockClickHide, store: SettingsUserDefaults.standard) private var dockClickHide = false
+    @AppStorage(DefaultsKey.dockClickCycleWindows, store: SettingsUserDefaults.standard) private var dockClickCycleWindows = false
+    @AppStorage(DefaultsKey.spacesOrderEnabled, store: SettingsUserDefaults.standard) private var spacesOrderEnabled = false
 
     private var pages: SettingsPageStrings { FeatureStrings.settingsPages(l10n.language) }
     private var dockPreviewEngaged: Bool { dockPreviewEnabled && AppFeature.dockPreview.isAvailable }

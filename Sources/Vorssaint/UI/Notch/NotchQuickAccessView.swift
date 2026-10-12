@@ -69,7 +69,7 @@ struct NotchQuickAccessView: View {
     @ObservedObject private var awake = KeepAwakeManager.shared
     @ObservedObject private var microphone = MicMuteService.shared
     @ObservedObject private var recorder = ScreenRecorderService.shared
-    @AppStorage(DefaultsKey.notchLiquidGlassEnabled) private var glass = false
+    @AppStorage(DefaultsKey.notchLiquidGlassEnabled, store: SettingsUserDefaults.standard) private var glass = false
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
 

@@ -11,18 +11,18 @@ struct PowerSection: View {
     @ObservedObject private var monitor = SystemMonitor.shared
     @Environment(\.colorScheme) private var colorScheme
     var collapsible = true
-    @AppStorage(DefaultsKey.monitorGraphPower) private var showGraph = true
-    @AppStorage(DefaultsKey.monitorSysBattery) private var showCharge = true
-    @AppStorage(DefaultsKey.monitorPwrTemperature) private var showTemperature = true
-    @AppStorage(DefaultsKey.menuBarPeripheralBattery) private var showPeripherals = false
-    @AppStorage(DefaultsKey.monitorGraphBattery) private var graphBattery = true
-    @AppStorage(DefaultsKey.temperatureUnit) private var temperatureUnit = TemperatureUnit.celsius.rawValue
-    @AppStorage(DefaultsKey.monitorPwrSystem) private var pwrSystem = true
-    @AppStorage(DefaultsKey.monitorPwrAdapter) private var pwrAdapter = true
-    @AppStorage(DefaultsKey.monitorPwrBattery) private var pwrBattery = true
-    @AppStorage(DefaultsKey.monitorPwrTimeRemaining) private var pwrTimeRemaining = true
-    @AppStorage(DefaultsKey.monitorPwrHealth) private var pwrHealth = true
-    @AppStorage(DefaultsKey.panelPowerOrder) private var powerOrderRaw = ""
+    @AppStorage(DefaultsKey.monitorGraphPower, store: SettingsUserDefaults.standard) private var showGraph = true
+    @AppStorage(DefaultsKey.monitorSysBattery, store: SettingsUserDefaults.standard) private var showCharge = true
+    @AppStorage(DefaultsKey.monitorPwrTemperature, store: SettingsUserDefaults.standard) private var showTemperature = true
+    @AppStorage(DefaultsKey.menuBarPeripheralBattery, store: SettingsUserDefaults.standard) private var showPeripherals = false
+    @AppStorage(DefaultsKey.monitorGraphBattery, store: SettingsUserDefaults.standard) private var graphBattery = true
+    @AppStorage(DefaultsKey.temperatureUnit, store: SettingsUserDefaults.standard) private var temperatureUnit = TemperatureUnit.celsius.rawValue
+    @AppStorage(DefaultsKey.monitorPwrSystem, store: SettingsUserDefaults.standard) private var pwrSystem = true
+    @AppStorage(DefaultsKey.monitorPwrAdapter, store: SettingsUserDefaults.standard) private var pwrAdapter = true
+    @AppStorage(DefaultsKey.monitorPwrBattery, store: SettingsUserDefaults.standard) private var pwrBattery = true
+    @AppStorage(DefaultsKey.monitorPwrTimeRemaining, store: SettingsUserDefaults.standard) private var pwrTimeRemaining = true
+    @AppStorage(DefaultsKey.monitorPwrHealth, store: SettingsUserDefaults.standard) private var pwrHealth = true
+    @AppStorage(DefaultsKey.panelPowerOrder, store: SettingsUserDefaults.standard) private var powerOrderRaw = ""
     @State private var draggingBlock: Block?
 
     var body: some View {
@@ -363,7 +363,7 @@ struct PowerSection: View {
 private struct EnergyAppsBreakdown: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var monitor = SystemMonitor.shared
-    @AppStorage(DefaultsKey.monitorInterval) private var monitorInterval = 2
+    @AppStorage(DefaultsKey.monitorInterval, store: SettingsUserDefaults.standard) private var monitorInterval = 2
     @State private var expanded = false
     @State private var rows: [ProcessUsage] = []
     @State private var loading = false

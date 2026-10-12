@@ -13,8 +13,8 @@ import UniformTypeIdentifiers
 struct PanelLayoutEditor: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var features = FeatureRuntime.shared
-    @AppStorage(DefaultsKey.panelShowFanControl) private var showFanControl = true
-    @AppStorage(DefaultsKey.brightnessControlEnabled) private var brightnessEnabled = false
+    @AppStorage(DefaultsKey.panelShowFanControl, store: SettingsUserDefaults.standard) private var showFanControl = true
+    @AppStorage(DefaultsKey.brightnessControlEnabled, store: SettingsUserDefaults.standard) private var brightnessEnabled = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var order: [PanelSectionID] = PanelLayout.order
     @State private var dragging: PanelSectionID?
@@ -170,7 +170,9 @@ private struct PanelSectionRow: View {
         self.onSelect = onSelect
         self.onHover = onHover
         self.onVisibilityChange = onVisibilityChange
-        _shown = AppStorage(wrappedValue: id.shownByDefault, id.visibilityKey)
+        _shown = AppStorage(
+            wrappedValue: id.shownByDefault, id.visibilityKey,
+            store: SettingsUserDefaults.standard)
     }
 
     var body: some View {

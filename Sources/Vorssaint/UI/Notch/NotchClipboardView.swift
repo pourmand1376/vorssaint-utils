@@ -12,7 +12,7 @@ struct NotchClipboardView: View {
     @ObservedObject private var history = ClipboardHistoryService.shared
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var permissions = Permissions.shared
-    @AppStorage(DefaultsKey.clipboardHistoryEnabled) private var enabled = false
+    @AppStorage(DefaultsKey.clipboardHistoryEnabled, store: SettingsUserDefaults.standard) private var enabled = false
     @State private var query = ""
     @State private var copiedID: UUID?
     @State private var pinnedOnly = false

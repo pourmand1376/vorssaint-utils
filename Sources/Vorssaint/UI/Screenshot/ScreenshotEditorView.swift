@@ -25,13 +25,13 @@ struct ScreenshotEditorView: View {
     @State private var sharing = false
     @State private var sharedRecord: ScreenshotShareRecord?
     @State private var shareAnchor = ShelfSharePickerAnchor.Anchor()
-    @AppStorage(DefaultsKey.screenshotToolOrder) private var toolOrderRaw =
+    @AppStorage(DefaultsKey.screenshotToolOrder, store: SettingsUserDefaults.standard) private var toolOrderRaw =
         ScreenshotSupport.Tool.defaultOrderStorage
-    @AppStorage(DefaultsKey.screenshotToolShortcuts) private var bindingsRaw = ""
-    @AppStorage(DefaultsKey.screenshotToolShortcutsEnabled) private var toolShortcutsEnabled = true
-    @AppStorage(DefaultsKey.screenshotSharingEnabled) private var sharingEnabled = true
-    @AppStorage(DefaultsKey.shelfEnabled) private var shelfEnabled = false
-    @AppStorage(AppFeature.shelf.availabilityKey) private var shelfAvailable = false
+    @AppStorage(DefaultsKey.screenshotToolShortcuts, store: SettingsUserDefaults.standard) private var bindingsRaw = ""
+    @AppStorage(DefaultsKey.screenshotToolShortcutsEnabled, store: SettingsUserDefaults.standard) private var toolShortcutsEnabled = true
+    @AppStorage(DefaultsKey.screenshotSharingEnabled, store: SettingsUserDefaults.standard) private var sharingEnabled = true
+    @AppStorage(DefaultsKey.shelfEnabled, store: SettingsUserDefaults.standard) private var shelfEnabled = false
+    @AppStorage(AppFeature.shelf.availabilityKey, store: SettingsUserDefaults.standard) private var shelfAvailable = false
 
     private var strings: ScreenshotFeatureStrings {
         FeatureStrings.screenshot(l10n.language)

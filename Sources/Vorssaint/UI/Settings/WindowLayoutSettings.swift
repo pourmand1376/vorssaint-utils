@@ -9,29 +9,29 @@ struct WindowLayoutSettings: View {
     @ObservedObject private var features = FeatureRuntime.shared
     @ObservedObject private var service = WindowLayoutService.shared
     @ObservedObject private var maximizer = WindowMaximizer.shared
-    @AppStorage(DefaultsKey.windowMaximizeEnabled) private var maximizeEnabled = false
+    @AppStorage(DefaultsKey.windowMaximizeEnabled, store: SettingsUserDefaults.standard) private var maximizeEnabled = false
     @ObservedObject private var pointerDisplay = PointerDisplayService.shared
-    @AppStorage(DefaultsKey.pointerDisplayEnabled) private var pointerDisplayEnabled = false
-    @AppStorage(DefaultsKey.panelUtilityWindowLayout) private var showInPanel = true
-    @AppStorage(DefaultsKey.windowLayoutShortcutsEnabled) private var shortcutsEnabled = true
-    @AppStorage(DefaultsKey.windowDirectionalEnabled) private var directionalEnabled = false
-    @AppStorage(DefaultsKey.windowDirectionalShortcut) private var directionalShortcutRaw = GlobalShortcut.windowDirectionalDefault.storageValue
-    @AppStorage(DefaultsKey.windowEdgeSnapEnabled) private var edgeSnapEnabled = false
-    @AppStorage(DefaultsKey.windowEdgeSnapDisabledZones) private var edgeSnapDisabledZones = ""
-    @AppStorage(DefaultsKey.windowEdgeSnapZoneActions) private var edgeSnapZoneActions = ""
-    @AppStorage(DefaultsKey.windowGestureEnabled) private var gestureEnabled = false
-    @AppStorage(DefaultsKey.windowGestureModifiers) private var gestureModifiers = WindowGestureSupport.defaultModifierStorageValue
-    @AppStorage(DefaultsKey.windowGestureRaiseWindow) private var gestureRaiseWindow = false
-    @AppStorage(DefaultsKey.windowLayoutWindowGap) private var windowGap = 0
-    @AppStorage(DefaultsKey.windowLayoutScreenGap) private var screenGap = 0
-    @AppStorage(DefaultsKey.windowLayoutMarginPercent) private var marginPercent = WindowLayoutMargin.defaultPercent
-    @AppStorage(DefaultsKey.windowLayoutSideRepeatCyclesThirds) private var sideRepeatCyclesThirds = false
+    @AppStorage(DefaultsKey.pointerDisplayEnabled, store: SettingsUserDefaults.standard) private var pointerDisplayEnabled = false
+    @AppStorage(DefaultsKey.panelUtilityWindowLayout, store: SettingsUserDefaults.standard) private var showInPanel = true
+    @AppStorage(DefaultsKey.windowLayoutShortcutsEnabled, store: SettingsUserDefaults.standard) private var shortcutsEnabled = true
+    @AppStorage(DefaultsKey.windowDirectionalEnabled, store: SettingsUserDefaults.standard) private var directionalEnabled = false
+    @AppStorage(DefaultsKey.windowDirectionalShortcut, store: SettingsUserDefaults.standard) private var directionalShortcutRaw = GlobalShortcut.windowDirectionalDefault.storageValue
+    @AppStorage(DefaultsKey.windowEdgeSnapEnabled, store: SettingsUserDefaults.standard) private var edgeSnapEnabled = false
+    @AppStorage(DefaultsKey.windowEdgeSnapDisabledZones, store: SettingsUserDefaults.standard) private var edgeSnapDisabledZones = ""
+    @AppStorage(DefaultsKey.windowEdgeSnapZoneActions, store: SettingsUserDefaults.standard) private var edgeSnapZoneActions = ""
+    @AppStorage(DefaultsKey.windowGestureEnabled, store: SettingsUserDefaults.standard) private var gestureEnabled = false
+    @AppStorage(DefaultsKey.windowGestureModifiers, store: SettingsUserDefaults.standard) private var gestureModifiers = WindowGestureSupport.defaultModifierStorageValue
+    @AppStorage(DefaultsKey.windowGestureRaiseWindow, store: SettingsUserDefaults.standard) private var gestureRaiseWindow = false
+    @AppStorage(DefaultsKey.windowLayoutWindowGap, store: SettingsUserDefaults.standard) private var windowGap = 0
+    @AppStorage(DefaultsKey.windowLayoutScreenGap, store: SettingsUserDefaults.standard) private var screenGap = 0
+    @AppStorage(DefaultsKey.windowLayoutMarginPercent, store: SettingsUserDefaults.standard) private var marginPercent = WindowLayoutMargin.defaultPercent
+    @AppStorage(DefaultsKey.windowLayoutSideRepeatCyclesThirds, store: SettingsUserDefaults.standard) private var sideRepeatCyclesThirds = false
     @State private var directionalError: String?
     @State private var systemTilingEnabled = WindowEdgeSnapSupport.isSystemTilingEnabled
     // Same preference the Switcher page exposes next to Dock Preview; it is
     // mirrored here because it is a window-juggling behavior people look for
     // on this page too.
-    @AppStorage(DefaultsKey.dockClickCycleWindows) private var dockClickCycleWindows = false
+    @AppStorage(DefaultsKey.dockClickCycleWindows, store: SettingsUserDefaults.standard) private var dockClickCycleWindows = false
 
     private var text: WindowLayoutFeatureStrings {
         FeatureStrings.windowLayout(l10n.language)
@@ -442,7 +442,8 @@ private struct WindowLayoutActionRow: View {
         _rawValue = AppStorage(
             wrappedValue: action.defaultShortcut?.storageValue
                 ?? WindowLayoutAction.clearedShortcutStorageValue,
-            action.shortcutKey
+            action.shortcutKey,
+            store: SettingsUserDefaults.standard
         )
     }
 

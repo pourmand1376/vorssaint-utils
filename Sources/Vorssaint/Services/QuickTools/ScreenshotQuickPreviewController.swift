@@ -304,7 +304,7 @@ final class ScreenshotQuickPreviewController {
         share(duration) { [weak self] record in
             guard let self, !self.closed,
                   AppFeature.screenshot.isAvailable,
-                  UserDefaults.standard.bool(forKey: DefaultsKey.screenshotSharingEnabled) else {
+                  SettingsUserDefaults.standard.bool(forKey: DefaultsKey.screenshotSharingEnabled) else {
                 if let self, !self.closed {
                     self.model.sharing = false
                     self.scheduleAutoDismiss()
@@ -395,7 +395,7 @@ final class ScreenshotQuickPreviewController {
             pointer: pointer,
             screens: screens,
             fallback: NSScreen.pointerVisibleFrame)
-        let storedPosition = UserDefaults.standard.string(
+        let storedPosition = SettingsUserDefaults.standard.string(
             forKey: DefaultsKey.screenshotPreviewPosition) ?? ""
         let position = ScreenshotSupport.QuickPreviewPosition(rawValue: storedPosition)
             ?? .automatic
@@ -529,7 +529,7 @@ private struct ScreenshotQuickPreviewView: View {
         view.actionsOnly = true
         return view
     }
-    @AppStorage(DefaultsKey.screenshotSharingEnabled) private var sharingEnabled = true
+    @AppStorage(DefaultsKey.screenshotSharingEnabled, store: SettingsUserDefaults.standard) private var sharingEnabled = true
 
     var body: some View {
         if actionsOnly { actionBar }

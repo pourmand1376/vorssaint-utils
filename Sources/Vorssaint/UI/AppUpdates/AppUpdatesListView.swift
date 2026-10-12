@@ -10,9 +10,9 @@ struct AppUpdatesListView: View {
     @ObservedObject private var l10n = L10n.shared
     @ObservedObject private var updates = AppUpdatesService.shared
     @ObservedObject private var homebrew = HomebrewManager.shared
-    @AppStorage(DefaultsKey.appUpdatesIncludeOnlineCatalog)
+    @AppStorage(DefaultsKey.appUpdatesIncludeOnlineCatalog, store: SettingsUserDefaults.standard)
     private var includeOnlineCatalog = true
-    @AppStorage(DefaultsKey.appUpdatesIncludeAppStore)
+    @AppStorage(DefaultsKey.appUpdatesIncludeAppStore, store: SettingsUserDefaults.standard)
     private var includeAppStore = true
     @State private var showOperationDetails = false
     var compact = false
