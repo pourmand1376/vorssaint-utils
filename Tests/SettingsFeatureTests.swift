@@ -615,7 +615,7 @@ enum SettingsFeatureTests {
 
         let storageRoot = FileManager.default.temporaryDirectory
             .appendingPathComponent("vorssaint-settings-\(UUID().uuidString)", isDirectory: true)
-        let settingsFile = storageRoot.appendingPathComponent("Settings/Preferences.plist")
+        let settingsFile = storageRoot.appendingPathComponent("dotfiles/vorssaint/settings.plist")
         let legacyDomain = "com.vorssaint.tests.settings.\(UUID().uuidString)"
         let legacyDefaults = UserDefaults(suiteName: legacyDomain)!
         legacyDefaults.set(true, forKey: "migratedFlag")
@@ -646,6 +646,33 @@ enum SettingsFeatureTests {
                 && reopenedDefaults.persistentDomain(forName: legacyDomain)?[
                     "registeredFallback"] == nil,
                "file-backed preferences persist changes while keeping registered defaults virtual")
+
+        let legacyFile = storageRoot.appendingPathComponent("Application Support/Settings/Preferences.plist")
+        let legacyFileValues: [String: Any] = ["oldFilePreference": "preserved"]
+        let legacyFileData = try? PropertyListSerialization.data(
+            fromPropertyList: legacyFileValues, format: .xml, options: 0)
+        try? FileManager.default.createDirectory(
+            at: legacyFile.deletingLastPathComponent(), withIntermediateDirectories: true)
+        if let legacyFileData {
+            try? legacyFileData.write(to: legacyFile)
+        }
+        let migratedFileDefaults = SettingsUserDefaults(
+            storageURL: storageRoot.appendingPathComponent("dotfiles-migration/settings.plist"),
+            domainName: nil,
+            legacyDefaults: legacyDefaults,
+            legacyStorageURL: legacyFile,
+            containerURL: storageRoot.appendingPathComponent("dotfiles-migration"))
+        suite.expect(migratedFileDefaults.string(forKey: "oldFilePreference") == "preserved"
+                && !FileManager.default.fileExists(atPath: legacyFile.path),
+               "previous Application Support settings migrate to the dotfiles config file")
+        let configHome = storageRoot.appendingPathComponent(".config", isDirectory: true)
+        suite.expect(SettingsUserDefaults.settingsDirectory(
+            configHome: configHome, bundleIdentifier: "com.vorssaint.utils")
+                == configHome.appendingPathComponent("vorssaint", isDirectory: true)
+                && SettingsUserDefaults.settingsDirectory(
+                    configHome: configHome, bundleIdentifier: "com.vorssaint.utils.dev")
+                    == configHome.appendingPathComponent("vorssaint-dev", isDirectory: true),
+               "stable and developer settings use separate dotfiles config folders")
         try? FileManager.default.removeItem(at: storageRoot)
 
     }

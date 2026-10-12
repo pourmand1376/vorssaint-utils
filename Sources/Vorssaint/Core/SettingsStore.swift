@@ -5,14 +5,20 @@ import Foundation
 
 final class SettingsUserDefaults: UserDefaults {
     private static let sharedStore: SettingsUserDefaults? = {
-        guard let container = PrivateFileStore.containerURL,
-              let bundleID = Bundle.main.bundleIdentifier else { return nil }
-        let folder = container.appendingPathComponent("Settings", isDirectory: true)
+        guard let bundleID = Bundle.main.bundleIdentifier,
+              let support = PrivateFileStore.containerURL else { return nil }
+        let configHome = ProcessInfo.processInfo.environment["XDG_CONFIG_HOME"]
+            .flatMap { $0.hasPrefix("/") ? URL(fileURLWithPath: $0, isDirectory: true) : nil }
+            ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(
+                ".config", isDirectory: true)
+        let folder = settingsDirectory(configHome: configHome, bundleIdentifier: bundleID)
         return SettingsUserDefaults(
-            storageURL: folder.appendingPathComponent("Preferences.plist"),
+            storageURL: folder.appendingPathComponent("settings.plist"),
             domainName: bundleID,
             legacyDefaults: Foundation.UserDefaults.standard,
-            containerURL: container)
+            legacyStorageURL: support.appendingPathComponent(
+                "Settings/Preferences.plist", isDirectory: false),
+            containerURL: folder)
     }()
 
     override class var standard: UserDefaults {
@@ -29,6 +35,7 @@ final class SettingsUserDefaults: UserDefaults {
     private let storageURL: URL
     private let domainName: String?
     private let legacyDefaults: UserDefaults
+    private let legacyStorageURL: URL?
     private let containerURL: URL?
     private let lock = NSRecursiveLock()
     private var values: [String: Any]
@@ -39,14 +46,21 @@ final class SettingsUserDefaults: UserDefaults {
     init(storageURL: URL,
          domainName: String?,
          legacyDefaults: UserDefaults,
+         legacyStorageURL: URL? = nil,
          containerURL: URL? = nil) {
         self.storageURL = storageURL
         self.domainName = domainName
         self.legacyDefaults = legacyDefaults
+        self.legacyStorageURL = legacyStorageURL
         self.containerURL = containerURL
         values = [:]
         super.init(suiteName: "com.vorssaint.utils.folder-defaults.\(UUID().uuidString)")!
         loadOrMigrate()
+    }
+
+    static func settingsDirectory(configHome: URL, bundleIdentifier: String) -> URL {
+        let folder = bundleIdentifier.hasSuffix(".dev") ? "vorssaint-dev" : "vorssaint"
+        return configHome.appendingPathComponent(folder, isDirectory: true)
     }
 
     override func object(forKey defaultName: String) -> Any? {
@@ -165,28 +179,37 @@ final class SettingsUserDefaults: UserDefaults {
                let saved = try? PropertyListSerialization.propertyList(
                 from: data, options: [], format: nil) as? [String: Any] {
                 values = saved
-                removeLegacyDomainIfNeeded(existingDomain)
+                finishMigration(existingDomain: existingDomain)
                 return
             }
-            values = existingDomain ?? [:]
-            hasUnwrittenChanges = true
-            guard persistLocked() else { return }
-            removeLegacyDomainIfNeeded(existingDomain)
-            return
         }
 
-        values = existingDomain ?? [:]
+        values = loadLegacyFile() ?? existingDomain ?? [:]
+        hasUnwrittenChanges = true
         guard PrivateFileStore.createDirectory(
             at: storageURL.deletingLastPathComponent(), container: containerURL),
               persistLocked()
         else { return }
-        removeLegacyDomainIfNeeded(existingDomain)
+        finishMigration(existingDomain: existingDomain)
     }
 
-    private func removeLegacyDomainIfNeeded(_ domain: [String: Any]?) {
-        guard domain != nil, let domainName else { return }
-        legacyDefaults.removePersistentDomain(forName: domainName)
-        legacyDefaults.synchronize()
+    private func loadLegacyFile() -> [String: Any]? {
+        guard let legacyStorageURL,
+              let data = try? Data(contentsOf: legacyStorageURL),
+              let saved = try? PropertyListSerialization.propertyList(
+                from: data, options: [], format: nil) as? [String: Any]
+        else { return nil }
+        return saved
+    }
+
+    private func finishMigration(existingDomain: [String: Any]?) {
+        if existingDomain != nil, let domainName {
+            legacyDefaults.removePersistentDomain(forName: domainName)
+            legacyDefaults.synchronize()
+        }
+        if let legacyStorageURL {
+            try? FileManager.default.removeItem(at: legacyStorageURL)
+        }
     }
 
     @discardableResult
