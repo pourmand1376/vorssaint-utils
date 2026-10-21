@@ -6,6 +6,14 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+- Wallpaper's Add image and Add folder open the file picker in front on the first click instead of behind other windows.
+
+### Contributors
+Feedback: Brain.
+
+## [3.4.2-beta.2] - 2026-10-20
+
 ### Summary
 Clipboard history that can expire old items and a hidden Dynamic Island that still shows activity, plus fixes for AirPlay, displays, battery updates and more.
 
@@ -42,9 +50,12 @@ Clipboard history that can expire old items and a hidden Dynamic Island that sti
 - When the window switcher replaces macOS ⌘Tab, the shortcut no longer goes dead while another app has secure input on, as password fields do. macOS's switcher answers until it turns off, and Window switcher settings say why.
 - Text Snippets and Command Bar settings no longer claim to know which app holds secure input. They name the app that was active when it turned on, never Vorssaint itself.
 - Quit Protection in Screen Sharing and other remote desktop or virtual machine apps passes a ⌘Q confirmed by holding it or pressing it twice on to the other computer instead of quitting the app itself.
+- Smooth scrolling keeps its glide in the window or scroll area where it started instead of carrying into the one under the pointer.
+- Quit on close no longer quits an app when you minimize its window, as Premiere Pro did.
+- Extra Brightness no longer leaves only the wallpaper in Mission Control's desktop thumbnails.
 
 ### Contributors
-Thanks to @andrewgribben, @becastellani, @bharathvbcr, @cdbrandt729-code, @Chubi01, @Dusk-afk, @emreertunc, @iltonandrew, @jainnam-1993, @juanra, @Likheet, @marianhoenscheid, @mendozal, @mikeknight85, @mmoradi97, @mschoeffmann, @pedro-fontinele, @RKeyProg, @rohanod, @root-daemon, @StudioKeys, @suhrudsh, @webipsum and @Yahddyyp.
+Thanks to @andrewgribben, @baacon, @bebricoOOOOOOf, @becastellani, @bharathvbcr, @cdbrandt729-code, @Chubi01, @Dusk-afk, @emreertunc, @iltonandrew, @jainnam-1993, @juanra, @Likheet, @marianhoenscheid, @mendozal, @mikeknight85, @mmoradi97, @mschoeffmann, @pedro-fontinele, @RKeyProg, @rohanod, @root-daemon, @StudioKeys, @suhrudsh, @ucrbuffalo, @webipsum, @Yahddyyp and @Zvzdov.
 Feedback: Brain.
 
 ## [3.4.2-beta.1] - 2026-10-18

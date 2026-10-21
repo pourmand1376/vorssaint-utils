@@ -298,6 +298,14 @@ enum SpaceWindowBridge {
         return SpaceHopSupport.windowsHiddenWithApp(windowTags: tags)
     }
 
+    /// Whether the window server holds the window minimized in the Dock, even
+    /// for an app Accessibility cannot read. False when the window query is
+    /// missing, and before macOS 26, where the tag has not been observed.
+    static func isMinimized(_ windowID: CGWindowID) -> Bool {
+        guard #available(macOS 26.0, *), let tags = windowTags(of: [windowID])?[windowID] else { return false }
+        return SpaceHopSupport.isMinimized(windowTags: tags)
+    }
+
     // MARK: - Child windows
 
     private typealias IteratorParentIDFunction = @convention(c) (CFTypeRef) -> UInt32

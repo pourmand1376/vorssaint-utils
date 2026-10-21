@@ -231,6 +231,7 @@ final class NotchService: ObservableObject {
             || (expanded && MediaWorkspaceView.panelModalActive)
             || (expanded && selected == .downloads && NotchDownloadService.shared.isChoosingFolder)
             || (expanded && selected == .scratchpad && ScratchpadService.shared.modalInteractionActive)
+            || (expanded && showingAppPanel && WallpaperService.shared.isChoosingSource)
             || (expanded && !showingSections && selected == .calendar && Permissions.shared.keepsCalendarPrompt)
             || (expanded && !showingSections && selected == .files && fileInteractionActive)
             || CameraPreviewService.shared.keepsNotchPermissionPrompt
@@ -414,8 +415,11 @@ final class NotchService: ObservableObject {
             && SettingsUserDefaults.standard.bool(forKey: DefaultsKey.notchOpenOnHover)
             && !expanded && !peeking && !dragPlaceholder && captureControls == nil
             // Set to show activity, it comes into sight while one runs or a
-            // notice shows.
-            && !(NotchSupport.hiddenShowsActivity() && (notice != nil || compactActivity != nil))
+            // notice shows. Closed beside a simulated cutout with no room
+            // from the menus, it draws no activity, so it keeps waiting for
+            // the pointer to reach its place.
+            && !(NotchSupport.hiddenShowsActivity() && (notice != nil
+                || compactActivity != nil && (geometry.isNotched || geometry.compactSideRoom != nil)))
     }
 
     /// Full screen keeps a clickable black cutout until the user opens it.
